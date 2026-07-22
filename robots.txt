@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://plunge-picks.netlify.app/sitemap.xml
