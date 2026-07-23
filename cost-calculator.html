@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://plunge-picks.netlify.app/cost-calculator.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Plunge Monthly Cost Calculator (Ice vs Chiller) | Plunge Picks</title>
+<meta name="description" content="Estimate the real monthly and yearly cost of owning a cold plunge — ice, electricity, filters and maintenance — and see when a chiller becomes cheaper than buying ice. Free, transparent, no sign-up.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1b2a'/%3E%3Cpath d='M16 5v22M16 5l-4 4M16 5l4 4M16 27l-4-4M16 27l4-4M6 16h20M6 16l4-4M6 16l4 4M26 16l-4-4M26 16l-4 4' stroke='%2314b8c4' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cold Plunge Monthly Cost Calculator (Ice vs Chiller)">
+<meta property="og:description" content="Estimate the real monthly and yearly cost of owning a cold plunge and see when a chiller beats buying ice.">
+<meta property="og:url" content="https://plunge-picks.netlify.app/cost-calculator.html">
+<meta property="og:image" content="https://plunge-picks.netlify.app/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://plunge-picks.netlify.app/"},{"@type":"ListItem","position":2,"name":"Cost Calculator","item":"https://plunge-picks.netlify.app/cost-calculator.html"}]}</script>
+</head>
+<body>
+
+<div class="disclosure-strip">This site contains affiliate links. If you purchase through one of these links, we may earn a commission at no additional cost to you. <a href="affiliate-disclosure.html">Learn more</a>.</div>
+
+<header class="nav2">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Plunge Picks home">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#14b8c4"/><path d="M16 5v22M16 5l-4 4M16 5l4 4M16 27l-4-4M16 27l4-4M6 16h20M6 16l4-4M6 16l4 4M26 16l-4-4M26 16l-4 4" stroke="#06222a" stroke-width="2.2" stroke-linecap="round"/></svg>
+      PLUNGE<b>PICKS</b>
+    </a>
+    <nav class="links" id="navlinks" aria-label="Primary">
+      <a href="best-cold-plunge-tubs.html">Best Cold Plunges</a>
+      <a href="compare.html">Comparisons</a>
+      <a href="cold-plunge-beginners-guide.html">Guides</a>
+      <a href="cost-calculator.html">Calculator</a>
+      <a href="about.html">About Us</a>
+      <a class="cta" href="find-my-plunge.html">Find My Cold Plunge</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<article class="article">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> › <span>Cost Calculator</span></nav>
+        <h1>Cold Plunge Monthly Cost Calculator</h1>
+    <div class="meta">Ice vs chiller · Updated July 2026 · Research-based tool by Plunge Picks</div>
+
+    <p>The sticker price of a cold plunge is only half the story. The part nobody advertises is the <strong>ongoing cost of ownership</strong> — bags of ice, chiller electricity, filters, and water. This free calculator estimates your real monthly and yearly cost, and shows you the point at which a chiller becomes cheaper than hauling ice. Change the numbers to match your situation; every assumption is shown.</p>
+
+    <div class="tool-nav">
+      <a href="find-my-plunge.html">→ Not sure which tub? Try the Product Finder</a>
+      <a href="best-budget-cold-plunge.html">→ See budget tubs</a>
+    </div>
+
+    <div class="tool">
+      <h2>Your usage</h2>
+      <div class="field">
+        <label for="sessions">Sessions per week <span class="hint">how often you'll plunge</span></label>
+        <input type="number" id="sessions" min="0" max="21" value="4">
+      </div>
+
+      <h2 style="font-size:1.2rem;">Ice setup</h2>
+      <div class="field">
+        <label for="ice">Ice used per session (lbs) <span class="hint">a typical fill uses 20–40 lbs</span></label>
+        <input type="number" id="ice" min="0" value="30">
+      </div>
+      <div class="field">
+        <label for="bag">Cost per 10 lb bag of ice ($) <span class="hint">store-bought bagged ice</span></label>
+        <input type="number" id="bag" min="0" step="0.25" value="2.50">
+      </div>
+
+      <h2 style="font-size:1.2rem;">Chiller setup</h2>
+      <div class="field">
+        <label for="watts">Chiller power draw (watts) <span class="hint">many home chillers average ~300–600 W</span></label>
+        <input type="number" id="watts" min="0" value="450">
+      </div>
+      <div class="field">
+        <label for="hours">Chiller run time per day (hours) <span class="hint">cycles on/off; estimate average</span></label>
+        <input type="number" id="hours" min="0" max="24" value="8">
+      </div>
+      <div class="field">
+        <label for="rate">Electricity rate ($/kWh) <span class="hint">check your utility bill</span></label>
+        <input type="number" id="rate" min="0" step="0.01" value="0.17">
+      </div>
+      <div class="field">
+        <label for="filter">Filter cost per year ($) <span class="hint">filters × replacements, if your tub uses them</span></label>
+        <input type="number" id="filter" min="0" value="60">
+      </div>
+
+      <h2 style="font-size:1.2rem;">Optional: break-even</h2>
+      <div class="field">
+        <label for="upfront">Extra up-front cost of a chiller setup vs an ice tub ($) <span class="hint">leave blank to skip</span></label>
+        <input type="number" id="upfront" min="0" value="3000">
+      </div>
+
+      <div class="tool-actions">
+        <button class="btn" id="calc">Calculate my cost</button>
+      </div>
+
+      <div class="result" id="out" style="display:none;">
+        <h3>Estimated ownership cost</h3>
+        <div class="row"><span><strong>Ice-only setup — monthly</strong></span><span class="big" id="iceMo" style="font-size:1.4rem;"></span></div>
+        <div class="row"><span>Ice-only setup — yearly</span><span id="iceYr"></span></div>
+        <div class="row"><span><strong>Chiller setup — monthly</strong> (electricity + filters)</span><span class="big" id="chMo" style="font-size:1.4rem;"></span></div>
+        <div class="row"><span>Chiller setup — yearly</span><span id="chYr"></span></div>
+        <div class="row"><span>Monthly saving with a chiller</span><span id="save"></span></div>
+        <div class="row"><span>Break-even on the chiller's extra cost</span><span id="be"></span></div>
+        <p class="assumptions" id="assume"></p>
+      </div>
+    </div>
+
+    <h2>How this is calculated</h2>
+    <p>We keep the math simple and visible so you can trust it:</p>
+    <ul>
+      <li><strong>Ice cost/month</strong> = sessions per week × 4.33 weeks × (lbs of ice ÷ 10) × price per 10 lb bag.</li>
+      <li><strong>Chiller electricity/month</strong> = (watts ÷ 1000) × hours per day × 30 days × your $/kWh rate.</li>
+      <li><strong>Chiller filters/month</strong> = yearly filter cost ÷ 12.</li>
+      <li><strong>Break-even</strong> = extra up-front chiller cost ÷ monthly saving vs ice.</li>
+    </ul>
+    <p>These are estimates, not quotes. Real ice usage, chiller efficiency, and local prices vary. The goal is a realistic ballpark to compare the two paths — not an exact bill.</p>
+
+    <div class="callout">Thinking chiller? Compare automated tubs in our <a href="best-cold-plunge-tubs.html">best cold plunge tubs guide</a>. Starting with ice? See the <a href="best-budget-cold-plunge.html">best budget tubs</a>.</div>
+  </div>
+</article>
+
+<footer class="footer2">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">PLUNGE PICKS</div>
+        <p style="color:#9db1c2;max-width:250px;">Helping you find the right cold plunge for your recovery, performance, and well-being.</p>
+        <div class="socials" style="margin-top:12px;">
+          <a href="https://pinterest.com/plungepicks" rel="noopener" target="_blank" aria-label="Pinterest"><svg width="22" height="22" viewBox="0 0 24 24" fill="#c2d2de"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.32-.09-.79-.17-2 .03-2.86.19-.82 1.2-5.2 1.2-5.2s-.31-.61-.31-1.52c0-1.42.83-2.48 1.86-2.48.88 0 1.3.66 1.3 1.45 0 .88-.56 2.2-.85 3.42-.24 1.02.51 1.85 1.52 1.85 1.83 0 3.23-1.93 3.23-4.71 0-2.46-1.77-4.18-4.29-4.18-2.92 0-4.64 2.19-4.64 4.46 0 .88.34 1.83.76 2.34.08.1.1.19.07.29-.08.32-.25 1.02-.29 1.16-.05.19-.15.23-.35.14-1.3-.61-2.11-2.5-2.11-4.03 0-3.28 2.38-6.29 6.87-6.29 3.61 0 6.41 2.57 6.41 6.01 0 3.58-2.26 6.47-5.4 6.47-1.05 0-2.04-.55-2.38-1.19l-.65 2.47c-.23.9-.86 2.03-1.29 2.72.97.3 2 .46 3.07.46 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <a href="best-cold-plunge-tubs.html">Best Cold Plunges</a>
+        <a href="compare.html">Comparisons</a>
+        <a href="find-my-plunge.html">Product Finder</a>
+        <a href="cost-calculator.html">Calculator</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <a href="buyer-checklist.html">Buyer's Guide</a>
+        <a href="cold-plunge-beginners-guide.html">Beginner Guide</a>
+        <a href="ice-vs-chiller.html">Ice vs. Chiller</a>
+        <a href="how-we-review.html">How We Review</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="editorial-policy.html">Editorial Policy</a>
+        <a href="corrections.html">Corrections Policy</a>
+        <a href="product-testing.html">Testing Disclosure</a>
+        <a href="medical-disclaimer.html">Medical Disclaimer</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>© 2026 Plunge Picks. As an Amazon Associate I earn from qualifying purchases.</div>
+      <div>Site content last updated: July 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var money=function(n){return "$"+(Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});};
+  function run(){
+    var spw=+$("sessions").value||0, ice=+$("ice").value||0, bag=+$("bag").value||0;
+    var watts=+$("watts").value||0, hours=+$("hours").value||0, rate=+$("rate").value||0, filt=+$("filter").value||0;
+    var upfront=+$("upfront").value||0;
+    var sessMo=spw*4.33;
+    var iceMo=sessMo*(ice/10)*bag;
+    var elecMo=(watts/1000)*hours*30*rate;
+    var filtMo=filt/12;
+    var chMo=elecMo+filtMo;
+    var save=iceMo-chMo;
+    $("iceMo").textContent=money(iceMo);
+    $("iceYr").textContent=money(iceMo*12);
+    $("chMo").textContent=money(chMo);
+    $("chYr").textContent=money(chMo*12);
+    $("save").textContent=(save>=0?money(save)+" / month":"−"+money(-save)+" (ice is cheaper here)");
+    var be="—";
+    if(save>0 && upfront>0){ var months=upfront/save; be=(Math.round(months))+" months ("+(Math.round(months/12*10)/10)+" years)"; }
+    else if(upfront>0){ be="Ice stays cheaper at these numbers"; }
+    $("be").textContent=be;
+    $("assume").textContent="Assumes "+spw+" sessions/week ("+Math.round(sessMo)+"/month), "+ice+" lbs ice/session at "+money(bag)+"/10 lb, chiller "+watts+" W for "+hours+" h/day at "+money(rate)+"/kWh, filters "+money(filt)+"/year. Estimates only — confirm local prices.";
+    $("out").style.display="block";
+    if(window.plungeTrack) plungeTrack("cost_calculator_complete",{page_slug:location.pathname});
+  }
+  $("calc").addEventListener("click",run);
+  run();
+})();
+</script>
+<script src="analytics.js" defer></script>
+</body>
+</html>
