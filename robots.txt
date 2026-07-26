@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://plunge-picks.netlify.app/sitemap.xml
+Sitemap: https://plungewise.com/sitemap.xml

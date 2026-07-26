@@ -1,4 +1,4 @@
-/* Plunge Picks — direct affiliate-program tracker.
+/* PlungeWise — direct affiliate-program tracker.
    IMPORTANT: nothing here is assumed to be active or approved. Every record
    starts as "pending" until the operator applies and confirms terms in writing.
    Do NOT display commission rates or "approved" status publicly until verified.

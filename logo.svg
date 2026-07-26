@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 84" width="420" height="84" role="img" aria-label="PlungeWise">
+  <title>PlungeWise</title>
+  <rect x="0" y="14" width="56" height="56" rx="12" fill="#14b8c4"/>
+  <g transform="translate(28,42) scale(1.4) translate(-16,-16)">
+    <path d="M16 5v22M16 5l-4 4M16 5l4 4M16 27l-4-4M16 27l4-4M6 16h20M6 16l4-4M6 16l4 4M26 16l-4-4M26 16l-4 4" stroke="#06222a" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  </g>
+  <text x="76" y="56" font-family="Helvetica, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="#0d1b2a">Plunge</tspan><tspan fill="#14b8c4">Wise</tspan>
+  </text>
+</svg>

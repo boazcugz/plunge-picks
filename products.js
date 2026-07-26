@@ -1,7 +1,16 @@
-/* Plunge Picks — centralized product dataset.
+/* PlungeWise — centralized product dataset.
    Honest data policy: only categorical fields we can defend are populated.
    Any numeric spec we cannot currently verify is left null with verify:true
-   and a note. Do NOT invent specs here. Update verifiedDate when checked. */
+   and a note. Do NOT invent specs here. Update verifiedDate when checked.
+
+   MASTER_BRIEF_V2 §9.4 — the following claims may NOT appear in `bestFor`,
+   `limitation` or `notes` unless we hold real evidence for them:
+   quiet / noisy, reliable, durable, fast cooling, good cold retention,
+   apartment-friendly, fits tall users, full-shoulder immersion, best value,
+   strong warranty, easy maintenance, lasts for years.
+   Where a limitation is a missing published spec rather than a measured
+   result, say exactly that — "not published", "not independently confirmed
+   by PlungeWise" — instead of guessing at performance. */
 window.PLUNGE_PRODUCTS = [
   {
     slug: "the-cold-plunge",
@@ -20,7 +29,7 @@ window.PLUNGE_PRODUCTS = [
     outdoor: true,
     upgradeable: false,
     bestFor: "A hands-off automated daily plunge",
-    limitation: "High up-front cost; multi-week lead times",
+    limitation: "High up-front cost; the manufacturer lists multi-week lead times",
     verifiedDate: "2026-07",
     verify: false,
     notes: "Dimensions/weight need verification against current product page."
@@ -42,7 +51,7 @@ window.PLUNGE_PRODUCTS = [
     outdoor: true,
     upgradeable: false,
     bestFor: "The coldest, most integrated premium setup",
-    limitation: "Top-of-market price; heavy (~345 lbs), hard to relocate",
+    limitation: "Top-of-market price; the manufacturer lists ~345 lbs, so it is not easily relocated",
     verifiedDate: "2026-07",
     verify: false,
     notes: "Heating availability varies by model — verify configuration."
@@ -64,10 +73,10 @@ window.PLUNGE_PRODUCTS = [
     outdoor: true,
     upgradeable: false,
     bestFor: "A real chiller tub at a mid-range price",
-    limitation: "Chiller runs on the loud side",
+    limitation: "Minimum temperature is not published; chiller noise is not independently confirmed by PlungeWise",
     verifiedDate: "2026-07",
     verify: true,
-    notes: "Minimum temperature, dimensions, warranty need verification."
+    notes: "Minimum temperature, dimensions, warranty and noise level need verification. Previous copy called the chiller loud — removed under §9.4, we have no measurement."
   },
   {
     slug: "polar-monkeys-brainpod-2",
@@ -85,11 +94,11 @@ window.PLUNGE_PRODUCTS = [
     indoor: true,
     outdoor: false,
     upgradeable: false,
-    bestFor: "Compact spaces and apartments",
-    limitation: "Small basin may feel snug for taller users",
+    bestFor: "An indoor-only setup where outdoor space isn't an option",
+    limitation: "Interior dimensions are not published, so we cannot confirm the fit for taller users",
     verifiedDate: "2026-07",
     verify: true,
-    notes: "Capacity ~55 gal and ~110 lbs empty cited by reviewers — verify. Heating is model-dependent."
+    notes: "Capacity ~55 gal and ~110 lbs empty cited by reviewers — verify. Heating is model-dependent. Previous copy claimed the basin feels snug for taller users — removed under §9.4, we have no interior dimensions."
   },
   {
     slug: "nordic-wave-viking",
@@ -108,7 +117,7 @@ window.PLUNGE_PRODUCTS = [
     outdoor: true,
     upgradeable: true,
     bestFor: "An upright, seated plunge with a small floor footprint",
-    limitation: "Less internal space; pricing varies by configuration",
+    limitation: "Interior dimensions are not published; pricing varies by configuration",
     verifiedDate: "2026-07",
     verify: true,
     notes: "Dimensions and chiller options need verification."
@@ -152,9 +161,9 @@ window.PLUNGE_PRODUCTS = [
     outdoor: true,
     upgradeable: true,
     bestFor: "The lowest possible cost, outdoor DIY setup",
-    limitation: "No insulation — burns through ice; industrial look",
+    limitation: "Uninsulated single-wall metal; ice consumption not measured by PlungeWise; industrial look",
     verifiedDate: "2026-07",
     verify: true,
-    notes: "Generic category; link to a specific tank product when selected."
+    notes: "Generic category; link to a specific tank product when selected. Previous copy said it 'burns through ice' — removed under §9.4 until we run a real ice-melt measurement (Phase 4)."
   }
 ];
