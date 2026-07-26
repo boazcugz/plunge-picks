@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">DIY Build</title>
+  <desc id="desc">Editorial illustration of a stock tank, chiller, pump and filtration setup.</desc>
+  <defs>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EAF7F8"/>
+      <stop offset="55%" stop-color="#D7ECF0"/>
+      <stop offset="100%" stop-color="#B8D7DF"/>
+    </linearGradient>
+    <radialGradient id="cardGlow">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" rx="44" fill="url(#cardBg)"/>
+  <circle cx="600" cy="240" r="420" fill="url(#cardGlow)"/>
+  <path d="M0 650 C240 590 360 720 600 655 C840 590 1000 720 1200 650 L1200 800 L0 800 Z" fill="#071A2B" opacity="0.92"/>
+  
+          <rect x="205" y="310" width="610" height="235" rx="40" fill="#CDD8DA" stroke="#0B2D46" stroke-width="9"/>
+          <ellipse cx="510" cy="310" rx="300" ry="75" fill="#BDEEF2" stroke="#0B2D46" stroke-width="9"/>
+          <ellipse cx="510" cy="310" rx="250" ry="50" fill="#57D4DF" opacity="0.58"/>
+          <rect x="855" y="275" width="180" height="270" rx="25" fill="#0B2D46"/>
+          <g stroke="#18C5D2" stroke-width="9" fill="none">
+            <path d="M815 400 C865 400 850 350 875 350"/>
+            <path d="M815 470 C875 470 850 505 875 505"/>
+          </g>
+          <circle cx="925" cy="405" r="42" fill="#0E5266" stroke="#18C5D2" stroke-width="6"/>
+          <rect x="885" y="315" width="120" height="16" rx="8" fill="#18C5D2"/>
+        
+  <g transform="translate(65 50) scale(0.72)">
+    
+    <g transform="translate(64 64)">
+      <circle cx="0" cy="0" r="45" fill="none" stroke="#0B2D46" stroke-width="5"/>
+      <circle cx="0" cy="0" r="34" fill="none" stroke="#0B2D46" stroke-width="2" opacity="0.42"/>
+      <path d="M0,-58 L7,-44 L0,-47 L-7,-44 Z" fill="#0B2D46"/>
+      <path d="M58,0 L44,7 L47,0 L44,-7 Z" fill="#0B2D46"/>
+      <path d="M0,58 L-7,44 L0,47 L7,44 Z" fill="#0B2D46"/>
+      <path d="M-58,0 L-44,-7 L-47,0 L-44,7 Z" fill="#0B2D46"/>
+      <defs>
+        <linearGradient id="dropGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#18C5D2"/>
+          <stop offset="100%" stop-color="#0798B5"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,-38 C-12,-19 -25,-4 -25,15 C-25,31 -14,42 0,42 C14,42 25,31 25,15 C25,-4 12,-19 0,-38 Z"
+            fill="url(#dropGrad)" stroke="#D7FAFC" stroke-width="2"/>
+      <path d="M-9,6 C-4,-2 0,-9 7,-17 C4,-5 4,5 0,13 C-4,20 -10,24 -15,21 C-20,18 -18,12 -9,6 Z"
+            fill="#FFFFFF" opacity="0.48"/>
+      <path d="M0,-15 L4,-4 L15,0 L4,4 L0,15 L-4,4 L-15,0 L-4,-4 Z"
+            fill="#D7FAFC"/>
+      <circle cx="0" cy="0" r="3" fill="#071A2B"/>
+    </g>
+    
+  </g>
+</svg>
