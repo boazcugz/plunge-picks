@@ -360,7 +360,7 @@ section { padding: 56px 0; }
 /* footer v2 */
 .footer2 { background:var(--bg); color:#9db1c2; padding:46px 0 26px; margin-top:48px; font-size:.9rem; }
 .footer2 .cols { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:28px; }
-.footer2 .brand { font-weight:800; color:#fff; font-size:1.1rem; margin-bottom:8px; }
+.footer2 .brand { display:flex; align-items:center; gap:8px; font-weight:800; color:#fff; font-size:1.1rem; margin-bottom:8px; }
 .footer2 h5 { color:#fff; font-size:.85rem; text-transform:uppercase; letter-spacing:.5px; margin:0 0 12px; }
 .footer2 a { color:#c2d2de; display:block; margin-bottom:8px; }
 .footer2 a:hover { color:#fff; }
@@ -564,4 +564,39 @@ h1, h2, h3, h4, p, li, td, th, a { overflow-wrap: break-word; word-wrap: break-w
   .decision-box { padding: 20px 16px; }
   .path dl > div { flex-direction: column; gap: 2px; }
   .path dd { text-align: left; }
+}
+
+
+/* ==========================================================================
+   PW-BRAND-ASSETS — נכסי מותג
+   הלוגו הוא סמל (תמונה) + שם המותג (טקסט אמיתי). שם המותג לעולם לא הופך
+   לתמונה: הוא חייב להישאר קריא לגוגל, לקוראי מסך, וכשתמונה לא נטענת.
+   ========================================================================== */
+
+/* הסמל בכותרת ובפוטר. flex:none מונע ממנו להתכווץ כשהניווט צפוף. */
+.nav2 .brand .bmark,
+.footer2 .brand .fmark { display:block; flex:none; }
+
+/* איורי המסלולים בדף הבית.
+   width/height בתגית ה-HTML שומרים מקום מראש כדי שהעמוד לא יקפוץ בטעינה;
+   כאן רק מותחים לרוחב הכרטיס ושומרים על היחס. */
+.path .pimg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 0 14px;
+  background: #eaf4f6;
+}
+
+/* תמונת הפתיח של מאמר — גרסת <img> אמיתית במקום רקע CSS,
+   כדי שיהיה alt, מידות מפורשות ושליטה בטעינה. */
+.article-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 0 0 8px;
+  box-shadow: var(--shadow);
+  background: #071a2b;
 }
