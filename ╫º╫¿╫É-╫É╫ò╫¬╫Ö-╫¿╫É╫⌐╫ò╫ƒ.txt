@@ -1,0 +1,31 @@
+PlungeWise — חבילת העלאה: Phase 2 + PW-REBRAND-BASE
+תאריך: 26 ביולי 2026
+
+החבילה הזאת מחליפה את PlungeWise-Phase2-upload.zip. אם עוד לא העלית את הקודמת,
+העלה רק את זאת. אם כבר העלית את הקודמת, העלה גם את זאת - היא כוללת הכל.
+
+מה יש כאן:
+  24 קבצי HTML   - אחד חדש (diy-cold-plunge.html), 23 מעודכנים
+  style.css      - מעודכן
+  analytics.js   - מעודכן
+  sitemap.xml    - מעודכן (23 כתובות)
+  robots.txt     - ללא שינוי, מצורף לשלמות
+  _redirects     - קובץ חדש וחשוב. מפנה את הכתובת הישנה של Netlify
+                   ואת www אל plungewise.com. בלעדיו שתי כתובות מגישות
+                   את אותו אתר וגוגל מתבלבל.
+  assets/        - תיקייה חדשה, ריקה בכוונה. מכינה מקום לחבילת התמונות.
+
+איך מעלים:
+  1. https://github.com/boazcugz/plunge-picks
+  2. Add file -> Upload files
+  3. גרור את כל התוכן חוץ מהקובץ הזה. את התיקייה assets גרור כתיקייה שלמה.
+  4. הודעה: PW-REBRAND-BASE: canonical host redirects, brand cleanup, assets structure
+  5. Commit directly to the main branch -> Commit changes
+
+אחרי ההעלאה בדוק:
+  https://plunge-picks.netlify.app  אמור לקפוץ אוטומטית ל-plungewise.com
+  https://plungewise.com/diy-cold-plunge.html  נטען
+  בתפריט העליון מופיע DIY & Budget
+  בעמוד הבית כתוב "Top Cold Plunges for 2026" ולא "Top Cold PlungeWise"
+
+לא להעלות: תיקיית docs

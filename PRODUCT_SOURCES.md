@@ -1,4 +1,4 @@
-# PRODUCT_SOURCES — Plunge Picks
+# PRODUCT_SOURCES — PlungeWise
 
 > מקור ותאריך אימות לכל נתון מוצר. כלל: נתון ללא מקור מסומן `verify:true` ואינו מוצג כעובדה.
 > מקור התוכן: `products.js` (`window.PLUNGE_PRODUCTS`). המסמך הזה מלווה אותו.

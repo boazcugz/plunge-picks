@@ -168,6 +168,25 @@
      4. Declarative hook: <button data-plunge-event="diy_path_selected"
                                   data-diy-path="stock_tank">
      Only whitelisted parameters are forwarded (§16).
+
+     DIY funnel events (§16), all fired through this hook — the markup lives in
+     diy-cold-plunge.html and in the homepage "Build It or Buy It?" section:
+
+       diy_path_selected      — a visitor picks one of the three paths.
+                                data-diy-path: ice_starter | diy_chiller | ready_made
+       diy_component_click    — a click on a build component (tub, chiller, pump,
+                                filtration, hoses) or on a costing tool from
+                                inside a DIY path.
+       diy_to_ready_made_click— a DIY reader crossing over to a finished system
+                                (Best Cold Plunges / Product Finder). This is the
+                                number that tells us whether the DIY hub feeds the
+                                high-ticket side or cannibalises it.
+
+     NOTE, deliberate: an Amazon component link carries BOTH data-plunge-event
+     and the affiliate attributes, so one click fires diy_component_click here
+     AND amazon_affiliate_click in section 3 above. They are different events
+     measuring different things — funnel behaviour vs. affiliate click — and
+     must not be summed. Revenue attribution uses amazon_affiliate_click only.
      --------------------------------------------------------------------- */
   var ALLOWED = ["product_slug", "cta_position", "diy_path", "price_category"];
   document.addEventListener("click", function (e) {

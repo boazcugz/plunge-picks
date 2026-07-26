@@ -350,9 +350,9 @@ section { padding: 56px 0; }
 .leadgen ul { list-style:none; margin:0 0 18px; padding:0; }
 .leadgen ul li { padding:5px 0; font-size:.92rem; display:flex; gap:9px; color:#dce7ef; }
 .leadgen ul li::before { content:"✓"; color:var(--accent); font-weight:800; }
-.leadgen form { display:flex; gap:10px; flex-wrap:wrap; }
-.leadgen input[type=email] { flex:1; min-width:180px; padding:13px 14px; border-radius:8px; border:0; font-size:.95rem; }
-.leadgen .send { background:var(--accent); color:#06222a; font-weight:700; border:0; padding:13px 22px; border-radius:8px; cursor:pointer; }
+/* No email form: the CTA is a plain link to the printable checklist (MASTER_BRIEF_V2 §10.1). */
+.leadgen .send { display:inline-block; background:var(--accent); color:#06222a; font-weight:700; border:0; padding:13px 22px; border-radius:8px; cursor:pointer; text-decoration:none; }
+.leadgen .send:hover { background:#1ad0dd; text-decoration:none; }
 .leadgen .consent { font-size:.76rem; color:#9db1c2; margin-top:10px; }
 .leadgen .consent a { color:#bcd; }
 .leadgen .gimg { border-radius:12px; overflow:hidden; box-shadow:0 14px 40px rgba(0,0,0,.35); min-height:200px; background-size:cover; background-position:center; }
@@ -383,4 +383,185 @@ section { padding: 56px 0; }
   .finderbar .inner { grid-template-columns:1fr; }
   .trust4 { grid-template-columns:1fr; }
   .footer2 .cols { grid-template-columns:1fr; }
+}
+
+/* ================= Accessibility (MASTER_BRIEF_V2 §14) ================= */
+
+/* Visible keyboard focus everywhere. :focus-visible keeps it off mouse clicks. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+.opt:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* On dark surfaces (header, footer, hero) the gold ring stays legible; add a halo for contrast. */
+.nav2 a:focus-visible,
+.nav2 button:focus-visible,
+.burger:focus-visible,
+.footer2 a:focus-visible,
+.hero2 a:focus-visible,
+.leadgen a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(13, 27, 42, .55);
+}
+/* Fallback for browsers without :focus-visible — never remove focus entirely. */
+a:focus, button:focus, input:focus, select:focus { outline-color: var(--gold); }
+
+/* Skip link: first tab stop on every page. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--gold);
+  color: #3a2500;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+  text-decoration: none;
+}
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card:hover, .post-card:hover, .btn:hover { transform: none; }
+}
+
+/* Table semantics: caption + column headers. */
+.cmp-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: .88rem;
+  color: var(--ink-soft);
+  padding: 0 0 8px;
+}
+.cmp-table th[scope="row"] { background: #f2f7fa; color: var(--ink); font-weight: 700; }
+
+/* Wide tables scroll inside their own box instead of pushing the page sideways. */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 22px 0;
+}
+.table-scroll .cmp-table { margin: 0; min-width: 460px; }
+
+/* Live regions must never be visually hidden in a way that hides them from sighted users too. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Narrow phones (320px): no horizontal overflow. */
+html, body { overflow-x: hidden; }
+h1, h2, h3, h4, p, li, td, th, a { overflow-wrap: break-word; word-wrap: break-word; }
+
+@media (max-width: 400px) {
+  .wrap { padding: 0 14px; }
+  .hero2 h1 { font-size: 1.85rem; letter-spacing: -.6px; }
+  .hero2 p.lead { font-size: 1rem; }
+  .hero2 .btns a { width: 100%; text-align: center; }
+  .hero .btn, .article .btn { width: 100%; text-align: center; }
+  .article h1 { font-size: 1.65rem; }
+  .article h2 { font-size: 1.25rem; }
+  .cmp-table { font-size: .82rem; }
+  .cmp-table th, .cmp-table td { padding: 7px 8px; }
+  .leadgen { padding: 24px 20px; }
+  .leadgen .send { width: 100%; text-align: center; }
+  .product-box { padding: 18px 16px; }
+  .tool { padding: 20px 16px; }
+  .finderbar { padding: 0 14px; }
+  .footer2 a { margin-right: 0; }
+}
+
+/* ================= DIY Hub — "Build It or Buy It?" (MASTER_BRIEF_V2 §7.4) =================
+   Additive only. Uses the existing design tokens; no token, colour or type change. */
+
+/* The decision box needs the full 1080px grid, but .article .wrap is capped at 760px. */
+.article .wrap.wide { max-width: var(--max); }
+
+.decision-box {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px 24px;
+  margin: 8px 0 34px;
+}
+.decision-box h2 { margin: 0 0 6px; font-size: 1.55rem; letter-spacing: -.5px; }
+.decision-box .dsub { color: var(--ink-soft); font-size: .94rem; margin: 0 0 20px; }
+.decision-box .dnote { color: var(--ink-soft); font-size: .8rem; margin: 18px 0 0; }
+
+.paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.path {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfdfe;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.path .phead { padding: 16px 18px 14px; border-bottom: 1px solid var(--line); }
+.path .ptag {
+  display: inline-block;
+  font-size: .68rem; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+  color: #fff; background: var(--accent-deep);
+  padding: 4px 10px; border-radius: 20px;
+}
+.path .ptag.b { background: #14657d; }
+.path .ptag.c { background: #7a5cff; }
+.path h3 { font-size: 1.1rem; margin: 10px 0 4px; }
+.path .pwho { font-size: .86rem; color: var(--ink-soft); margin: 0; }
+.path dl { margin: 0; padding: 12px 18px 4px; font-size: .85rem; }
+.path dl > div {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 7px 0; border-bottom: 1px dashed var(--line);
+}
+.path dl > div:last-child { border-bottom: 0; }
+.path dt { color: var(--ink-soft); flex: none; }
+.path dd { margin: 0; font-weight: 700; text-align: right; }
+.path .pfoot { margin-top: auto; padding: 14px 18px 18px; }
+.path .pgo {
+  display: block; text-align: center;
+  background: var(--accent); color: #06222a; font-weight: 700;
+  padding: 11px; border-radius: 8px; font-size: .9rem;
+}
+.path .pgo:hover { background: #1ad0dd; text-decoration: none; }
+
+/* Path B component list — one row per part of a chiller build. */
+.parts { list-style: none; margin: 18px 0; padding: 0; }
+.parts li {
+  border: 1px solid var(--line); border-radius: 10px; background: #fbfdfe;
+  padding: 14px 16px; margin-bottom: 10px;
+}
+.parts li h4 { font-size: 1rem; margin: 0 0 4px; }
+.parts li p { font-size: .9rem; color: var(--ink-soft); margin: 0 0 8px; }
+.parts li a.plink { font-weight: 600; font-size: .88rem; }
+.parts li.no-link { background: #fff7ec; border-color: #f0d5ae; }
+
+@media (max-width: 900px) { .paths { grid-template-columns: 1fr; } }
+@media (max-width: 400px) {
+  .decision-box { padding: 20px 16px; }
+  .path dl > div { flex-direction: column; gap: 2px; }
+  .path dd { text-align: left; }
 }

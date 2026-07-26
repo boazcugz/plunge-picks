@@ -1,4 +1,4 @@
-# PROJECT_MASTER — Plunge Picks
+# PROJECT_MASTER — PlungeWise
 
 > החזון, המבנה והכללים הקבועים של הפרויקט. מסמך זה משתנה לעיתים רחוקות.
 > מקור אמת לקוד: GitHub. מקור אמת להחלטות/סטטוס: תיקיית `/docs`.
@@ -7,7 +7,7 @@
 
 ## 1. חזון
 
-**Plunge Picks** — פלטפורמת החלטה (decision-support) בנישת טבילות קרח / ice baths / chillers / ציוד התאוששות ביתי. המטרה: לעזור לקונה לבחור מוצר יקר בצורה כנה ומבוססת-מחקר, ולהרוויח דרך שיווק שותפים (affiliate). **לא** בלוג גנרי, ולא אתר שממציא ביקורות.
+**PlungeWise** — פלטפורמת החלטה (decision-support) בנישת טבילות קרח / ice baths / chillers / ציוד התאוששות ביתי. המטרה: לעזור לקונה לבחור מוצר יקר בצורה כנה ומבוססת-מחקר, ולהרוויח דרך שיווק שותפים (affiliate). **לא** בלוג גנרי, ולא אתר שממציא ביקורות.
 
 עקרון-על: **קודם בסיס אמין וממיר, אחר כך הרחבה.** לא מרחיבים לעשרות עמודים לפני שהבסיס הקיים אמין, עובד וממיר.
 
@@ -15,13 +15,14 @@
 
 | פריט | ערך |
 |---|---|
-| אתר חי | https://plunge-picks.netlify.app |
+| אתר חי | https://plungewise.com |
 | קוד מקור | https://github.com/boazcugz/plunge-picks (public) |
 | אירוח | Netlify (auto-deploy מ-GitHub) |
 | מזהה שותף אמזון | `plungepicks-20` |
 | מייל עסקי | plungepicks@gmail.com |
 | פינטרסט | pinterest.com/plungepicks (מאומת) |
-| דומיין עתידי | plungepicks.com (טרם נרכש/הוגדר) |
+| דומיין ראשי | https://plungewise.com (פעיל, מחובר ל-Netlify — 26/7/2026) |
+| כתובת Netlify מקורית | https://plunge-picks.netlify.app (עדיין פעילה; שם הפרויקט ב-Netlify וב-GitHub לא שונה) |
 
 ## 3. ארכיטקטורה
 

@@ -1,0 +1,15 @@
+# PlungeWise — canonical host enforcement
+# נוצר ב-PW-REBRAND-BASE (26.07.2026)
+#
+# הבעיה שזה פותר: כתובת ה-Netlify הישנה מגישה את אותו האתר בדיוק
+# תחת שם דומיין אחר. תג canonical אומר לגוגל מה הכתובת הנכונה, אבל
+# הוא רק המלצה. 301 הוא הוראה. בלי זה שני שמות מתחרים על אותו תוכן.
+#
+# 301! (עם סימן קריאה) כופה את ההפניה גם כשקיים קובץ בכתובת המקורית.
+# :splat שומר את שאר הנתיב, כך ש-/diy-cold-plunge.html מגיע ליעד הנכון.
+
+http://plunge-picks.netlify.app/*    https://plungewise.com/:splat    301!
+https://plunge-picks.netlify.app/*   https://plungewise.com/:splat    301!
+http://www.plungewise.com/*          https://plungewise.com/:splat    301!
+https://www.plungewise.com/*         https://plungewise.com/:splat    301!
+http://plungewise.com/*              https://plungewise.com/:splat    301!
