@@ -212,6 +212,13 @@ section { padding: 56px 0; }
   font-size: 0.96rem;
 }
 
+/* וריאנט אזהרה של callout — לתוכן שאנחנו ממליצים לא לבצע.
+   משתמש בגוון הקיים של .cons h4 (#c0603a) ולכן אינו מוסיף צבע חדש לפלטה. */
+.callout.warn { background: #fdf4ef; border-left-color: #c0603a; }
+.callout.warn strong { color: #8f4425; }
+.callout p:last-of-type { margin-bottom: 0; }
+.callout p + .btn { margin-top: 14px; }
+
 /* Table */
 .cmp-table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.93rem; }
 .cmp-table th, .cmp-table td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; }
@@ -599,4 +606,36 @@ h1, h2, h3, h4, p, li, td, th, a { overflow-wrap: break-word; word-wrap: break-w
   margin: 0 0 8px;
   box-shadow: var(--shadow);
   background: #071a2b;
+}
+
+
+/* ============================================================
+   Sources & Verification — רכיב לשימוש חוזר (PW-POST-ASSET-QA-001 §4)
+   חמישה שדות קבועים: Official product page / Manual /
+   Independent source / Last checked / Still unconfirmed.
+   כלל ברזל: שדה ללא מקור שאומת נשאר במצב .unconfirmed.
+   אין להמציא קישור, ואין למחוק שדה כדי "לנקות" את התיבה.
+   ============================================================ */
+.sources {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #f7fafc;
+  padding: 16px 20px;
+  margin: 0 0 26px;
+  font-size: 0.9rem;
+}
+.sources h4 {
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--ink-soft); margin: 0 0 12px; font-weight: 800;
+}
+.sources dl { display: grid; grid-template-columns: 190px 1fr; gap: 8px 18px; margin: 0; }
+.sources dt { font-weight: 700; color: var(--ink); }
+.sources dd { margin: 0; color: var(--ink-soft); }
+.sources dd a { color: var(--accent-deep); }
+.sources .unconfirmed { color: #8f4425; }
+.sources time { font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) {
+  .sources dl { grid-template-columns: 1fr; gap: 2px; }
+  .sources dd { margin-bottom: 10px; }
+  .sources dd:last-child { margin-bottom: 0; }
 }
