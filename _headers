@@ -1,0 +1,38 @@
+# =============================================================================
+# PlungeWise — HTTP security headers (Netlify `_headers`)
+# Task:    PW-SECURITY-BASELINE-001
+# Created: 2026-07-27
+# Docs:    docs/SECURITY_BASELINE.md
+#
+# READ BEFORE EDITING
+#
+# 1. The Content Security Policy below is REPORT-ONLY. It blocks nothing.
+#    Violations appear only in the browser console (DevTools > Console),
+#    because the site has no backend and therefore no report endpoint.
+#    Do NOT rename `Content-Security-Policy-Report-Only` to
+#    `Content-Security-Policy` without explicit written approval.
+#
+# 2. `frame-ancestors` is NOT enforced while the policy is Report-Only.
+#    `X-Frame-Options: DENY` is what actually blocks clickjacking today.
+#    It can be removed on the day the CSP becomes enforced.
+#
+# 3. The policy is deliberately written to match the real inventory of the
+#    site: zero external scripts, zero external stylesheets, zero external
+#    fonts, zero external images, zero iframes, zero network calls.
+#    A clean policy is a tripwire — if anything ever starts reporting,
+#    something changed that should not have.
+#
+# 4. When GA4 is connected (PW-GA4-001) this policy MUST be widened.
+#    See docs/SECURITY_BASELINE.md, section "GA4".
+#
+# Netlify syntax: a path pattern on its own line, then header lines indented
+# by two spaces. Blank lines separate blocks. `#` starts a comment.
+# =============================================================================
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
