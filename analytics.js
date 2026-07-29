@@ -9,16 +9,19 @@
    are ever forwarded: page_slug, product_slug, merchant, cta_position,
    link_type, diy_path, price_category, affiliate_status.
 
-   GA4 ACTIVATION (§22 — do NOT invent a Measurement ID):
-   When Boaz supplies a real ID, add these two lines to <head> on every page,
-   ABOVE the <script src="analytics.js"> include, replacing G-XXXXXXXXXX:
+   GA4 — CONNECTED 28.07.2026 (PW-GA4-001). Property: PlungeWise.
+   Measurement ID G-PKK357JEH1, supplied by Boaz. It is not a secret: a GA4
+   Measurement ID is designed to be readable in client-side code.
 
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-     gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+   The Google tag lives in <head> on all 24 pages, above this file's include.
+   It is the ONLY analytics tag on the site: no Universal Analytics, no Tag
+   Manager container, and exactly one gtag('config') call per page, which is
+   what produces exactly one page_view per page load.
 
-   Until then every event no-ops safely. Set window.PLUNGE_DEBUG = true in the
-   console to see what would have been sent.
+   If a Measurement ID ever changes it must change in 24 <head> blocks AND in
+   this comment. Search the repo for the ID itself, not for "gtag".
+
+   Set window.PLUNGE_DEBUG = true in the console to see every dispatch.
    ========================================================================== */
 (function () {
   "use strict";
@@ -87,13 +90,33 @@
     params = params || {};
     try {
       if (!params.page_slug) params.page_slug = pageSlug();
-      if (typeof window.gtag === "function") { window.gtag("event", event, params); }
-      if (Array.isArray(window.dataLayer)) {
+      if (typeof window.gtag === "function") {
+        // Normal path. gtag() itself pushes onto dataLayer, so nothing else
+        // may push the same event — see the else-branch below.
+        window.gtag("event", event, params);
+      } else if (Array.isArray(window.dataLayer)) {
+        // Fallback only. Before PW-GA4-001 this branch ran unconditionally
+        // alongside the gtag call, which would have written every event to
+        // dataLayer twice once a real tag existed. It is now mutually
+        // exclusive with the gtag path, so an event is queued exactly once.
         window.dataLayer.push(Object.assign({ event: event }, params));
       }
       if (window.PLUNGE_DEBUG) { console.log("[plungeTrack]", event, params); }
     } catch (e) { /* analytics must never break the page */ }
   };
+
+  // Flush anything the <head> stub queued while the document was parsing.
+  // Order is preserved, and each queued event gets its page_slug here, so a
+  // queued event is indistinguishable from a live one.
+  try {
+    var queued = window.__plungeQ;
+    window.__plungeQ = [];
+    if (queued && queued.length) {
+      for (var qi = 0; qi < queued.length; qi++) {
+        window.plungeTrack.apply(null, queued[qi]);
+      }
+    }
+  } catch (_) {}
 
   /* ---------------------------------------------------------------------
      3. Link clicks — merchant vs affiliate vs Amazon (§10.2)

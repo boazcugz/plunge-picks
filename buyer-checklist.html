@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) — GA4 property PlungeWise (PW-GA4-001, 28.07.2026).
+     Must stay in <head>, above the analytics.js include at the end of <body>:
+     the inline block defines window.gtag synchronously, so plungeTrack() always
+     has a dispatcher even before gtag.js has finished loading. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PKK357JEH1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PKK357JEH1');
+// Early stub: inline page scripts run while the document is still parsing,
+// but analytics.js is deferred and therefore runs later. Without this stub
+// every plungeTrack() call made during parsing was silently dropped.
+// analytics.js replaces this function and flushes the queue.
+window.plungeTrack=function(){(window.__plungeQ=window.__plungeQ||[]).push(arguments);};
+</script>
 <link rel="canonical" href="https://plungewise.com/buyer-checklist.html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cold Plunge Buyer Checklist | PlungeWise</title>

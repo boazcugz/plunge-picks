@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) — GA4 property PlungeWise (PW-GA4-001, 28.07.2026).
+     Must stay in <head>, above the analytics.js include at the end of <body>:
+     the inline block defines window.gtag synchronously, so plungeTrack() always
+     has a dispatcher even before gtag.js has finished loading. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PKK357JEH1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PKK357JEH1');
+// Early stub: inline page scripts run while the document is still parsing,
+// but analytics.js is deferred and therefore runs later. Without this stub
+// every plungeTrack() call made during parsing was silently dropped.
+// analytics.js replaces this function and flushes the queue.
+window.plungeTrack=function(){(window.__plungeQ=window.__plungeQ||[]).push(arguments);};
+</script>
 <link rel="canonical" href="https://plungewise.com/privacy.html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy | PlungeWise</title>
@@ -54,13 +70,15 @@
     <h2>Information we collect</h2>
     <p>PlungeWise is a content website. We do not ask you to create an account, and we do not knowingly collect personally identifiable information such as your name, email address, or precise location unless you choose to email us directly.</p>
     <h2>Analytics</h2>
-    <p>We may use privacy-conscious, aggregate analytics to understand which pages are useful (for example, page views and anonymized click events). These measurements are not used to identify individual visitors. <!-- TODO: name the specific analytics tool and update this section once GA4 / an analytics provider is actually connected. --></p>
+    <p>This site uses <strong>Google Analytics 4</strong> to understand which pages and tools people find useful. It records page views, and a small set of anonymous interaction events &mdash; for example that a comparison was built, that the cost calculator was completed, or that an outbound link to a retailer was clicked.</p>
+    <p>We deliberately restrict what is sent. Analytics events on this site carry only non-identifying labels: the page, the product or retailer involved, and the position of the link on the page. We do <strong>not</strong> send your name, email address, phone number, or any free text you type, and we do not attempt to identify individual visitors. Google may process a truncated form of your IP address in order to derive an approximate location such as country or city.</p>
+    <p>Google acts as our analytics provider and processes this data on its own terms. You can read how Google uses data from sites that use its services at <a href="https://policies.google.com/technologies/partner-sites" rel="nofollow noopener" target="_blank">policies.google.com/technologies/partner-sites</a>, and you can opt out of Google Analytics entirely in every browser you use with Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">opt-out browser add-on</a>.</p>
     <h2>Affiliate links and third parties</h2>
     <p>Some links on this site are affiliate links. When you click one and visit a retailer such as Amazon, that retailer's own privacy policy and cookies apply. We may receive a commission on qualifying purchases, but we do not receive your personal payment details. See our <a href="affiliate-disclosure.html">Affiliate Disclosure</a>.</p>
     <h2>Cookies</h2>
-    <p>This site itself sets minimal or no first-party tracking cookies. Third-party services you reach through our links may set their own cookies.</p>
+    <p>Google Analytics sets first-party cookies in your browser (their names begin with <code>_ga</code>) so that repeat visits within a period are recognised as the same browser rather than as separate people. They do not contain your name or contact details. Apart from these, the site sets no advertising or profiling cookies of its own. Third-party services you reach through our links &mdash; retailers such as Amazon, for instance &mdash; set their own cookies under their own policies.</p>
     <h2>Your choices</h2>
-    <p>You can block cookies in your browser settings and use browser privacy tools at any time. If you have a privacy question, contact us at plungepicks@gmail.com.</p>
+    <p>You can block or delete cookies in your browser settings, use browser privacy tools, or install Google's opt-out add-on linked above, at any time. Blocking analytics does not limit any part of this site &mdash; every page, guide and calculator works exactly the same with analytics blocked. If you have a privacy question, contact us at plungepicks@gmail.com.</p>
     <h2>Changes</h2>
     <p>We may update this policy as the site evolves. The "last updated" date above reflects the current version.</p>
   </div>

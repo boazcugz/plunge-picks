@@ -22,7 +22,22 @@
 #    A clean policy is a tripwire — if anything ever starts reporting,
 #    something changed that should not have.
 #
-# 4. When GA4 is connected (PW-GA4-001) this policy MUST be widened.
+# 4. GA4 was connected on 2026-07-28 (PW-GA4-001) and this policy was widened
+#    for it. Only three Google hosts were added — the tag loader, the
+#    measurement endpoints, and the reporting endpoint:
+#
+#      script-src   https://www.googletagmanager.com
+#      img-src      https://*.google-analytics.com https://www.googletagmanager.com
+#      connect-src  https://*.google-analytics.com https://*.analytics.google.com
+#                   https://www.googletagmanager.com
+#
+#    Google's own CSP guide also lists doubleclick.net, google.com and
+#    googlesyndication.com. Those are for Google Signals and Google Ads
+#    features. This site runs neither, so they are deliberately LEFT OUT: an
+#    advertising host in the policy would silence exactly the report we want
+#    to see if advertising features are ever switched on by accident. If a
+#    violation for one of them ever appears, that is information, not a bug —
+#    check the GA4 property settings before widening.
 #    See docs/SECURITY_BASELINE.md, section "GA4".
 #
 # Netlify syntax: a path pattern on its own line, then header lines indented
@@ -35,4 +50,4 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests

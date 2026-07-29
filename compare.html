@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) — GA4 property PlungeWise (PW-GA4-001, 28.07.2026).
+     Must stay in <head>, above the analytics.js include at the end of <body>:
+     the inline block defines window.gtag synchronously, so plungeTrack() always
+     has a dispatcher even before gtag.js has finished loading. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PKK357JEH1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PKK357JEH1');
+// Early stub: inline page scripts run while the document is still parsing,
+// but analytics.js is deferred and therefore runs later. Without this stub
+// every plungeTrack() call made during parsing was silently dropped.
+// analytics.js replaces this function and flushes the queue.
+window.plungeTrack=function(){(window.__plungeQ=window.__plungeQ||[]).push(arguments);};
+</script>
 <link rel="canonical" href="https://plungewise.com/compare.html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cold Plunge Comparison Builder — Compare Models Side by Side | PlungeWise</title>
@@ -156,7 +172,7 @@
     ["Main limitation",function(p){return esc(p.limitation);}],
     ["Verified",function(p){return esc(p.verifiedDate)+(p.verify?" (some specs pending)":"");}]
   ];
-  function build(){
+  function build(restoredFromUrl){
     var items=selected.map(function(s){return P.find(function(p){return p.slug===s;});}).filter(Boolean);
     if(items.length<2){ document.getElementById("out").innerHTML='<p style="color:#c0603a;margin-top:16px;">Pick at least two models to compare.</p>'; return; }
     var h='<table class="cmp-table" style="margin-top:20px;min-width:520px;">'
@@ -177,10 +193,13 @@
     document.getElementById("out").innerHTML=h;
     document.getElementById("share").style.display="inline-block";
     // §16: only whitelisted parameters. Never any personal data.
-    if(window.plungeTrack) plungeTrack("comparison_created",{product_slug:selected.join(",")});
+    // A comparison restored from a shared ?ids= link was created by whoever
+    // shared it. Counting it here would inflate comparison_created with
+    // repeat views of one link.
+    if(!restoredFromUrl && window.plungeTrack) plungeTrack("comparison_created",{product_slug:selected.join(",")});
     try{ history.replaceState(null,"","?ids="+selected.join(",")); }catch(e){}
   }
-  document.getElementById("build").addEventListener("click",build);
+  document.getElementById("build").addEventListener("click",function(){ build(false); });
   document.getElementById("share").addEventListener("click",function(){
     var url=location.origin+location.pathname+"?ids="+selected.join(",");
     var b=this;
@@ -201,7 +220,7 @@
   });
   // preload from URL
   var m=(location.search.match(/[?&]ids=([^&]+)/));
-  if(m){ syncFromSlugs(decodeURIComponent(m[1]).split(",")); build(); }
+  if(m){ syncFromSlugs(decodeURIComponent(m[1]).split(",")); build(true); }
 })();
 </script>
 </body>
