@@ -10,6 +10,13 @@
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+// Consent Mode v2 (PW-CONSENT-001, 29.07.2026). MUST stay above gtag('config').
+// Default is denied, so GA4 writes no _ga cookie until the visitor accepts in the
+// banner; a declined visit is still counted, as a cookieless ping. A returning
+// visitor's saved answer is read synchronously here so an accepted session is
+// granted from its very first hit. Banner + full rationale: analytics.js, part 6.
+(function(){var c='denied';try{if(localStorage.getItem('pw_consent')==='granted')c='granted';}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c,functionality_storage:'granted',security_storage:'granted'});})();
 gtag('js', new Date());
 gtag('config', 'G-PKK357JEH1');
 // Early stub: inline page scripts run while the document is still parsing,
@@ -111,6 +118,7 @@ window.plungeTrack=function(){(window.__plungeQ=window.__plungeQ||[]).push(argum
         <h5>Legal</h5>
         <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
         <a href="privacy.html">Privacy Policy</a>
+        <a href="privacy.html#cookies" data-pw-consent-reopen>Cookie Choices</a>
         <a href="terms.html">Terms of Use</a>
         <a href="editorial-policy.html">Editorial Policy</a>
         <a href="corrections.html">Corrections Policy</a>

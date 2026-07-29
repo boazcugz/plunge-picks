@@ -40,6 +40,13 @@
 #    check the GA4 property settings before widening.
 #    See docs/SECURITY_BASELINE.md, section "GA4".
 #
+# 5. The cookie consent banner (PW-CONSENT-001, 2026-07-29) needed NO change
+#    here, and that is deliberate. Its markup, styling and logic are entirely
+#    first-party — built in analytics.js, styled in style.css — so it adds no
+#    host to script-src and no host to connect-src. If a future consent tool
+#    ever asks you to widen this policy, that is the signal that it is loading
+#    third-party code, and it should be refused rather than accommodated.
+#
 # Netlify syntax: a path pattern on its own line, then header lines indented
 # by two spaces. Blank lines separate blocks. `#` starts a comment.
 # =============================================================================

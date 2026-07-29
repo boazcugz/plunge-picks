@@ -639,3 +639,95 @@ h1, h2, h3, h4, p, li, td, th, a { overflow-wrap: break-word; word-wrap: break-w
   .sources dd { margin-bottom: 10px; }
   .sources dd:last-child { margin-bottom: 0; }
 }
+
+
+/* ============================================================
+   Cookie consent banner (PW-CONSENT-001, 29.07.2026)
+
+   The markup is built in analytics.js, part 6 — there is no
+   consent HTML in any page file. The banner is FIRST-PARTY:
+   no external stylesheet, no external script, no CDN, which is
+   why connecting it required no change to the CSP in `_headers`.
+
+   Design rule followed here: Accept and Decline are the same
+   size, the same shape and the same font weight. Only the fill
+   differs. Do not make Decline smaller, greyer or text-only —
+   an unequal pair is what turns a choice into a dark pattern.
+   ============================================================ */
+#pw-consent {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  /* The banner is a <section>, and the global rule above gives every section
+     56px of vertical padding. Without this reset the bar renders 112px taller
+     than its content, and the space reserved at the foot of the page grows
+     with it. Keep the reset even if the element type ever changes. */
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: #dbe6ef;
+  border-top: 3px solid var(--accent);
+  box-shadow: 0 -10px 30px rgba(13, 27, 42, .38);
+  font-size: .9rem;
+  line-height: 1.55;
+  animation: pw-consent-in .25s ease-out;
+}
+#pw-consent[hidden] { display: none; }
+
+@keyframes pw-consent-in {
+  from { transform: translateY(100%); }
+  to   { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #pw-consent { animation: none; }
+}
+
+#pw-consent .pw-consent-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px 24px;
+  flex-wrap: wrap;
+}
+#pw-consent p { margin: 0; flex: 1 1 420px; }
+#pw-consent strong { color: #fff; }
+#pw-consent a { color: #7fe3ea; text-decoration: underline; }
+#pw-consent a:hover { color: #fff; }
+
+#pw-consent .pw-consent-actions {
+  display: flex;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+#pw-consent button {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 40px;
+  padding: 11px 26px;
+  border: 2px solid transparent;
+  transition: background .15s ease, border-color .15s ease;
+}
+#pw-consent .pw-accept  { background: var(--accent); color: #06222a; }
+#pw-consent .pw-accept:hover { background: #1ad0dd; }
+#pw-consent .pw-decline { background: transparent; color: #dbe6ef; border-color: rgba(255, 255, 255, .5); }
+#pw-consent .pw-decline:hover { background: rgba(255, 255, 255, .08); border-color: #fff; color: #fff; }
+
+/* Same focus treatment as every other control on the dark bands (§14). */
+#pw-consent button:focus-visible,
+#pw-consent a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(13, 27, 42, .55);
+}
+
+@media (max-width: 560px) {
+  /* On a phone the bar covers real content until it is answered, so it is
+     tightened rather than merely stacked. */
+  #pw-consent { font-size: .84rem; line-height: 1.5; }
+  #pw-consent .pw-consent-inner { padding: 13px 16px; gap: 12px; }
+  #pw-consent .pw-consent-actions { width: 100%; }
+  #pw-consent .pw-consent-actions button { flex: 1 1 0; padding: 11px 10px; }
+}

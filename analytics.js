@@ -1,7 +1,11 @@
 /* ============================================================================
-   PlungeWise — event tracking + shared UI behaviour.
+   PlungeWise — event tracking, cookie consent + shared UI behaviour.
    Implements MASTER_BRIEF_V2 §10.2 (click separation), §14 (accessibility),
    §16 (event taxonomy).
+
+   COOKIE CONSENT — ADDED 29.07.2026 (PW-CONSENT-001). See part 6 at the
+   bottom of this file. Storage is denied by default from the <head> of every
+   page; this file only draws the banner and reports the visitor's answer.
 
    PRIVACY (§16, non-negotiable):
    Never send an email address, a name, a phone number, free personal text, or
@@ -267,4 +271,155 @@
     setNav(false);
     if (els.burger) els.burger.focus();
   });
+
+  /* ---------------------------------------------------------------------
+     6. Cookie consent (PW-CONSENT-001, 29.07.2026)
+
+     HOW THE TWO HALVES FIT TOGETHER
+
+     The <head> of all 24 pages calls gtag('consent','default',...) with
+     analytics_storage denied, BEFORE gtag('config'). That is the half that
+     actually protects the visitor: by the time GA4 fires its first hit the
+     denial is already in force, so no _ga cookie is written. This file only
+     draws the banner and sends the 'update' when a choice is made. If this
+     file failed to load, the site would still be cookieless — which is the
+     safe direction to fail in, and is why the default lives in the <head>
+     and not here.
+
+     DECLINE STILL COUNTS. Under Consent Mode, a denied visitor is measured
+     with cookieless pings: page views and events still reach GA4, they just
+     carry no identifier, so that visit cannot be joined to the next one.
+     Traffic totals stay honest; only returning-user and attribution numbers
+     lose resolution. Do not "fix" this by removing the default.
+
+     WHAT IS STORED. Nothing at all until the visitor answers. On an answer,
+     one localStorage key, pw_consent, holding the single word "granted" or
+     "denied". No cookie of our own, no id, no timestamp, no fingerprint.
+
+     ACCEPTING MID-PAGE. GA4 has already sent that page's cookieless
+     page_view by the time Accept is clicked; it is not re-sent. The cookie
+     starts with the next hit. Expected, not a bug.
+
+     NO NEW EVENT. The accept/decline choice is deliberately NOT tracked as
+     a custom event — that would add a name to the fixed §16 taxonomy, and
+     GA4 already reports consent state on its own. If a consent-rate number
+     is ever wanted, add it to §16 first, then here.
+
+     DELIBERATELY NOT A MODAL. It does not trap focus, does not dim the
+     page, and does not steal focus on arrival — a visitor who ignores it
+     reads the site normally, and that is intended. It has no X: closing
+     without answering would have to mean something, and every meaning is
+     either a dark pattern or a lie.
+
+     NOT LEGAL ADVICE. This is an engineering implementation of a clear
+     default-deny. Whether it satisfies a particular jurisdiction is a
+     question for a lawyer, not for this file.
+     --------------------------------------------------------------------- */
+  var CONSENT_KEY = "pw_consent";
+  var banner = null;
+
+  function readConsent() {
+    try {
+      var v = localStorage.getItem(CONSENT_KEY);
+      return (v === "granted" || v === "denied") ? v : null;
+    } catch (_) { return null; }   // private mode / storage blocked
+  }
+
+  function pushConsent(state) {
+    try {
+      if (typeof window.gtag === "function") {
+        window.gtag("consent", "update", { analytics_storage: state });
+      }
+      if (window.PLUNGE_DEBUG) { console.log("[consent]", state); }
+    } catch (_) {}
+  }
+
+  // The bar is fixed to the bottom, so it would sit on top of the last line
+  // of the footer. Reserve exactly its height while it is visible.
+  function reserveSpace() {
+    try {
+      document.body.style.paddingBottom =
+        (banner && !banner.hidden) ? (banner.offsetHeight + "px") : "";
+    } catch (_) {}
+  }
+
+  function showBanner(moveFocus) {
+    if (!banner) return;
+    banner.hidden = false;
+    reserveSpace();
+    // Focus moves only when the visitor asked for the banner from the footer.
+    // On a first visit it must not yank focus away from the page.
+    if (moveFocus) {
+      var b = banner.querySelector("button");
+      if (b) b.focus();
+    }
+  }
+
+  function hideBanner() {
+    if (!banner) return;
+    banner.hidden = true;
+    reserveSpace();
+  }
+
+  function choose(state) {
+    try { localStorage.setItem(CONSENT_KEY, state); } catch (_) {}
+    pushConsent(state);
+    hideBanner();
+  }
+
+  function buildBanner() {
+    var el = document.createElement("section");
+    el.id = "pw-consent";
+    el.setAttribute("role", "region");
+    el.setAttribute("aria-label", "Cookie choices");
+    el.hidden = true;
+    el.innerHTML =
+      '<div class="pw-consent-inner">' +
+        // Kept deliberately short: this bar is fixed to the bottom of a phone
+        // screen, and every extra line of copy is a line of the article the
+        // visitor cannot read until they answer.
+        '<p><strong>We use analytics cookies.</strong> They show us which guides people ' +
+        'actually use. No advertising cookies, nothing that identifies you. Decline and ' +
+        'your visit is still counted &mdash; just without a cookie. ' +
+        '<a href="privacy.html#cookies">How we handle data</a>.</p>' +
+        '<div class="pw-consent-actions">' +
+          '<button type="button" class="pw-decline">Decline</button>' +
+          '<button type="button" class="pw-accept">Accept</button>' +
+        '</div>' +
+      '</div>';
+    return el;
+  }
+
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
+
+    // Footer link. Without JS it is a real link to the privacy policy's
+    // cookie section, which is why it is an <a href> and not a <button>.
+    if (t.closest("[data-pw-consent-reopen]")) {
+      e.preventDefault();
+      showBanner(true);
+      return;
+    }
+    if (!banner || banner.hidden) return;
+    if (t.closest("#pw-consent .pw-accept")) { choose("granted"); }
+    else if (t.closest("#pw-consent .pw-decline")) { choose("denied"); }
+  });
+
+  try {
+    banner = buildBanner();
+    document.body.appendChild(banner);
+
+    var saved = readConsent();
+    if (saved === null) {
+      showBanner(false);
+    } else {
+      // Re-assert the saved answer. The <head> already applied it as the
+      // default, so this is redundant on a healthy page load — it is here so
+      // that state is still correct if the <head> read was the one that
+      // failed (storage exceptions are not always symmetric).
+      pushConsent(saved);
+    }
+    window.addEventListener("resize", reserveSpace);
+  } catch (_) { /* consent UI must never break the page */ }
 })();
