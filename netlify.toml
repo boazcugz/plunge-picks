@@ -1,0 +1,4 @@
+# Static site: deploy the files in this repository directly.
+[build]
+  command = ""
+  publish = "."
