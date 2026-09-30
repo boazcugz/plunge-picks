@@ -61,7 +61,7 @@ window.PLUNGE_PRODUCTS = [
     name: "Hydragun Supertub",
     brand: "Hydragun",
     merchant: "Hydragun",
-    affiliateUrl: "https://hydragun.com",
+    affiliateUrl: "https://www.hydragun.com/products/supertub-cold-plunge",
     priceCategory: "Mid-range",
     coolingType: "chiller",
     chillerIncluded: true,
@@ -73,10 +73,10 @@ window.PLUNGE_PRODUCTS = [
     outdoor: true,
     upgradeable: false,
     bestFor: "A real chiller tub at a mid-range price",
-    limitation: "Minimum temperature is not published; chiller noise is not independently confirmed by PlungeWise",
-    verifiedDate: "2026-07",
+    limitation: "Manufacturer temperature figures differ by page section; confirm the selected version. Noise and cooling performance are not independently tested.",
+    verifiedDate: "2026-09-30",
     verify: true,
-    notes: "Minimum temperature, dimensions, warranty and noise level need verification. Previous copy called the chiller loud — removed under §9.4, we have no measurement."
+    notes: "Source: https://www.hydragun.com/products/supertub-cold-plunge . Specifications are published, but temperature copy conflicts. Numeric minimum remains unset pending version confirmation. Direct manufacturer link; no affiliate tracking."
   },
   {
     slug: "polar-monkeys-brainpod-2",

@@ -5,22 +5,22 @@
   const number=(n,d=1)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:d}).format(n);
   let currentUnits='us';
   const formValues=form=>Object.fromEntries([...new FormData(form)].map(([k,v])=>[k,v===''?NaN:Number(v)]));
-  // Category links keep the shopping suggestion useful without inventing a product rating or price.
+  // One checked product example; remaining links are clearly labelled category searches.
   const shopCategories={
-    tubs:['portable ice bath tub','Browse budget tubs on Amazon'],
+    tubs:['portable ice bath tub','View The Cold Pod 85-gal bundle on Amazon','https://www.amazon.com/dp/B0F8W817GD'],
     molds:['large reusable ice bath molds','Shop ice molds on Amazon'],
     thermometer:['cold plunge water thermometer','Shop thermometers on Amazon'],
     chillers:['cold plunge water chiller','Compare chillers on Amazon'],
     shower:['low flow showerhead','Browse showerheads on Amazon']
   };
   function amazonLink(category,position,secondary=false){
-    const [query,label]=shopCategories[category];
-    const url=new URL('https://www.amazon.com/s');
-    url.searchParams.set('k',query);url.searchParams.set('tag','plungepicks-20');
+    const [query,label,productUrl]=shopCategories[category];
+    const url=new URL(productUrl||'https://www.amazon.com/s');
+    if(!productUrl)url.searchParams.set('k',query);url.searchParams.set('tag','plungepicks-20');
     return `<a class="amazon-button${secondary?' amazon-button-secondary':''}" href="${url.href.replaceAll('&','&amp;')}" target="_blank" rel="sponsored noopener" data-pos="result_${position}" aria-label="${label} (paid link, opens a new tab)"><span>${label}</span><span aria-hidden="true">↗</span></a>`;
   }
   function resultShop(kind,{title,description,categories,brands=false}){
-    return `<section class="result-shop" aria-labelledby="${kind}-shop-title"><span class="shop-eyebrow">YOUR NEXT STEP · PAID LINKS</span><h4 id="${kind}-shop-title">${title}</h4><p class="shop-description">${description}</p><div class="shop-actions">${categories.map((c,i)=>amazonLink(c,kind,i>0)).join('')}${brands?'<a class="shop-brand-link" href="#brands">Explore complete systems &amp; brands <span aria-hidden="true">↓</span></a>':''}</div><p class="shop-disclosure">As an Amazon Associate I earn from qualifying purchases. Links open Amazon searches in a new tab; check price, size and compatibility before buying.</p></section>`;
+    return `<section class="result-shop" aria-labelledby="${kind}-shop-title"><span class="shop-eyebrow">YOUR NEXT STEP · PAID LINKS</span><h4 id="${kind}-shop-title">${title}</h4><p class="shop-description">${description}</p>${categories.includes('tubs')?'<p class="shop-description"><strong>One option to compare:</strong> The Cold Pod 85-gallon tub with full-wrap thermal cover. Listed outer size: 29.5 × 29.5 × 29.5 in. Leave room for your body and ice; no chiller is included. Listing checked September 30, 2026; not hands-on tested.</p>':''}<div class="shop-actions">${categories.map((c,i)=>amazonLink(c,kind,i>0)).join('')}${brands?'<a class="shop-brand-link" href="#brands">Explore complete systems &amp; brands <span aria-hidden="true">↓</span></a>':''}</div><p class="shop-disclosure">As an Amazon Associate I earn from qualifying purchases. ${categories.includes('tubs')?'The tub link opens the named bundle; other Amazon links open searches.':'Links open Amazon searches.'} Check the selected model, seller, price, size and compatibility before buying.</p></section>`;
   }
   const cubeQuotes=['New here? Dip a toe.<br><b>I’ll do the math.</b>','I have zero chill.<br><b>Okay, that’s a lie.</b>','Good things come<br><b>to those who calculate.</b>','Sunglasses on.<br><b>Guesswork off.</b>'];
   let quoteIndex=0;
@@ -114,6 +114,22 @@
   document.addEventListener('click',e=>{if(e.target.closest('[data-use-ice]')){const r=renderIce();if(r&&r.bags<=100){$('#cost-form').elements.bags.value=r.bags;renderCost();selectTab('cost',true);$('#calculators').scrollIntoView({behavior:'smooth'});}else if(r){$('#ice-error').textContent='This estimate exceeds the cost calculator’s 100-bag limit. Check the volume and bag weight.';}}if(e.target.closest('[data-open-cost]')){const freq=$('#setup-form').elements.frequency.value;$('#cost-form').elements.sessions.value=({occasional:2,regular:4,daily:7})[freq];renderCost();selectTab('cost',true);$('#calculators').scrollIntoView({behavior:'smooth'});}});
   document.addEventListener('click',e=>{const button=e.target.closest('[data-show-result]');if(!button)return;const result=$('#'+button.dataset.showResult+'-result');result.focus({preventScroll:true});result.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});});
   renderCost();renderIce();renderSetup();renderShower();
+  // Keep every calculator reachable from the homepage and older guides.
+  const calculatorHashes={'#panel-cost':'cost','#panel-ice':'ice','#panel-setup':'setup','#experience-shower':'shower'};
+  function openCalculator(name,focus=false){
+    if(name==='shower')selectMode('shower');else selectTab(name);
+    if(focus)$('#'+name+'-form input').focus({preventScroll:true});
+    $('#calculators').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+  }
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('[data-open-calculator]');
+    if(!link||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+    event.preventDefault();
+    history.pushState(null,'',link.getAttribute('href'));
+    openCalculator(link.dataset.openCalculator,true);
+  });
+  window.addEventListener('hashchange',()=>{const name=calculatorHashes[location.hash];if(name)openCalculator(name);});
+  if(calculatorHashes[location.hash])openCalculator(calculatorHashes[location.hash]);
   if(document.modelContext?.registerTool){
     const lifecycle=new AbortController();
     const tool={name:'calculate_cold_plunge_cost',title:'Compare ice and chiller costs',description:'Update the visible cost calculator using USD inputs and show the ice versus chiller comparison.',annotations:{readOnlyHint:false,untrustedContentHint:false},inputSchema:{type:'object',properties:{sessions:{type:'number',minimum:0,maximum:21},bags:{type:'number',minimum:0,maximum:100},bagPrice:{type:'number',minimum:0,maximum:1000},upfront:{type:'number',minimum:0,maximum:100000},energy:{type:'number',minimum:0,maximum:200},rate:{type:'number',minimum:0,maximum:10},maintenance:{type:'number',minimum:0,maximum:10000},months:{type:'number',minimum:1,maximum:120}},required:['sessions','bags','bagPrice','upfront','energy','rate','maintenance','months'],additionalProperties:false},execute(input){if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).some(k=>!Object.hasOwn(tool.inputSchema.properties,k)))throw new Error('Invalid cost inputs.');const result=PlungeMath.cost(input);for(const [key,value]of Object.entries(input))$('#cost-form').elements[key].value=value;selectTab('cost');renderCost();return result;}};
