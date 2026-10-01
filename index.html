@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#e8f7ff">
+  <meta name="theme-color" content="#c8edff">
   <title>Cold Plunge & Ice Shower Calculators | PlungeWise</title>
   <meta name="description" content="Friendly calculators for cold plunges and ice showers. Compare ice and chillers, work out your ice needs, and explore shower water use and cooling.">
 <link rel="canonical" href="https://plungewise.com/">
@@ -26,6 +26,8 @@
   <script src="/calculator.js" defer></script>
   <script src="/app.js" defer></script>
   <script src="/diy.js" defer></script>
+  <script src="/playful.js" defer></script>
+  <link rel="preload" as="image" href="/assets/home/chill-world-20261001.webp" fetchpriority="high">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" sizes="any">
 <link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
@@ -35,26 +37,37 @@
 </head>
 <body>
   <a class="skip" href="#calculators">Skip to calculators</a>
-  <header class="header wrap"><a class="wordmark" href="#" aria-label="PlungeWise home">PlungeWise<span>.</span></a><nav aria-label="Main navigation"><a href="#calculators">Let’s calculate</a><a href="#guides">Guides &amp; comparisons</a></nav></header>
-  <main>
+  <div class="hero-world">
+    <img class="world-image" src="/assets/home/chill-world-20261001.webp" alt="" width="1536" height="1024" fetchpriority="high">
+    <header class="header wrap"><a class="wordmark" href="/" aria-label="PlungeWise home">PlungeWise<span>.</span></a><nav aria-label="Main navigation"><a href="#calculators">Calculators</a><a href="#diy-gear">The cool stuff</a></nav></header>
     <section class="hero wrap" aria-labelledby="headline">
-      <div class="hero-copy"><p class="eyebrow hero-tag">FREE COLD PLUNGE CALCULATORS</p><h1 id="headline">Little splash.<br><span>Clear costs.</span></h1><p class="intro">Compare ice vs. chiller costs, work out how much ice you need, and find a setup that fits.</p><nav class="hero-tools" aria-label="Start a free calculator"><a class="hero-tool-primary" href="#panel-cost" data-open-calculator="cost">Compare ice vs. chiller costs</a><a href="#panel-ice" data-open-calculator="ice">How much ice?</a><a href="#panel-setup" data-open-calculator="setup">Find my setup</a><a href="#experience-shower" data-open-calculator="shower">Cold shower calculator</a></nav><p class="hero-tool-note">Free to use. No sign-up. Your own numbers.</p></div>
-      <div class="hero-art"><div class="mascot-bubble" id="cube-quote" aria-live="polite">New here? Dip a toe.<br><b>I’ll do the math.</b></div><button class="mascot-button" type="button" id="cube-button" aria-label="Hear from your ice cube buddy"><svg class="original-mascot" viewBox="40 750 576 412" role="img" aria-labelledby="mascot-title"><title id="mascot-title">Our happy ice cube in sunglasses, splashing in a plunge tub</title><image href="/assets/approved-artwork.png" width="2880" height="4844" /></svg></button><span class="art-caption">your very chill sidekick · tap me!</span></div>
+      <div class="hero-copy">
+        <p class="hero-tag"><span aria-hidden="true">✦</span> FREE COLD PLUNGE CALCULATORS</p>
+        <h1 id="headline">Your chill.<br><span>Your way.</span></h1>
+        <p class="intro">Less guessing. More splashing.</p>
+        <a class="hero-cta" href="#calculators">Let’s calculate <span aria-hidden="true">↗</span></a>
+        <p class="hero-note">Ice, costs &amp; a setup that fits.</p>
+      </div>
+      <div class="hero-buddy">
+        <p id="cube-quote" class="mascot-bubble" aria-live="polite">You bring the chill.<br><b>I’ll do the math.</b></p>
+        <button id="cube-button" class="mascot-button" type="button" aria-label="Say hello to your ice cube buddy">Say brrr <span aria-hidden="true">✧</span></button>
+      </div>
+      <span class="ice-spark spark-one" aria-hidden="true">✦</span><span class="ice-spark spark-two" aria-hidden="true">✧</span><span class="ice-spark spark-three" aria-hidden="true">✦</span>
+      <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause decorative animations">Ⅱ <span>Pause sparkles</span></button>
     </section>
+  </div>
+  <main>
     <section id="calculators" class="calculator-zone" aria-label="Cold plunge and ice shower calculators">
-      <div class="wrap"><div class="zone-heading"><div><span class="eyebrow">PICK YOUR KIND OF BRRR</span><h2>How do you like to chill?</h2></div><span class="live-note">Your numbers. Instant answers.</span></div>
-        <div class="experience-tabs" role="tablist" aria-label="Choose a cold water experience">
-          <button id="mode-bath" class="experience-tab active" role="tab" aria-selected="true" aria-controls="experience-bath" data-mode="bath"><span class="mode-icon" aria-hidden="true">🛁</span><span>Cold plunge<small>A tub, some ice, your happy place.</small></span></button>
-          <button id="mode-shower" class="experience-tab" role="tab" aria-selected="false" aria-controls="experience-shower" tabindex="-1" data-mode="shower"><span class="mode-icon" aria-hidden="true">🚿</span><span>Ice shower<small>Big chill. Small footprint.</small></span><span class="new-badge">NEW</span></button>
-        </div>
-        <section id="experience-bath" role="tabpanel" aria-labelledby="mode-bath">
+      <div class="wrap tool-wrap">
+        <div class="zone-heading"><div><span class="eyebrow">A LITTLE MATH. A LOT OF CHILL.</span><h2>What are we figuring out?</h2></div><span class="live-note"><i aria-hidden="true"></i> Free. Instant. All yours.</span></div>
         <div class="tabs" role="tablist" aria-label="Choose your calculator">
-          <button id="tab-cost" class="tab active" role="tab" aria-selected="true" aria-controls="panel-cost" data-tab="cost"><span class="tab-number">01</span><span><b>Ice or chiller?</b><small>Compare costs.</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-          <button id="tab-ice" class="tab" role="tab" aria-selected="false" aria-controls="panel-ice" tabindex="-1" data-tab="ice"><span class="tab-number">02</span><span><b>How much ice?</b><small>Count the bags.</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
-          <button id="tab-setup" class="tab" role="tab" aria-selected="false" aria-controls="panel-setup" tabindex="-1" data-tab="setup"><span class="tab-number">03</span><span><b>Find my setup</b><small>Find your fit.</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+          <button id="tab-cost" class="tab active" role="tab" aria-selected="true" aria-controls="panel-cost" data-tab="cost"><span class="tool-icon" aria-hidden="true">↗</span><span><b>Ice or chiller?</b><small>Find the better value</small></span></button>
+          <button id="tab-ice" class="tab" role="tab" aria-selected="false" aria-controls="panel-ice" tabindex="-1" data-tab="ice"><span class="tool-icon" aria-hidden="true">❄</span><span><b>How much ice?</b><small>Count your bags</small></span></button>
+          <button id="tab-setup" class="tab" role="tab" aria-selected="false" aria-controls="panel-setup" tabindex="-1" data-tab="setup"><span class="tool-icon" aria-hidden="true">◎</span><span><b>Find my setup</b><small>Meet your match</small></span></button>
+          <button id="tab-shower" class="tab" role="tab" aria-selected="false" aria-controls="experience-shower" tabindex="-1" data-tab="shower"><span class="tool-icon" aria-hidden="true">🚿</span><span><b>Cold shower</b><small>Make a little splash</small></span></button>
         </div>
         <section id="panel-cost" class="calculator-panel" role="tabpanel" aria-labelledby="tab-cost">
-          <form id="cost-form" class="inputs" novalidate><div class="panel-title"><span class="mini-label">THE MONEY QUESTION</span><h2>Let’s chill your ice bill.</h2><p>Four numbers to start. We’ll take it from here.</p></div>
+          <form id="cost-form" class="inputs" novalidate><div class="panel-title"><h2>Chill your ice bill.</h2><p>Try your numbers. See what changes.</p></div>
             <div class="field-grid">
               <label>Plunges per week<div class="input-wrap"><input name="sessions" type="number" min="0" max="21" step="1" value="4" required><span>times</span></div></label>
               <label>Ice bags per plunge<div class="input-wrap"><input name="bags" type="number" min="0" max="100" step="0.1" value="2" required><span>bags</span></div></label>
@@ -64,34 +77,32 @@
             </div>
             <details class="more"><summary>Electricity & other details <span aria-hidden="true">＋</span></summary><div class="field-grid details-fields">              <label>Chiller energy per day<div class="input-wrap"><input name="energy" type="number" min="0" max="200" step="0.1" value="3" required><span>kWh</span></div></label>
               <label>Electricity price<div class="input-wrap"><span>$</span><input name="rate" type="number" min="0" max="10" step="0.01" value="0.16" required><span>/ kWh</span></div></label><label>Chiller upkeep per month<div class="input-wrap"><span>$</span><input name="maintenance" type="number" min="0" max="10000" step="1" value="8" required></div></label><label>Compare over<div class="input-wrap"><input name="months" type="number" min="1" max="120" step="1" value="12" required><span>months</span></div></label></div><p class="hint">Include pump, fittings and installation in setup cost. Use measured daily energy if you have it. Common tub and water costs are excluded.</p></details>
-            <p class="input-note">All costs are in US dollars (USD). Example values, not product prices. Everything is editable.</p><p class="error" id="cost-error" role="alert"></p>
+            <p class="input-note">USD · Editable examples, not product prices.</p><p class="error" id="cost-error" role="alert"></p>
           <button class="see-result" type="button" data-show-result="cost">See my result <span aria-hidden="true">↓</span></button></form>
           <aside id="cost-result" class="result" tabindex="-1" aria-live="polite" aria-atomic="true"></aside>
         </section>
         <section id="panel-ice" class="calculator-panel" role="tabpanel" aria-labelledby="tab-ice" hidden>
-          <form id="ice-form" class="inputs" novalidate><div class="panel-title"><span class="mini-label">THE ICE QUESTION</span><h2>How much ice is enough?</h2><p>A little physics. A lot less freezer Tetris.</p></div><fieldset class="unit-switch"><legend class="sr-only">Measurement system</legend><label><input type="radio" name="units" value="us" checked><span>US · °F / gal / lb</span></label><label><input type="radio" name="units" value="metric"><span>Metric · °C / L / kg</span></label></fieldset>
+          <form id="ice-form" class="inputs" novalidate><div class="panel-title"><h2>Meet your ice number.</h2></div><fieldset class="unit-switch"><legend class="sr-only">Measurement system</legend><label><input type="radio" name="units" value="us" checked><span>US · °F / gal / lb</span></label><label><input type="radio" name="units" value="metric"><span>Metric · °C / L / kg</span></label></fieldset>
             <div class="field-grid">
               <label>Water already in the tub<div class="input-wrap"><input name="volume" type="number" min="0.002641720523581484" max="3170.064628297781" step="any" value="53" required><span data-unit="volume">US gal</span></div></label>
               <label>Starting water temperature<div class="input-wrap"><input name="start" type="number" min="32.018" max="212" step="any" value="77" required><span data-unit="temperature">°F</span></div></label>
               <label>Target water temperature<div class="input-wrap"><input name="target" type="number" min="32.018" max="212" step="any" value="50" required><span data-unit="temperature">°F</span></div></label>
               <label>Weight of one ice bag<div class="input-wrap"><input name="bagWeight" type="number" min="0.022046226218487758" max="440.92452436975515" step="any" value="10" required><span data-unit="weight">lb</span></div></label>
-            </div><details class="more"><summary>Ice temperature &amp; assumptions <span aria-hidden="true">＋</span></summary><label class="details-fields">Starting ice temperature<div class="input-wrap"><input name="iceTemp" type="number" min="-58" max="32" step="any" value="-0.4" required><span data-unit="temperature">°F</span></div></label><p class="hint">Loose ice fully melts into the water. Heat from the tub, air and sunlight is excluded, so real-world needs can be higher. Frozen bottles need a different estimate.</p></details><p class="input-note">These temperatures are examples for the calculation, not recommendations.</p><p class="error" id="ice-error" role="alert"></p>
+            </div><details class="more"><summary>Ice temperature &amp; assumptions <span aria-hidden="true">＋</span></summary><label class="details-fields">Starting ice temperature<div class="input-wrap"><input name="iceTemp" type="number" min="-58" max="32" step="any" value="-0.4" required><span data-unit="temperature">°F</span></div></label><p class="hint">Loose ice fully melts into the water. Heat from the tub, air and sunlight is excluded, so real-world needs can be higher. Frozen bottles need a different estimate.</p></details><p class="input-note">Example temperatures, not exposure recommendations.</p><p class="error" id="ice-error" role="alert"></p>
           <button class="see-result" type="button" data-show-result="ice">See my result <span aria-hidden="true">↓</span></button></form><aside id="ice-result" class="result" tabindex="-1" aria-live="polite" aria-atomic="true"></aside>
         </section>
         <section id="panel-setup" class="calculator-panel" role="tabpanel" aria-labelledby="tab-setup" hidden>
-          <form id="setup-form" class="inputs" novalidate><div class="panel-title"><span class="mini-label">THE MATCHMAKING QUESTION</span><h2>Find your cold-water match.</h2><p>Four quick questions. One useful starting point.</p></div>
+          <form id="setup-form" class="inputs" novalidate><div class="panel-title"><h2>Your kind of cold.</h2></div>
             <fieldset class="choices"><legend><span>1</span> How often will you plunge?</legend><div><label><input type="radio" name="frequency" value="occasional" checked><span>1–2 / week</span></label><label><input type="radio" name="frequency" value="regular"><span>3–4 / week</span></label><label><input type="radio" name="frequency" value="daily"><span>5+ / week</span></label></div></fieldset>
             <fieldset class="choices"><legend><span>2</span> What matters most?</legend><div><label><input type="radio" name="priority" value="upfront" checked><span>Spend less now</span></label><label><input type="radio" name="priority" value="ease"><span>Less daily effort</span></label></div></fieldset>
             <fieldset class="choices"><legend><span>3</span> Do you enjoy a little DIY?</legend><div><label><input type="radio" name="diy" value="yes" checked><span>Pass the tools</span></label><label><input type="radio" name="diy" value="no"><span>Ready-made, please</span></label></div></fieldset>
             <fieldset class="choices"><legend><span>4</span> Where will it live?</legend><div><label><input type="radio" name="location" value="sheltered" checked><span>Indoors / shaded</span></label><label><input type="radio" name="location" value="hot"><span>Warm / sunny spot</span></label></div></fieldset><p class="input-note">A setup direction, not a product rating or an exact chiller size.</p>
           <button class="see-result" type="button" data-show-result="setup">See my result <span aria-hidden="true">↓</span></button></form><aside id="setup-result" class="result" tabindex="-1" aria-live="polite" aria-atomic="true"></aside>
         </section>
-        </section>
-        <section id="experience-shower" role="tabpanel" aria-labelledby="mode-shower" hidden>
-          <div class="shower-intro"><span class="mini-label">MEET THE SMALL-SPACE CHILL</span><p>Start with your tap. See what going colder would take.</p></div>
+        <section id="experience-shower" role="tabpanel" aria-labelledby="tab-shower" hidden>
           <div class="calculator-panel shower-panel">
             <form id="shower-form" class="inputs" novalidate>
-              <div class="panel-title"><span class="mini-label">THE SHOWER QUESTION</span><h2>Just add water.<br>How cold is up to your setup.</h2><p>Explore water use and the cooling needed below tap temperature.</p></div>
+              <div class="panel-title"><h2>A smaller splash.</h2></div>
               <fieldset class="unit-switch"><legend class="sr-only">Shower measurement system</legend><label><input type="radio" name="showerUnits" value="metric" checked><span>Metric · °C / L</span></label><label><input type="radio" name="showerUnits" value="us"><span>US · °F / gal</span></label></fieldset>
               <div class="field-grid">
                 <label>Shower flow<div class="input-wrap"><input name="flow" type="number" min="0.1" max="50" step="any" value="8" required><span data-shower-unit="flow">L / min</span></div></label>
@@ -100,48 +111,15 @@
                 <label>Target water temperature<div class="input-wrap"><input name="target" type="number" min="1" max="60" step="any" value="15" required><span data-shower-unit="temperature">°C</span></div></label>
               </div>
               <details class="more"><summary>How do I find my numbers? <span aria-hidden="true">＋</span></summary><p class="hint">Measure the cold tap with a thermometer once the temperature is steady. For flow, collect water for 10 seconds and multiply its volume by six to get liters or US gallons per minute.</p><p class="hint">This estimates a continuous supply of fresh water. It does not model a pre-chilled tank or recirculated water.</p></details>
-              <p class="input-note">Example temperatures and run times are for planning, not exposure recommendations.</p><p class="error" id="shower-error" role="alert"></p>
+              <p class="input-note">Planning examples, not exposure recommendations.</p><p class="error" id="shower-error" role="alert"></p>
             <button class="see-result" type="button" data-show-result="shower">See my result <span aria-hidden="true">↓</span></button></form>
             <aside id="shower-result" class="result" tabindex="-1" aria-live="polite" aria-atomic="true"></aside>
           </div>
-          <div class="shower-guide" aria-label="Ice shower basics">
-            <article><span class="guide-number">01 / KEEP IT SIMPLE</span><h3>Meet your cold tap.</h3><p>Its measured temperature is your starting point. You may already have the water you want.</p></article>
-            <article><span class="guide-number">02 / KNOW THE DIFFERENCE</span><h3>A showerhead isn’t a chiller.</h3><p>A regular showerhead changes the spray. Cooling below the incoming water temperature takes a separate cooling source.</p></article>
-            <article><span class="guide-number">03 / CHECK THE FIT</span><h3>Going colder? Check capacity.</h3><p>Ask the supplier about your flow, inlet temperature and target. A tub chiller’s rating alone doesn’t confirm it can cool a running shower.</p></article>
-          </div>
-        </section>
-        <section id="brands" class="brand-shop" aria-labelledby="brands-title">
-          <div class="brand-heading"><div><span class="mini-label">MEET THE MAKERS</span><h2 id="brands-title">Your chill. Your choice.</h2><p>Prefer a ready-made setup? Explore these brands alongside your DIY options.</p></div><span class="brand-note">Three ways<br>to make a splash.</span></div>
-          <div class="brand-grid">
-            <article class="brand-card brand-plunge">
-              <span class="brand-type">INTEGRATED SYSTEM</span><h3>Plunge<span>All-In</span></h3>
-              <p>A cold-plunge tub with an integrated chiller, for a setup that keeps the equipment together.</p>
-              <p class="brand-check"><strong>Check the fit:</strong> Installation space, electrical requirements and the total price of your chosen configuration.</p>
-              <a class="brand-link" data-pos="home_brands" href="https://plunge.com/products/plunge-all-in" target="_blank" rel="noopener" aria-label="Explore Plunge All-In on the manufacturer's website (opens a new tab)">Explore Plunge <span aria-hidden="true">↗</span></a>
-            </article>
-            <article class="brand-card brand-hydragun">
-              <span class="brand-type">INFLATABLE TUB + CHILLER</span><h3>HYDRAGUN<span>Supertub</span></h3>
-              <p>An inflatable tub paired with a separate chiller and filtration system.</p>
-              <p class="brand-check"><strong>Check the fit:</strong> The selected chiller version, included accessories and space for both the tub and chiller.</p>
-              <a class="brand-link" data-pos="home_brands" href="https://www.hydragun.com/products/supertub-cold-plunge" target="_blank" rel="noopener" aria-label="Explore HYDRAGUN Supertub on the manufacturer's website (opens a new tab)">Explore HYDRAGUN <span aria-hidden="true">↗</span></a>
-            </article>
-            <article class="brand-card brand-barrel">
-              <span class="brand-type">UPRIGHT TUB</span><h3>Ice Barrel<span>300</span></h3>
-              <p>An insulated upright tub with chiller connection ports. Compare the tub with the available bundles.</p>
-              <p class="brand-check"><strong>Check the fit:</strong> Seated room, filled weight and whether a chiller is included in the option you choose.</p>
-              <a class="brand-link" data-pos="home_brands" href="https://icebarrel.com/products/ice-barrel-300" target="_blank" rel="noopener" aria-label="Explore Ice Barrel 300 on the manufacturer's website (opens a new tab)">Explore Ice Barrel <span aria-hidden="true">↗</span></a>
-            </article>
-          </div>
-          <p class="brand-disclosure">These three links go directly to the manufacturers, with no affiliate tracking added. Descriptions are based on their published information; we haven’t physically tested these products. Pages checked <time datetime="2026-09-23">September 23, 2026</time>. Confirm current prices, package contents, warranty and delivery with the brand.</p>
-          <aside class="amazon-banner" aria-labelledby="amazon-budget-title">
-            <div class="amazon-banner-copy"><span class="shop-eyebrow">AMAZON · THE BUDGET START</span><h3 id="amazon-budget-title">Small budget?<br>Start with an ice tub.</h3><p>Explore portable, ice-based tubs before investing in a complete chiller system. Compare size, covers and drainage — you supply the ice.</p></div>
-            <div class="amazon-banner-action"><a class="amazon-button" href="https://www.amazon.com/s?k=portable+ice+bath+tub&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_budget_banner" aria-label="Browse budget ice bath tubs on Amazon (paid link, opens a new tab)"><span>Browse budget tubs on Amazon</span><span aria-hidden="true">↗</span></a><p>Compare current prices on Amazon.<br>Search results, not tested product picks.</p><p class="shop-disclosure">Paid link. As an Amazon Associate I earn from qualifying purchases.</p></div>
-          </aside>
-
+          <details class="compact-info"><summary>Good to know about cold showers <span aria-hidden="true">＋</span></summary><p>A regular showerhead changes the spray; it does not cool water. Measure your cold tap first. For colder water, ask a supplier to confirm cooling capacity for your flow and temperature target.</p></details>
         </section>
         <section id="diy-gear" class="diy-shop" aria-labelledby="diy-title" aria-roledescription="carousel">
           <div class="diy-heading">
-            <div><span class="mini-label">THE BUILD-YOUR-OWN BRRR BAR</span><h2 id="diy-title">Little parts. Big chill.</h2><p>DIY a plunge or refresh your shower. Find the pieces for your setup.</p></div>
+            <div><span class="eyebrow">THE COOL STUFF</span><h2 id="diy-title">Little upgrades. Big brrr.</h2></div>
             <div class="diy-controls" hidden>
               <button id="diy-toggle" type="button" aria-controls="diy-products" aria-label="Pause automatic product scrolling"><span data-diy-play-icon aria-hidden="true">Ⅱ</span><span data-diy-play-label>Pause</span></button>
               <button id="diy-prev" class="diy-arrow" type="button" aria-controls="diy-products" aria-label="Previous products">←</button>
@@ -152,60 +130,70 @@
           <ul id="diy-products" class="diy-products" tabindex="0" aria-label="DIY product categories. Swipe, scroll, or use the arrow keys to browse.">
             <li id="ice-tubs" class="diy-card">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">🛁</span><span class="diy-kind">PLUNGE BASE</span></div>
-              <h3>The Cold Pod · 85 gal</h3><p>Tub with full-wrap thermal cover. Listed outer size: 29.5 × 29.5 × 29.5 in. Check the selected bundle and seller.</p>
-              <a href="https://www.amazon.com/dp/B0F8W817GD?tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="View The Cold Pod 85-gallon tub and thermal cover bundle on Amazon (paid link, opens a new tab)">View this bundle on Amazon</a>
+              <h3>The Cold Pod · 85 gal</h3><p>85-gallon tub + thermal cover.</p>
+              <a href="https://www.amazon.com/dp/B0F8W817GD?tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="View The Cold Pod 85-gallon tub and thermal cover bundle on Amazon (paid link, opens a new tab)">View tub on Amazon</a>
             </li>
             <li class="diy-card">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">🧊</span><span class="diy-kind">FREEZER FRIEND</span></div>
-              <h3>Make your own ice</h3><p>Browse reusable ice molds. Measure your freezer space before choosing a size.</p>
-              <a href="https://www.amazon.com/s?k=large+reusable+ice+bath+molds&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse reusable ice molds on Amazon (paid link, opens a new tab)">Shop ice molds on Amazon <span aria-hidden="true">↗</span></a>
+              <h3>Make your own ice</h3><p>Ice molds. Check your freezer space.</p>
+              <a href="https://www.amazon.com/s?k=large+reusable+ice+bath+molds&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse reusable ice molds on Amazon (paid link, opens a new tab)">See ice molds <span aria-hidden="true">↗</span></a>
             </li>
             <li class="diy-card">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">🌡️</span><span class="diy-kind">LESS GUESSWORK</span></div>
-              <h3>Know your water</h3><p>Look for a water thermometer rated for your temperature range and intended use.</p>
-              <a href="https://www.amazon.com/s?k=cold+plunge+water+thermometer&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse water thermometers on Amazon (paid link, opens a new tab)">Shop thermometers on Amazon <span aria-hidden="true">↗</span></a>
+              <h3>Know your water</h3><p>A thermometer for your water.</p>
+              <a href="https://www.amazon.com/s?k=cold+plunge+water+thermometer&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse water thermometers on Amazon (paid link, opens a new tab)">See thermometers <span aria-hidden="true">↗</span></a>
             </li>
             <li class="diy-card">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">❄️</span><span class="diy-kind">TUB TOPPER</span></div>
-              <h3>Find a cover that fits</h3><p>Compare insulated covers by tub shape, dimensions and fastening method.</p>
-              <a href="https://www.amazon.com/s?k=insulated+ice+bath+tub+cover&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse insulated tub covers on Amazon (paid link, opens a new tab)">Shop covers on Amazon <span aria-hidden="true">↗</span></a>
+              <h3>Find a cover that fits</h3><p>Keep it covered. Check the fit.</p>
+              <a href="https://www.amazon.com/s?k=insulated+ice+bath+tub+cover&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse insulated tub covers on Amazon (paid link, opens a new tab)">See covers <span aria-hidden="true">↗</span></a>
             </li>
             <li class="diy-card">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">🔧</span><span class="diy-kind">CHECK THE FIT</span></div>
-              <h3>Connect the pieces</h3><p>Browse hoses and fittings. Match connection sizes and pressure ratings to your equipment.</p>
-              <a href="https://www.amazon.com/s?k=cold+plunge+chiller+hoses+fittings&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse chiller hoses and fittings on Amazon (paid link, opens a new tab)">Shop fittings on Amazon <span aria-hidden="true">↗</span></a>
+              <h3>Connect the pieces</h3><p>Hoses &amp; fittings that match.</p>
+              <a href="https://www.amazon.com/s?k=cold+plunge+chiller+hoses+fittings&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse chiller hoses and fittings on Amazon (paid link, opens a new tab)">See fittings <span aria-hidden="true">↗</span></a>
             </li>
             <li class="diy-card">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">💧</span><span class="diy-kind">FILTER REFILL</span></div>
-              <h3>Match your filter</h3><p>Already have a filter system? Check the exact cartridge model and dimensions.</p>
-              <a href="https://www.amazon.com/s?k=cold+plunge+replacement+filter+cartridge&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse replacement filter cartridges on Amazon (paid link, opens a new tab)">Shop filters on Amazon <span aria-hidden="true">↗</span></a>
+              <h3>Match your filter</h3><p>Match your filter’s cartridge.</p>
+              <a href="https://www.amazon.com/s?k=cold+plunge+replacement+filter+cartridge&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse replacement filter cartridges on Amazon (paid link, opens a new tab)">See filters <span aria-hidden="true">↗</span></a>
             </li>
             <li class="diy-card diy-card-shower">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">🚿</span><span class="diy-kind">TEAM SHOWER</span></div>
-              <h3>Choose your flow</h3><p>Compare showerheads by rated flow and connection. A showerhead doesn’t cool the water.</p>
-              <a href="https://www.amazon.com/s?k=low+flow+showerhead&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse low flow showerheads on Amazon (paid link, opens a new tab)">Shop showerheads on Amazon <span aria-hidden="true">↗</span></a>
+              <h3>Choose your flow</h3><p>Choose your flow. Does not cool water.</p>
+              <a href="https://www.amazon.com/s?k=low+flow+showerhead&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse low flow showerheads on Amazon (paid link, opens a new tab)">See showerheads <span aria-hidden="true">↗</span></a>
             </li>
             <li class="diy-card diy-card-shower">
               <div class="diy-card-top"><span class="diy-icon" aria-hidden="true">👣</span><span class="diy-kind">FINISHING TOUCH</span></div>
-              <h3>A spot for your feet</h3><p>Explore non-slip mats. Check whether they suit your floor, shower or outdoor space.</p>
-              <a href="https://www.amazon.com/s?k=non+slip+shower+floor+mat&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse non-slip mats on Amazon (paid link, opens a new tab)">Shop mats on Amazon <span aria-hidden="true">↗</span></a>
+              <h3>A spot for your feet</h3><p>A mat suited to your surface.</p>
+              <a href="https://www.amazon.com/s?k=non+slip+shower+floor+mat&amp;tag=plungepicks-20" target="_blank" rel="sponsored noopener" data-pos="home_diy" aria-label="Browse non-slip mats on Amazon (paid link, opens a new tab)">See mats <span aria-hidden="true">↗</span></a>
             </li>
           </ul>
-          <div class="diy-footnote"><span class="diy-swipe">Swipe for more little upgrades <span aria-hidden="true">↔</span></span><p>The Cold Pod link opens the named 85-gallon bundle (listing checked September 30, 2026). Other links open Amazon searches. We have not physically tested these products. Confirm the selected model, price, seller, compatibility and shipping on Amazon.</p></div>
+          <details class="compact-info"><summary>Product details &amp; fit <span aria-hidden="true">＋</span></summary><p>The Cold Pod link opens the named 85-gallon tub with full-wrap thermal cover. Listed outer size: 29.5 × 29.5 × 29.5 in; no chiller included. Listing checked September 30, 2026. Other links open Amazon searches. We have not physically tested these products. Confirm model, seller, price, usable space, compatibility and shipping before buying.</p></details>
+        </section>
+        <section id="brands" class="brand-shop" aria-labelledby="brands-title">
+          <div class="section-heading"><span class="eyebrow">READY TO GO BIGGER?</span><h2 id="brands-title">Meet the chill makers.</h2></div>
+          <div class="brand-grid">
+            <article class="brand-card brand-plunge"><span class="brand-type">ALL TOGETHER</span><h3>Plunge <span>All-In</span></h3><p>Tub + integrated chiller.</p><a class="brand-link" data-pos="home_brands" href="https://plunge.com/products/plunge-all-in" target="_blank" rel="noopener">Explore Plunge <span aria-hidden="true">↗</span></a></article>
+            <article class="brand-card brand-hydragun"><span class="brand-type">INFLATABLE + CHILLER</span><h3>HYDRAGUN <span>Supertub</span></h3><p>Separate chiller and filtration.</p><a class="brand-link" data-pos="home_brands" href="https://www.hydragun.com/products/supertub-cold-plunge" target="_blank" rel="noopener">Explore HYDRAGUN <span aria-hidden="true">↗</span></a></article>
+            <article class="brand-card brand-barrel"><span class="brand-type">SIT BACK &amp; CHILL</span><h3>Ice Barrel <span>300</span></h3><p>Insulated tub. Compare bundles.</p><a class="brand-link" data-pos="home_brands" href="https://icebarrel.com/products/ice-barrel-300" target="_blank" rel="noopener">Explore Ice Barrel <span aria-hidden="true">↗</span></a></article>
+          </div>
+          <p class="brand-disclosure">Manufacturer links, without affiliate tracking. Research-based; not hands-on tested.</p>
+          <details class="compact-info"><summary>Before you choose <span aria-hidden="true">＋</span></summary><p>Check usable space, filled weight, electrical requirements, warranty and delivery. Confirm the selected chiller version, included accessories and whether a chiller is included in the bundle. Manufacturer pages checked September 23, 2026; confirm current specifications and prices with the brand.</p></details>
         </section>
         <details id="the-math" class="method"><summary>Peek at the cool science <span aria-hidden="true">＋</span></summary><div class="method-grid"><div><h3>Ice shower calculation</h3><p>Water use = flow × run time. Continuous cooling power = (flow in L/min ÷ 60) × 4.186 × (tap °C − target °C), in kW. Water is approximated as 1 kg/L. Heat removed = water liters × 4.186 × temperature drop, in kJ.</p><p>This is thermal cooling duty, not electrical consumption or a product rating. The ideal estimate excludes heat gains and equipment losses; actual output depends on operating conditions. It does not calculate a safe exposure time.</p><p>Based on <a href="https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity" target="_blank" rel="noopener">OpenStax’s heat-capacity relationship</a>.</p></div><div><h3>Ice calculation</h3><p>We balance the heat lost by the water against the energy needed to warm the ice to 0°C, melt it, and warm the meltwater to your target. Water is approximated as 1 kg per liter. Leave room for that extra water.</p><p>m = V × 4.186 × (Tstart − Ttarget) ÷ [2.09 × (−Tice) + 334 + 4.186 × Ttarget]. Temperatures in °C; mass in kg.</p><p>Constants: water 4.186 and ice 2.09 kJ/kg·°C; melting 334 kJ/kg. <a href="https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity" target="_blank" rel="noopener">Heat capacity reference</a> · <a href="https://openstax.org/books/college-physics-2e/pages/14-3-phase-change-and-latent-heat" target="_blank" rel="noopener">Melting reference</a>.</p></div><div><h3>Cost comparison</h3><p>Ice cost = sessions/week × 52 × bags/session × bag price. Chiller running cost = daily kWh × 365 × electricity price + 12 × monthly upkeep.</p><p>We add your setup cost once. Simple payback divides it by the monthly operating savings. It assumes year-round use and excludes financing, resale, repairs beyond entered upkeep, and the value of your time.</p><p>Setup suggestions use the preferences you select. Before choosing equipment, check tub volume, insulation, ambient conditions, cooling time, compatibility and the manufacturer’s ratings.</p></div></div></details>
       </div>
     </section>
     <section id="guides" class="guide-library wrap" aria-labelledby="guides-title">
-      <div class="guide-library-heading"><span class="mini-label">A LITTLE MORE KNOW-HOW</span><h2 id="guides-title">From “what if?” to “which one?”</h2><p>Keep exploring with our buying guides, comparisons and DIY resources.</p></div>
+      <div class="section-heading"><span class="eyebrow">A LITTLE KNOW-HOW</span><h2 id="guides-title">Make your next splash.</h2></div>
       <div class="guide-library-grid">
-        <a href="/cold-plunge-beginners-guide.html"><span class="guide-library-label">START HERE</span><h3>New to cold plunges?</h3><p>Start with the basics and questions to ask before buying.</p><span class="guide-library-cta">Read the beginner’s guide →</span></a>
-        <a href="/compare.html"><span class="guide-library-label">COMPARE YOUR OPTIONS</span><h3>Find a tub that fits.</h3><p>Explore tub types, cooling options and ownership costs.</p><span class="guide-library-cta">Compare cold plunges →</span></a>
-        <a href="/diy-cold-plunge.html"><span class="guide-library-label">MAKE IT YOURS</span><h3>Plan your DIY setup.</h3><p>Explore the parts, trade-offs and budget for a build.</p><span class="guide-library-cta">Explore the DIY guide →</span></a>
+        <a href="/cold-plunge-beginners-guide.html"><img src="/assets/guides/cold-plunge-beginners.webp" alt="" width="1200" height="800" loading="lazy"><span>Start with the basics <b aria-hidden="true">↗</b></span></a>
+        <a href="/compare.html"><img src="/assets/home/buy-complete-system.webp" alt="" width="1200" height="800" loading="lazy"><span>Find a tub that fits <b aria-hidden="true">↗</b></span></a>
+        <a href="/diy-cold-plunge.html"><img src="/assets/home/build-your-own.webp" alt="" width="1200" height="800" loading="lazy"><span>Build your own brrr <b aria-hidden="true">↗</b></span></a>
       </div>
-      <nav class="guide-library-more" aria-label="More PlungeWise resources"><a href="/best-cold-plunge-tubs.html">Cold plunge buying guide</a><a href="/best-budget-cold-plunge.html">Budget options</a><a href="/buyer-checklist.html">Buyer’s checklist</a><a href="/faq.html">Common questions</a></nav>
+      <nav class="guide-library-more" aria-label="More PlungeWise resources"><a href="/best-budget-cold-plunge.html">Budget picks</a><a href="/buyer-checklist.html">Buyer’s checklist</a><a href="/faq.html">Questions?</a></nav>
     </section>
-    <div class="closing wrap"><p>Small splash.<br><strong>Happy wallet.</strong></p><span>Whatever your kind of cool,<br>your ice cube is rooting for you.</span><a class="back-to-tools" href="#calculators">One more cool calculation ↑</a></div>
+    <div class="closing wrap"><p>Stay curious.<br><strong>Stay a little chilly.</strong></p><a class="back-to-tools" href="#calculators">One more calculation <span aria-hidden="true">↑</span></a></div>
   </main>
   <footer class="footer wrap"><span>© 2026 PlungeWise</span><div><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/affiliate-disclosure.html">Affiliate disclosure</a><a href="/privacy.html">Privacy</a><a href="/medical-disclaimer.html">Medical disclaimer</a></div></footer>
   <noscript><div class="noscript">Turn on JavaScript to use the calculators. No sign-up needed.</div></noscript>
