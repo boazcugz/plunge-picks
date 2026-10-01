@@ -64,3 +64,18 @@ repositories do not synchronize automatically. Keep `README.md`,
 Do not commit passwords, API keys, or account credentials. Amazon links use the
 owner-confirmed tracking tag `plungepicks-20`. Analytics is currently disabled;
 the site has no cookie banner.
+
+## Search discovery
+
+The focused entry pages are `/ice-bath-calculator` and `/cost-calculator`. Both
+use `calculator.js`, expose worked examples in the HTML, and link to relevant
+guides. Keep canonical links, internal URLs and `sitemap.xml` on the clean URLs
+that Netlify serves; existing `.html` entry links remain supported.
+
+`indexnow-key.txt` is the website verification file required by IndexNow and
+is intentionally accessible on this site. It is not a Netlify or user-account
+credential. After publishing meaningful page changes, submit the changed public
+URLs once to `https://api.indexnow.org/indexnow` following the official protocol:
+https://www.indexnow.org/documentation . Use host `plungewise.com` and keyLocation
+`https://plungewise.com/indexnow-key.txt`. A 200/202 receipt is not proof of
+indexing, ranking or traffic. This does not submit pages to Google.

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ecf8ff">
+<title>Ice Bath Calculator: How Much Ice Do You Need? | PlungeWise</title>
+<meta name="description" content="Calculate ice for your ice bath in pounds, kilograms and bags. Enter water volume and temperatures, see added meltwater, and compare clear worked examples.">
+<link rel="canonical" href="https://plungewise.com/ice-bath-calculator">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How Much Ice for an Ice Bath? Free Calculator">
+<meta property="og:description" content="Your water volume, your temperatures, your ice estimate. Pounds, kilograms, bags and meltwater included.">
+<meta property="og:url" content="https://plungewise.com/ice-bath-calculator">
+<meta property="og:image" content="https://plungewise.com/assets/brand/og-plungewise.jpg">
+<meta property="og:image:alt" content="PlungeWise cold plunge planning tools">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ice Bath Calculator: How Much Ice Do You Need?">
+<meta name="twitter:description" content="Estimate loose ice in pounds, kilograms and bags, with space for meltwater.">
+<meta name="twitter:image" content="https://plungewise.com/assets/brand/og-plungewise.jpg">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/tool-page.css">
+<script src="/calculator.js" defer></script>
+<script src="/tool-page.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://plungewise.com/"},{"@type":"ListItem","position":2,"name":"Ice bath calculator","item":"https://plungewise.com/ice-bath-calculator"}]}</script>
+</head>
+<body data-tool="ice">
+<a class="skip" href="#calculator">Skip to ice calculator</a>
+<header class="site-header wrap"><a class="wordmark" href="/" aria-label="PlungeWise home">PlungeWise<span>.</span></a><nav aria-label="Main navigation"><a href="/">All calculators</a><a href="/cost-calculator">Ice vs. chiller costs</a></nav></header>
+<main class="wrap">
+<section class="hero" aria-labelledby="page-title">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><span>Ice bath calculator</span></nav>
+<p class="eyebrow">FREE TOOL · LESS ICE GUESSING</p>
+<h1 id="page-title">How much ice for an ice bath?</h1>
+<p class="intro">Enter your water volume and temperatures. Get pounds or kilograms, a bag count, and the extra water from melting ice.</p>
+</section>
+<section id="calculator" class="calculator" aria-label="Ice bath ice calculator">
+<form id="tool-form" class="tool-form" novalidate>
+<div class="form-heading"><h2>Meet your ice number.</h2><span>No sign-up needed</span></div>
+<fieldset class="unit-switch"><legend>Measurement system</legend><label><input type="radio" name="units" value="us" checked> US · °F / gal / lb</label><label><input type="radio" name="units" value="metric"> Metric · °C / L / kg</label></fieldset>
+<div class="fields">
+<label>Water already in the tub<div class="input-wrap"><input name="volume" type="number" min="0.002641720523581484" max="3170.064628297781" step="any" value="53" required><span data-unit="volume">US gal</span></div></label>
+<label>Starting water temperature<div class="input-wrap"><input name="start" type="number" min="32.018" max="212" step="any" value="77" required><span data-unit="temperature">°F</span></div></label>
+<label>Target water temperature<div class="input-wrap"><input name="target" type="number" min="32.018" max="212" step="any" value="50" required><span data-unit="temperature">°F</span></div></label>
+<label>Weight of one ice bag<div class="input-wrap"><input name="bagWeight" type="number" min="0.022046226218487758" max="440.92452436975515" step="any" value="10" required><span data-unit="weight">lb</span></div></label>
+</div>
+<details class="more"><summary>Ice temperature &amp; assumptions</summary><label>Starting ice temperature<div class="input-wrap"><input name="iceTemp" type="number" min="-58" max="32" step="any" value="-0.4" required><span data-unit="temperature">°F</span></div></label><p class="hint">The default is −0.4°F / −18°C. Loose ice melts into the water; sealed bottles and ice packs need a different estimate.</p></details>
+<p class="input-note">Enter actual water volume, not maximum tub capacity. Temperatures are examples, not exposure recommendations.</p>
+<p id="tool-error" class="error" role="alert"></p>
+<button class="calculate" type="submit">Calculate my ice</button>
+</form>
+<aside id="tool-result" class="tool-result" aria-live="polite" aria-atomic="true" aria-label="Ice estimate" tabindex="-1">
+<p class="result-kicker">EXAMPLE RESULT</p><h2 class="result-title">Here’s your ice number.</h2><div class="metric-value">67.2 <span class="metric-unit">lb</span></div><p class="result-lead">Theoretical loose-ice requirement for the starting inputs.</p>
+<div class="result-grid"><div class="result-stat"><strong>7 bags</strong><span>10 lb each, rounded up</span></div><div class="result-stat"><strong>+8.0 US gal</strong><span>Meltwater at calculated ice mass</span></div></div>
+<p class="result-note">Add gradually, stir and check with a thermometer. Leave room for meltwater and your body. Full bags may cool below your target and add more water.</p>
+</aside>
+</section>
+<noscript><p class="noscript-note">The interactive calculator needs JavaScript. The worked examples and method below remain available.</p></noscript>
+<section class="content-section" aria-labelledby="example-title">
+<h2 id="example-title">A calculation you can check.</h2>
+<div class="worked-example"><h3>53 gallons, 77°F → 50°F.</h3><p>With ice starting at −0.4°F, the ideal estimate is <strong>67.2 lb (30.5 kg)</strong>: seven 10 lb bags to buy. The calculated mass adds <strong>8.0 gallons of meltwater</strong>. Adding every full bag adds more water and may overshoot the target.</p></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Ice quantity examples, scroll if needed"><table>
+<caption>Same temperatures: water 77°F → 50°F, ice at −0.4°F.</caption>
+<thead><tr><th scope="col">Water in tub</th><th scope="col">Calculated ice</th><th scope="col">10 lb bags</th><th scope="col">Meltwater</th></tr></thead>
+<tbody><tr><th scope="row">25 US gal</th><td>31.7 lb / 14.4 kg</td><td>4</td><td>+3.8 US gal</td></tr><tr><th scope="row">53 US gal</th><td>67.2 lb / 30.5 kg</td><td>7</td><td>+8.0 US gal</td></tr><tr><th scope="row">100 US gal</th><td>126.7 lb / 57.5 kg</td><td>13</td><td>+15.2 US gal</td></tr></tbody>
+</table></div>
+<p class="table-note">Ideal estimates, not measured tub performance. Meltwater uses calculated mass, not rounded bags. A warm tub, sunlight and air can increase ice needs.</p>
+<details class="method"><summary>How the ice calculation works</summary>
+<p>Heat lost by the water warms the ice to 0°C, melts it, then warms the meltwater to your target. Water is approximated as 1 kg per liter.</p>
+<p class="formula">Ice kg = water liters × 4.186 × (start °C − target °C) ÷ [2.09 × (−ice °C) + 334 + 4.186 × target °C]</p>
+<p>Constants: water heat capacity 4.186 and ice heat capacity 2.09 kJ/kg·°C; heat of fusion 334 kJ/kg. Sources: OpenStax on <a href="https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity" target="_blank" rel="noopener">heat capacity</a> and <a href="https://openstax.org/books/college-physics-2e/pages/14-3-phase-change-and-latent-heat" target="_blank" rel="noopener">melting and latent heat</a>.</p>
+<p>The model excludes heat from your body, container, air and sun. It does not calculate cooling time, cold retention or a suitable exposure temperature. It does not apply directly to sealed ice packs or frozen bottles.</p>
+</details>
+</section>
+<section class="content-section" aria-labelledby="next-title">
+<h2 id="next-title">Put your ice number to work.</h2>
+<div class="next-grid">
+<article class="next-card"><h3>What will those bags cost?</h3><p>Compare your ice routine with chiller electricity, upkeep and setup cost using your own prices.</p><a class="button-link" href="/cost-calculator">Compare ice vs. chiller costs →</a><a class="secondary-link" href="/diy-ice-bath-ideas">Explore DIY ice bath ideas</a></article>
+<article class="next-card"><h3>Making loose ice at home?</h3><p>Check mold capacity against your estimate and freezer space. Use a water thermometer to check the result.</p><a class="button-link" href="https://www.amazon.com/s?k=large+reusable+ice+bath+molds&amp;tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">Browse ice molds on Amazon ↗</a><a class="secondary-link" href="https://www.amazon.com/s?k=cold+plunge+water+thermometer&amp;tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">Browse water thermometers on Amazon ↗</a><p class="paid-note">Paid links. As an Amazon Associate I earn from qualifying purchases.</p><p class="small-note">Product searches, not tested picks. Confirm the product, seller, size and intended use.</p></article>
+</div>
+<nav class="related-links" aria-label="Related planning tools"><a href="/">All free calculators</a><a href="/diy-cold-plunge">DIY &amp; budget guide</a><a href="/buyer-checklist">Cold plunge buyer’s checklist</a></nav>
+</section>
+</main>
+<footer class="site-footer wrap"><span>© 2026 PlungeWise · Updated October 1, 2026</span><nav aria-label="Footer"><a href="/about">About</a><a href="/affiliate-disclosure">Affiliate disclosure</a><a href="/privacy">Privacy</a><a href="/medical-disclaimer">Medical disclaimer</a></nav></footer>
+</body>
+</html>
