@@ -1,225 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<script src="/analytics-config.js"></script>
-<link rel="canonical" href="https://plungewise.com/cost-calculator.html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cold Plunge Monthly Cost Calculator (Ice vs Chiller) | PlungeWise</title>
-<meta name="description" content="Estimate the real monthly and yearly cost of owning a cold plunge — ice, electricity, filters and maintenance — and see when a chiller becomes cheaper than buying ice. Free, transparent, no sign-up.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ecf8ff">
+<title>Cold Plunge Cost Calculator: Ice vs. Chiller | PlungeWise</title>
+<meta name="description" content="Compare monthly bagged-ice and chiller running costs, total spending over your chosen period, and simple payback. Free calculator with editable inputs and worked examples.">
+<link rel="canonical" href="https://plungewise.com/cost-calculator">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Cold Plunge Monthly Cost Calculator (Ice vs Chiller)">
-<meta property="og:description" content="Estimate the real monthly and yearly cost of owning a cold plunge and see when a chiller beats buying ice.">
-<meta property="og:url" content="https://plungewise.com/cost-calculator.html">
+<meta property="og:title" content="Cold Plunge Cost Calculator: Ice vs. Chiller">
+<meta property="og:description" content="Monthly ice bills, chiller running costs and setup payback. Compare using your own numbers.">
+<meta property="og:url" content="https://plungewise.com/cost-calculator">
 <meta property="og:image" content="https://plungewise.com/assets/brand/og-plungewise.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="PlungeWise — research-based cold plunge and ice bath guides">
+<meta property="og:image:alt" content="PlungeWise cold plunge planning tools">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cold Plunge Monthly Cost Calculator (Ice vs Chiller)">
-<meta name="twitter:description" content="Estimate the real monthly and yearly cost of owning a cold plunge and see when a chiller beats buying ice.">
+<meta name="twitter:title" content="Cold Plunge Cost Calculator: Ice vs. Chiller">
+<meta name="twitter:description" content="Compare bagged ice with chiller setup, electricity and upkeep.">
 <meta name="twitter:image" content="https://plungewise.com/assets/brand/og-plungewise.jpg">
-<link rel="stylesheet" href="guide-style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://plungewise.com/"},{"@type":"ListItem","position":2,"name":"Cost Calculator","item":"https://plungewise.com/cost-calculator.html"}]}</script>
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" sizes="any">
-<link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="/assets/brand/favicon-96.png" type="image/png" sizes="96x96">
-<link rel="icon" href="/assets/brand/favicon-192.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/tool-page.css">
+<script src="/calculator.js" defer></script>
+<script src="/tool-page.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://plungewise.com/"},{"@type":"ListItem","position":2,"name":"Cold plunge cost calculator","item":"https://plungewise.com/cost-calculator"}]}</script>
 </head>
-<body>
-<a class="skip-link" href="#main">Skip to main content</a>
-
-<div class="disclosure-strip">This site contains affiliate links. If you purchase through one of these links, we may earn a commission at no additional cost to you. <a href="affiliate-disclosure.html">Learn more</a>.</div>
-
-<header class="nav2">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="PlungeWise home">
-      <img class="bmark" src="assets/brand/plungewise-mark-dark.svg" width="30" height="30" alt="" decoding="async">
-      <span class="wm">PLUNGE<b>WISE</b></span>
-    </a>
-    <nav class="links" id="navlinks" aria-label="Primary">
-      <a href="best-cold-plunge-tubs.html">Best Cold Plunges</a>
-      <a href="compare.html">Comparisons</a>
-      <a href="diy-cold-plunge.html">DIY &amp; Budget</a>
-      <a href="cold-plunge-beginners-guide.html">Guides</a>
-      <a href="cost-calculator.html" aria-current="page">Calculator</a>
-      <a class="cta" href="find-my-plunge.html">Find My Cold Plunge</a>
-    </nav>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
-<div id="main" tabindex="-1"></div>
-
-<article class="article">
-  <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> › <span>Cost Calculator</span></nav>
-        <h1>Cold Plunge Monthly Cost Calculator</h1>
-    <div class="meta">Ice vs chiller · Updated July 2026 · Research-based tool by PlungeWise</div>
-
-    <p>The sticker price of a cold plunge is only half the story. The part nobody advertises is the <strong>ongoing cost of ownership</strong> — bags of ice, chiller electricity, and filters. This free calculator estimates monthly and yearly ice, electricity and filter costs, and shows you the point at which a chiller becomes cheaper than hauling ice. Change the numbers to match your situation; every assumption is shown.</p>
-
-    <div class="callout"><strong>More ways to plan your plunge.</strong> Use our <a href="/#panel-cost">ice vs. chiller comparison</a> to include upkeep and a chosen ownership period, or <a href="/#panel-ice">estimate the ice your tub needs</a>. All tools are free, with no sign-up.</div>
-    <div class="tool-nav">
-      <a href="find-my-plunge.html">→ Not sure which tub? Try the Product Finder</a>
-      <a href="best-budget-cold-plunge.html">→ See budget tubs</a>
-    </div>
-
-    <div class="tool">
-      <h2>Your usage</h2>
-      <div class="field">
-        <label for="sessions">Sessions per week <span class="hint">how often you'll plunge</span></label>
-        <input type="number" id="sessions" min="0" max="21" value="4">
-      </div>
-
-      <h2 style="font-size:1.2rem;">Ice setup</h2>
-      <div class="field">
-        <label for="ice">Ice used per session (lbs) <span class="hint">a typical fill uses 20–40 lbs</span></label>
-        <input type="number" id="ice" min="0" value="30">
-      </div>
-      <div class="field">
-        <label for="bag">Cost per 10 lb bag of ice ($) <span class="hint">store-bought bagged ice</span></label>
-        <input type="number" id="bag" min="0" step="0.25" value="2.50">
-      </div>
-
-      <h2 style="font-size:1.2rem;">Chiller setup</h2>
-      <div class="field">
-        <label for="watts">Chiller power draw (watts) <span class="hint">many home chillers average ~300–600 W</span></label>
-        <input type="number" id="watts" min="0" value="450">
-      </div>
-      <div class="field">
-        <label for="hours">Chiller run time per day (hours) <span class="hint">cycles on/off; estimate average</span></label>
-        <input type="number" id="hours" min="0" max="24" value="8">
-      </div>
-      <div class="field">
-        <label for="rate">Electricity rate ($/kWh) <span class="hint">check your utility bill</span></label>
-        <input type="number" id="rate" min="0" step="0.01" value="0.17">
-      </div>
-      <div class="field">
-        <label for="filter">Filter cost per year ($) <span class="hint">filters × replacements, if your tub uses them</span></label>
-        <input type="number" id="filter" min="0" value="60">
-      </div>
-
-      <h2 style="font-size:1.2rem;">Optional: break-even</h2>
-      <div class="field">
-        <label for="upfront">Extra up-front cost of a chiller setup vs an ice tub ($) <span class="hint">leave blank to skip</span></label>
-        <input type="number" id="upfront" min="0" value="3000">
-      </div>
-
-      <div class="tool-actions">
-        <button class="btn" id="calc">Calculate my cost</button>
-      </div>
-
-      <div class="result" id="out" style="display:none;" role="region" aria-live="polite" aria-label="Your estimated costs">
-        <h3>Estimated ownership cost</h3>
-        <div class="row"><span><strong>Ice-only setup — monthly</strong></span><span class="big" id="iceMo" style="font-size:1.4rem;"></span></div>
-        <div class="row"><span>Ice-only setup — yearly</span><span id="iceYr"></span></div>
-        <div class="row"><span><strong>Chiller setup — monthly</strong> (electricity + filters)</span><span class="big" id="chMo" style="font-size:1.4rem;"></span></div>
-        <div class="row"><span>Chiller setup — yearly</span><span id="chYr"></span></div>
-        <div class="row"><span>Monthly saving with a chiller</span><span id="save"></span></div>
-        <div class="row"><span>Break-even on the chiller's extra cost</span><span id="be"></span></div>
-        <p class="assumptions" id="assume"></p>
-      </div>
-    </div>
-
-    <h2>How this is calculated</h2>
-    <p>We keep the math simple and visible so you can trust it:</p>
-    <ul>
-      <li><strong>Ice cost/month</strong> = sessions per week × 4.33 weeks × (lbs of ice ÷ 10) × price per 10 lb bag.</li>
-      <li><strong>Chiller electricity/month</strong> = (watts ÷ 1000) × hours per day × 30 days × your $/kWh rate.</li>
-      <li><strong>Chiller filters/month</strong> = yearly filter cost ÷ 12.</li>
-      <li><strong>Break-even</strong> = extra up-front chiller cost ÷ monthly saving vs ice.</li>
-    </ul>
-    <p>These are estimates, not quotes. Real ice usage, chiller efficiency, and local prices vary. The goal is a realistic ballpark to compare the two paths — not an exact bill.</p>
-
-    <div class="callout">Thinking chiller? Compare automated tubs in our <a href="best-cold-plunge-tubs.html">best cold plunge tubs guide</a>. Starting with ice? See the <a href="best-budget-cold-plunge.html">best budget tubs</a>. Still deciding whether to build or buy at all? The <a href="diy-cold-plunge.html">DIY &amp; Budget hub</a> compares the ice, DIY-chiller and ready-made routes side by side, and the <a href="diy-ice-bath-ideas.html">DIY ice bath ideas</a> page covers the individual builds.</div>
-  </div>
-</article>
-
-<footer class="footer2">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <div class="brand"><img class="fmark" src="assets/brand/plungewise-mark-dark.svg" width="24" height="24" alt="" loading="lazy" decoding="async">PLUNGEWISE</div>
-        <p class="tagline" style="color:#14b8c4;font-weight:600;letter-spacing:.02em;margin:4px 0 8px;">Buy It. Build It. Plunge Wise.</p>
-        <p style="color:#9db1c2;max-width:250px;">Helping you find the right cold plunge for your recovery, performance, and well-being.</p>
-        <div class="socials" style="margin-top:12px;">
-          <a href="https://pinterest.com/plungewise" rel="noopener" target="_blank" aria-label="Pinterest"><svg width="22" height="22" viewBox="0 0 24 24" fill="#c2d2de"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.32-.09-.79-.17-2 .03-2.86.19-.82 1.2-5.2 1.2-5.2s-.31-.61-.31-1.52c0-1.42.83-2.48 1.86-2.48.88 0 1.3.66 1.3 1.45 0 .88-.56 2.2-.85 3.42-.24 1.02.51 1.85 1.52 1.85 1.83 0 3.23-1.93 3.23-4.71 0-2.46-1.77-4.18-4.29-4.18-2.92 0-4.64 2.19-4.64 4.46 0 .88.34 1.83.76 2.34.08.1.1.19.07.29-.08.32-.25 1.02-.29 1.16-.05.19-.15.23-.35.14-1.3-.61-2.11-2.5-2.11-4.03 0-3.28 2.38-6.29 6.87-6.29 3.61 0 6.41 2.57 6.41 6.01 0 3.58-2.26 6.47-5.4 6.47-1.05 0-2.04-.55-2.38-1.19l-.65 2.47c-.23.9-.86 2.03-1.29 2.72.97.3 2 .46 3.07.46 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h5>Quick Links</h5>
-        <a href="best-cold-plunge-tubs.html">Best Cold Plunges</a>
-        <a href="compare.html">Comparisons</a>
-        <a href="find-my-plunge.html">Product Finder</a>
-        <a href="cost-calculator.html">Calculator</a>
-        <a href="about.html">About Us</a>
-      </div>
-      <div>
-        <h5>Resources</h5>
-        <a href="diy-cold-plunge.html">DIY &amp; Budget Hub</a>
-        <a href="buyer-checklist.html">Buyer's Guide</a>
-        <a href="cold-plunge-beginners-guide.html">Beginner Guide</a>
-        <a href="ice-vs-chiller.html">Ice vs. Chiller</a>
-        <a href="how-we-review.html">How We Review</a>
-      </div>
-      <div>
-        <h5>Legal</h5>
-        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
-        <a href="privacy.html">Privacy Policy</a>
-
-        <a href="terms.html">Terms of Use</a>
-        <a href="editorial-policy.html">Editorial Policy</a>
-        <a href="corrections.html">Corrections Policy</a>
-        <a href="product-testing.html">Testing Disclosure</a>
-        <a href="medical-disclaimer.html">Medical Disclaimer</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
-    <div class="bottom">
-      <div>© 2026 PlungeWise. As an Amazon Associate I earn from qualifying purchases.</div>
-      <div>Site content last updated: July 2026</div>
-    </div>
-  </div>
-</footer>
-
-<script>
-(function(){
-  var $=function(id){return document.getElementById(id);};
-  var money=function(n){return "$"+(Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});};
-  function run(){
-    var spw=+$("sessions").value||0, ice=+$("ice").value||0, bag=+$("bag").value||0;
-    var watts=+$("watts").value||0, hours=+$("hours").value||0, rate=+$("rate").value||0, filt=+$("filter").value||0;
-    var upfront=+$("upfront").value||0;
-    var sessMo=spw*4.33;
-    var iceMo=sessMo*(ice/10)*bag;
-    var elecMo=(watts/1000)*hours*30*rate;
-    var filtMo=filt/12;
-    var chMo=elecMo+filtMo;
-    var save=iceMo-chMo;
-    $("iceMo").textContent=money(iceMo);
-    $("iceYr").textContent=money(iceMo*12);
-    $("chMo").textContent=money(chMo);
-    $("chYr").textContent=money(chMo*12);
-    $("save").textContent=(save>=0?money(save)+" / month":"−"+money(-save)+" (ice is cheaper here)");
-    var be="—";
-    if(save>0 && upfront>0){ var months=upfront/save; be=(Math.round(months))+" months ("+(Math.round(months/12*10)/10)+" years)"; }
-    else if(upfront>0){ be="Ice stays cheaper at these numbers"; }
-    $("be").textContent=be;
-    $("assume").textContent="Assumes "+spw+" sessions/week ("+Math.round(sessMo)+"/month), "+ice+" lbs ice/session at "+money(bag)+"/10 lb, chiller "+watts+" W for "+hours+" h/day at "+money(rate)+"/kWh, filters "+money(filt)+"/year. Estimates only — confirm local prices.";
-    $("out").style.display="block";
-    // Only a click on Calculate is a completion. The run() at the end of this
-    // block just paints the default numbers on load; counting it would make
-    // cost_calculator_complete equal to page views.
-    if(userRan && window.plungeTrack) plungeTrack("cost_calculator_complete",{});
-  }
-  var userRan=false;
-  $("calc").addEventListener("click",function(){ userRan=true; run(); });
-  run();
-})();
-</script>
-<script src="analytics.js" defer></script>
+<body data-tool="cost">
+<a class="skip" href="#calculator">Skip to cost calculator</a>
+<header class="site-header wrap"><a class="wordmark" href="/" aria-label="PlungeWise home">PlungeWise<span>.</span></a><nav aria-label="Main navigation"><a href="/">All calculators</a><a href="/ice-bath-calculator">How much ice?</a></nav></header>
+<main class="wrap">
+<section class="hero" aria-labelledby="page-title">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><span>Cold plunge cost calculator</span></nav>
+<p class="eyebrow">FREE TOOL · KNOW YOUR RUNNING COSTS</p>
+<h1 id="page-title">Ice vs. chiller cost calculator.</h1>
+<p class="intro">A cheaper tub can mean a bigger ice bill. Compare bagged ice with chiller setup, electricity and upkeep using your own numbers.</p>
+</section>
+<section id="calculator" class="calculator" aria-label="Cold plunge cost calculator">
+<form id="tool-form" class="tool-form" novalidate>
+<div class="form-heading"><h2>Chill your ice bill.</h2><span>All costs in USD</span></div>
+<div class="fields">
+<label>Plunges per week<div class="input-wrap"><input name="sessions" type="number" min="0" max="21" step="1" value="4" required><span>times</span></div></label>
+<label>Ice bags per plunge<div class="input-wrap"><input name="bags" type="number" min="0" max="100" step="0.1" value="2" required><span>bags</span></div></label>
+<label>Price per ice bag<div class="input-wrap"><span>$</span><input name="bagPrice" type="number" min="0" max="1000" step="0.01" value="5" required></div></label>
+<label>Chiller setup cost<div class="input-wrap"><span>$</span><input name="upfront" type="number" min="0" max="100000" step="1" value="1200" required></div></label>
+</div>
+<details class="more"><summary>Electricity, upkeep &amp; time period</summary><div class="fields">
+<label>Chiller energy per day<div class="input-wrap"><input name="energy" type="number" min="0" max="200" step="0.1" value="3" required><span>kWh</span></div></label>
+<label>Electricity price<div class="input-wrap"><span>$</span><input name="rate" type="number" min="0" max="10" step="0.01" value="0.16" required><span>/ kWh</span></div></label>
+<label>Chiller upkeep per month<div class="input-wrap"><span>$</span><input name="maintenance" type="number" min="0" max="10000" step="1" value="8" required></div></label>
+<label>Compare over<div class="input-wrap"><input name="months" type="number" min="1" max="120" step="1" value="12" required><span>months</span></div></label>
+</div><p class="hint">Include pump, fittings and installation in setup cost. Use measured daily energy if available; include filters and other chiller upkeep in the monthly amount.</p></details>
+<p class="input-note">USD · Editable examples, not product prices. Common tub and water costs are excluded; assumes year-round use.</p>
+<p id="tool-error" class="error" role="alert"></p>
+<button class="calculate" type="submit">Compare my costs</button>
+</form>
+<aside id="tool-result" class="tool-result" aria-live="polite" aria-atomic="true" aria-label="Cost comparison" tabindex="-1">
+<p class="result-kicker">EXAMPLE RESULT · 12 MONTHS</p><h2 class="result-title">The chiller costs less here.</h2><div class="metric-value">$609</div><p class="result-lead">Estimated difference over 12 months, including the $1,200 chiller setup.</p>
+<div class="result-grid"><div class="result-stat"><strong>$173.33</strong><span>Monthly bagged ice</span></div><div class="result-stat"><strong>$22.60</strong><span>Monthly chiller running cost</span></div><div class="result-stat"><strong>$2,080</strong><span>Ice total over 12 months</span></div><div class="result-stat"><strong>$1,471.20</strong><span>Chiller setup + 12 months running cost</span></div></div>
+<p class="result-note">Simple chiller payback: about 8.0 months at these example inputs. Your prices and routine may favor ice instead.</p>
+</aside>
+</section>
+<noscript><p class="noscript-note">The interactive calculator needs JavaScript. The worked example and table below remain available.</p></noscript>
+<section class="content-section" aria-labelledby="example-title">
+<h2 id="example-title">What the example adds up to.</h2>
+<p>Four plunges a week, two $5 bags per plunge: <strong>$2,080 a year in ice</strong>. A chiller using 3 kWh/day at $0.16/kWh, plus $8 monthly upkeep, costs <strong>$271.20 a year to run</strong>.</p>
+<div class="worked-example"><h3>Add setup cost before comparing.</h3><p>With an illustrative <strong>$1,200 setup</strong>, the chiller’s first-year total is <strong>$1,471.20</strong>: $608.80 less than ice at these inputs. Simple payback is about <strong>8.0 months</strong>. These are examples, not a product price or performance claim.</p></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Annual cost examples, scroll if needed"><table>
+<caption>Change frequency, keep the other example inputs fixed.</caption>
+<thead><tr><th scope="col">Plunges / week</th><th scope="col">Yearly ice</th><th scope="col">Chiller setup + year one</th><th scope="col">Lower total</th></tr></thead>
+<tbody><tr><th scope="row">1</th><td>$520.00</td><td>$1,471.20</td><td>Ice by $951.20</td></tr><tr><th scope="row">4</th><td>$2,080.00</td><td>$1,471.20</td><td>Chiller by $608.80</td></tr><tr><th scope="row">7</th><td>$3,640.00</td><td>$1,471.20</td><td>Chiller by $2,168.80</td></tr></tbody>
+</table></div>
+<p class="table-note">Two $5 bags/plunge; $1,200 setup; 3 kWh/day; $0.16/kWh; $8/month upkeep. Holding chiller energy fixed is an illustration, not a claim that every routine uses the same energy.</p>
+<details class="method"><summary>How costs and payback are calculated</summary>
+<p class="formula">Annual ice = plunges/week × 52 × bags/plunge × bag price.<br>Annual chiller running cost = daily kWh × 365 × electricity price + monthly upkeep × 12.</p>
+<p>Totals scale the annual costs to your chosen months, adding the chiller setup cost once.</p>
+<p class="formula">Simple payback in months = setup cost ÷ [(annual ice cost − annual chiller running cost) ÷ 12].</p>
+<p>If chiller operation costs as much as or more than ice, there is no operating-cost payback. An eventual payback does not mean the chiller is cheaper within your chosen period.</p>
+<p>Assumes year-round use and constant inputs. Excludes common tub and water costs, financing, resale, repairs beyond entered upkeep, and the value of your time. If the routes need differently priced tubs or other extra equipment, include that difference in the setup amount.</p>
+</details>
+<details class="method"><summary>Where do my ice and energy numbers come from?</summary><p>Use the <a href="/ice-bath-calculator">ice bath calculator</a> for a fresh cooling cycle. An already-cold tub may need less on its next use. Daily chiller energy is best based on measured kWh over a representative day: rated watts alone do not capture cycling, pumps, climate or insulation.</p></details>
+</section>
+<section class="content-section" aria-labelledby="next-title">
+<h2 id="next-title">Compare the gear behind the numbers.</h2>
+<p>A cost result is a planning aid, not a product recommendation. Check fit, capacity and package contents.</p>
+<div class="next-grid">
+<article class="next-card"><h3>Considering a simple ice tub?</h3><p>The Cold Pod 85-gallon tub with full-wrap thermal cover is one option to compare. No chiller included.</p><a class="button-link" href="https://www.amazon.com/dp/B0F8W817GD?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">View the Cold Pod bundle on Amazon ↗</a><p class="paid-note">Paid link. As an Amazon Associate I earn from qualifying purchases.</p><details><summary>Bundle details to check</summary><p class="small-note">Listed outer size: 29.5 × 29.5 × 29.5 in. Leave room for ice and your body. Listing checked September 30, 2026; not hands-on tested. Confirm price, seller, usable space and package contents.</p></details></article>
+<article class="next-card"><h3>Considering a chiller?</h3><p>Match cooling capacity to your volume and climate. Check pumps, filters, connections and installation costs.</p><a class="button-link" href="https://www.amazon.com/s?k=cold+plunge+water+chiller&amp;tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">Browse chillers on Amazon ↗</a><p class="paid-note">Paid link. As an Amazon Associate I earn from qualifying purchases.</p><p class="small-note">Product search, not a tested pick.</p><a class="secondary-link" href="/#brands">Explore complete systems and brands</a></article>
+</div>
+<nav class="related-links" aria-label="Related planning tools"><a href="/ice-bath-calculator">Calculate your ice needs</a><a href="/diy-cold-plunge">DIY &amp; budget guide</a><a href="/diy-ice-bath-ideas">Nine DIY ice bath ideas</a><a href="/">All free calculators</a></nav>
+</section>
+</main>
+<footer class="site-footer wrap"><span>© 2026 PlungeWise · Updated October 1, 2026</span><nav aria-label="Footer"><a href="/about">About</a><a href="/affiliate-disclosure">Affiliate disclosure</a><a href="/privacy">Privacy</a><a href="/medical-disclaimer">Medical disclaimer</a></nav></footer>
 </body>
 </html>
