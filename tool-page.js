@@ -139,6 +139,10 @@
   form.addEventListener('submit', event => {
     event.preventDefault();
     render();
+    if (!error.textContent) {
+      output.focus({preventScroll: true});
+      output.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start'});
+    }
   });
   if (kind === 'ice') updateUnitLabels();
   render();
