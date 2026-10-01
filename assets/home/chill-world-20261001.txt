@@ -1,0 +1,6 @@
+PlungeWise hero artwork — 2026-10-01
+AI-generated using the established ice-cube mascot in assets/approved-artwork.png as visual reference. Decorative fictional scene, not a product photograph.
+
+Prompt: Wide illustrated website hero. Happy translucent turquoise ice cube wearing black sunglasses and waving from a dark round tub in the right third. Sunny, bright blue water-and-ice world with calm negative space on the left for HTML headings. No text, UI, logos or lettering; not a website mockup.
+
+Output: 1536 x 1024, converted to WebP at quality 83 for the live page.
