@@ -92,6 +92,7 @@
     ? ['sessions', 'bags', 'bagPrice', 'upfront', 'energy', 'rate', 'maintenance', 'months']
     : ['volume', 'start', 'target', 'bagWeight', 'iceTemp'];
   let shareText = '';
+  let touched = location.hash.length > 1;
 
   // Shareable links keep the inputs in the URL fragment (#volume=53&start=77…).
   // A fragment is never sent to the server, so it creates no duplicate URLs for search engines.
@@ -151,7 +152,7 @@
       else showIce(result);
       const grid = output.querySelector('.result-grid');
       (grid || output).insertAdjacentHTML(grid ? 'afterend' : 'beforeend', shareBar());
-      if (location.hash !== stateHash()) history.replaceState(null, '', stateHash());
+      if (touched && location.hash !== stateHash()) history.replaceState(null, '', stateHash());
     } catch (problem) {
       error.textContent = problem.message;
       output.innerHTML = '<p class="result-kicker">One little fix</p><h2 class="result-title">Check your inputs.</h2><p class="result-lead">See the message below the form. Enter every number to see your estimate.</p>';
@@ -192,6 +193,7 @@
   }
 
   form.addEventListener('input', event => {
+    touched = true;
     if (kind === 'ice' && event.target.name === 'units') convertUnits(event.target.value);
     render();
   });
