@@ -5,7 +5,7 @@
   const form = document.querySelector('#tool-form');
   const error = document.querySelector('#tool-error');
   const output = document.querySelector('#tool-result');
-  if (!['cost', 'ice'].includes(kind) || !form || !error || !output) return;
+  if (!['cost', 'ice', 'power'].includes(kind) || !form || !error || !output) return;
 
   const number = (value, digits = 1) => new Intl.NumberFormat('en-US', {
     maximumFractionDigits: digits
@@ -70,6 +70,25 @@
       <p class="result-note">Uses your inputs and assumes year-round use. Simple payback compares operating savings with the chiller setup cost. Common tub and water costs are excluded.</p>`;
   }
 
+  function powerInputs() {
+    return Object.fromEntries(['watts', 'hours', 'pump', 'rate', 'sessions'].map(name => [name, readNumber(name)]));
+  }
+
+  function showPower(result) {
+    shareText = `My cold plunge chiller costs about ${money(result.costMonth)} a month in electricity.`;
+    output.innerHTML = `<p class="result-kicker">Your electricity estimate</p>
+      <h2 class="result-title">About ${money(result.costMonth)} a month.</h2>
+      <p class="result-lead">${number(result.kwhDay)} kWh a day, or ${money(result.costYear)} a year at your electricity price.</p>
+      <div class="result-grid">
+        ${stat('Per day', money(result.costDay), 'USD')}
+        ${stat('Per month', money(result.costMonth), 'USD')}
+        ${stat('Per year', money(result.costYear), 'USD')}
+        ${stat('Energy per year', number(result.kwhYear, 0), 'kWh')}
+        ${result.perPlunge === null ? '' : stat('Electricity per plunge', money(result.perPlunge), `USD at ${number(result.sessions, 0)} plunges / week`)}
+      </div>
+      <p class="result-note">Running hours are the biggest unknown. A plug-in energy meter shows the real kWh per day within a week; enter that number in the ice vs. chiller calculator for a full comparison.</p>`;
+  }
+
   function showIce(result) {
     const us = currentUnits === 'us';
     const mass = us ? result.kg / .45359237 : result.kg;
@@ -90,6 +109,7 @@
 
   const FIELDS = kind === 'cost'
     ? ['sessions', 'bags', 'bagPrice', 'upfront', 'energy', 'rate', 'maintenance', 'months']
+    : kind === 'power' ? ['watts', 'hours', 'pump', 'rate', 'sessions']
     : ['volume', 'start', 'target', 'bagWeight', 'iceTemp'];
   let shareText = '';
   let touched = location.hash.length > 1;
@@ -146,9 +166,10 @@
       if (typeof window.PlungeMath?.[kind] !== 'function') {
         throw new Error('The calculator could not load. Please refresh this page.');
       }
-      const result = window.PlungeMath[kind](kind === 'cost' ? costInputs() : iceInputs());
+      const result = window.PlungeMath[kind](kind === 'cost' ? costInputs() : kind === 'power' ? powerInputs() : iceInputs());
       error.textContent = '';
       if (kind === 'cost') showCost(result);
+      else if (kind === 'power') showPower(result);
       else showIce(result);
       const grid = output.querySelector('.result-grid');
       (grid || output).insertAdjacentHTML(grid ? 'afterend' : 'beforeend', shareBar());

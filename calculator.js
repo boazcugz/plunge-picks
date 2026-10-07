@@ -28,6 +28,11 @@
     const liters=flow*minutes,drop=inlet-target,coolingKW=flow/60*4.186*drop,heatKJ=liters*4.186*drop;
     return {liters,drop,coolingKW,heatKJ,thermalKWh:heatKJ/3600};
   }
-  root.PlungeMath={cost,ice,setup,shower};
+  function power(x){
+    const watts=bounded(x.watts,1,5000,'Chiller power'),hours=bounded(x.hours,0,24,'Running hours per day'),pump=bounded(x.pump,0,2000,'Pump and ozone power'),rate=bounded(x.rate,0,10,'Electricity price'),sessions=bounded(x.sessions,0,21,'Plunges per week');
+    const kwhDay=(watts*hours+pump*24)/1000,costDay=kwhDay*rate,costYear=costDay*365;
+    return {kwhDay,costDay,costMonth:costYear/12,costYear,kwhYear:kwhDay*365,perPlunge:sessions>0?costYear/(sessions*52):null,sessions};
+  }
+  root.PlungeMath={cost,ice,setup,shower,power};
   if(typeof module!=='undefined'&&module.exports)module.exports=root.PlungeMath;
 })(typeof window!=='undefined'?window:globalThis);
