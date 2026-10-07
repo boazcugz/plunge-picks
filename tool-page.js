@@ -50,6 +50,8 @@
     const saving = Math.abs(result.difference);
     const equal = saving < .005;
     const winner = result.difference > 0 ? 'a chiller' : 'bagged ice';
+    shareText = equal ? 'Ice vs. chiller: my cold plunge costs come out even.'
+      : `Ice vs. chiller: ${winner} saves me ${money(saving)} over ${number(result.months)} months.`;
     const payback = result.paybackMonths === null ? 'No operating-cost payback'
       : result.paybackMonths === 0 ? 'Immediately'
       : result.paybackMonths < .1 ? 'Less than 0.1 months'
@@ -72,6 +74,8 @@
     const us = currentUnits === 'us';
     const mass = us ? result.kg / .45359237 : result.kg;
     const meltwater = us ? result.litersAdded / 3.785411784 : result.litersAdded;
+    shareText = result.kg === 0 ? 'My ice bath needs no extra ice.'
+      : `My ice bath needs about ${number(mass, 0)} ${us ? 'lb' : 'kg'} of ice (${number(result.bags, 0)} bags).`;
     output.innerHTML = `<p class="result-kicker">Your ice estimate</p>
       <h2 class="result-title">${result.kg === 0 ? 'No extra cooling is needed for these inputs.' : 'Here is your theoretical ice requirement.'}</h2>
       <div class="result-grid">
@@ -84,6 +88,58 @@
       <p class="result-note">Ideal heat balance only: warmth from the tub, air and sunlight can increase actual ice needs. This does not estimate cooling time or apply to sealed ice packs.</p>`;
   }
 
+  const FIELDS = kind === 'cost'
+    ? ['sessions', 'bags', 'bagPrice', 'upfront', 'energy', 'rate', 'maintenance', 'months']
+    : ['volume', 'start', 'target', 'bagWeight', 'iceTemp'];
+  let shareText = '';
+
+  // Shareable links keep the inputs in the URL fragment (#volume=53&start=77…).
+  // A fragment is never sent to the server, so it creates no duplicate URLs for search engines.
+  function stateHash() {
+    const params = new URLSearchParams();
+    if (kind === 'ice') params.set('units', currentUnits);
+    for (const name of FIELDS) {
+      const value = field(name)?.value?.trim();
+      if (value) params.set(name, value);
+    }
+    return '#' + params.toString();
+  }
+
+  function restoreFromHash() {
+    if (location.hash.length < 2) return;
+    const params = new URLSearchParams(location.hash.slice(1));
+    if (kind === 'ice' && ['us', 'metric'].includes(params.get('units'))) {
+      currentUnits = params.get('units');
+      const radio = form.querySelector(`input[name="units"][value="${currentUnits}"]`);
+      if (radio) radio.checked = true;
+    }
+    for (const name of FIELDS) {
+      const raw = params.get(name);
+      if (raw !== null && raw.trim() !== '' && Number.isFinite(Number(raw))) field(name).value = raw;
+    }
+  }
+
+  function shareBar() {
+    return `<div class="share-row"><button type="button" class="share-button" data-share>Share this result</button><span class="share-status" role="status"></span></div>`;
+  }
+
+  output.addEventListener('click', async event => {
+    if (!event.target.closest('[data-share]')) return;
+    const status = output.querySelector('.share-status');
+    const url = location.origin + location.pathname + stateHash();
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: document.title, text: shareText, url });
+        return;
+      }
+      await navigator.clipboard.writeText(`${shareText} ${url}`);
+      if (status) status.textContent = 'Link copied. Anyone who opens it sees your numbers.';
+    } catch (problem) {
+      if (problem && problem.name === 'AbortError') return;
+      if (status) status.textContent = 'Copy this page address to share your numbers.';
+    }
+  });
+
   function render() {
     try {
       if (typeof window.PlungeMath?.[kind] !== 'function') {
@@ -93,6 +149,9 @@
       error.textContent = '';
       if (kind === 'cost') showCost(result);
       else showIce(result);
+      const grid = output.querySelector('.result-grid');
+      (grid || output).insertAdjacentHTML(grid ? 'afterend' : 'beforeend', shareBar());
+      if (location.hash !== stateHash()) history.replaceState(null, '', stateHash());
     } catch (problem) {
       error.textContent = problem.message;
       output.innerHTML = '<p class="result-kicker">One little fix</p><h2 class="result-title">Check your inputs.</h2><p class="result-lead">See the message below the form. Enter every number to see your estimate.</p>';
@@ -144,6 +203,7 @@
       output.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start'});
     }
   });
+  restoreFromHash();
   if (kind === 'ice') updateUnitLabels();
   render();
 })();
