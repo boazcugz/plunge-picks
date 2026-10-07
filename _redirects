@@ -13,3 +13,30 @@ https://plunge-picks.netlify.app/*   https://plungewise.com/:splat    301!
 http://www.plungewise.com/*          https://plungewise.com/:splat    301!
 https://www.plungewise.com/*         https://plungewise.com/:splat    301!
 http://plungewise.com/*              https://plungewise.com/:splat    301!
+
+# Clean URLs: every page.html permanently redirects to /page so Google
+# keeps one address per page (GSC showed .html and clean duplicates).
+/index.html    /    301!
+/about.html    /about    301!
+/affiliate-disclosure.html    /affiliate-disclosure    301!
+/best-budget-cold-plunge.html    /best-budget-cold-plunge    301!
+/best-cold-plunge-tubs.html    /best-cold-plunge-tubs    301!
+/buyer-checklist.html    /buyer-checklist    301!
+/cold-plunge-beginners-guide.html    /cold-plunge-beginners-guide    301!
+/compare.html    /compare    301!
+/contact.html    /contact    301!
+/corrections.html    /corrections    301!
+/cost-calculator.html    /cost-calculator    301!
+/diy-cold-plunge.html    /diy-cold-plunge    301!
+/diy-ice-bath-ideas.html    /diy-ice-bath-ideas    301!
+/editorial-policy.html    /editorial-policy    301!
+/faq.html    /faq    301!
+/find-my-plunge.html    /find-my-plunge    301!
+/how-we-review.html    /how-we-review    301!
+/ice-bath-calculator.html    /ice-bath-calculator    301!
+/ice-vs-chiller.html    /ice-vs-chiller    301!
+/medical-disclaimer.html    /medical-disclaimer    301!
+/plunge-vs-ice-barrel.html    /plunge-vs-ice-barrel    301!
+/privacy.html    /privacy    301!
+/product-testing.html    /product-testing    301!
+/terms.html    /terms    301!
