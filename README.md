@@ -62,8 +62,10 @@ repositories do not synchronize automatically. Keep `README.md`,
 `netlify.toml`, and `.gitignore` when synchronizing the static files.
 
 Do not commit passwords, API keys, or account credentials. Amazon links use the
-owner-confirmed tracking tag `plungepicks-20`. Analytics is currently disabled;
-the site has no cookie banner.
+owner-confirmed tracking tag `plungepicks-20`. GA4 is disabled. Visitor
+counts come from Cloudflare Web Analytics (cookieless, added 2026-10-07; the
+beacon snippet sits before `</body>` on every page), so the site has no cookie
+banner. New pages must include the same snippet.
 
 ## Search discovery
 

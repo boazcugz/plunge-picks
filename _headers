@@ -47,6 +47,11 @@
 #    ever asks you to widen this policy, that is the signal that it is loading
 #    third-party code, and it should be refused rather than accommodated.
 #
+# 6. Cloudflare Web Analytics was added on 2026-10-07 at the owner's request
+#    (cookieless, no consent banner). Added hosts: static.cloudflareinsights.com
+#    (script-src, the beacon) and cloudflareinsights.com (connect-src, reporting).
+#    GA4 remains disabled; its hosts are left in place, unused.
+#
 # Netlify syntax: a path pattern on its own line, then header lines indented
 # by two spaces. Blank lines separate blocks. `#` starts a comment.
 # =============================================================================
@@ -57,4 +62,4 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), screen-wake-lock=(), usb=(), xr-spatial-tracking=()
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
