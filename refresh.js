@@ -23,7 +23,10 @@
     const sync = () => {
       const value = Number(input.value);
       slider.min = primary === 'volume' ? '1' : input.min || '0';
-      slider.max = String(Math.max(max, Number.isFinite(value) ? value : max));
+      // Litres need a bigger range than US gallons.
+      const metric = primary === 'volume' && form.querySelector('[name="units"]:checked')?.value === 'metric';
+      const top = metric ? Math.round(max * 3.785411784) : max;
+      slider.max = String(Math.max(top, Number.isFinite(value) ? value : top));
       slider.value = input.value;
       const unit = field.querySelector('[data-unit], [data-shower-unit]')?.textContent || '';
       slider.setAttribute('aria-valuetext', input.value + (unit ? ' ' + unit : ''));
@@ -41,7 +44,7 @@
     if (primary === 'volume' || primary === 'hours' || primary === 'minutes') {
       const note = document.createElement('p'); note.className = 'assumption-preview'; main.after(note);
       const describe = () => {
-        const v = n => form.elements.namedItem(n)?.value || '—';
+        const v = n => { const x = form.elements.namedItem(n)?.value; if (!x) return '—'; const num = Number(x); return Number.isFinite(num) ? String(Math.round(num * 100) / 100) : x; };
         const unit = form.querySelector('[data-unit=temperature], [data-shower-unit=temperature]')?.textContent || '';
         note.textContent = primary === 'volume' ? `Water ${v('start')}${unit} → ${v('target')}${unit} · ice bag ${v('bagWeight')} ${form.querySelector('[data-unit=weight]')?.textContent || ''}. Edit below.`
           : primary === 'hours' ? `${v('watts')} W chiller · ${v('pump')} W pump running 24 h · $${v('rate')}/kWh. Edit below.`
