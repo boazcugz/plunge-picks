@@ -14,6 +14,8 @@ are the deployable source; there is no compilation step or dependency install.
 | `style.css` | Homepage styling and responsive layout |
 | `app.js` | Interactive controls and product recommendations |
 | `calculator.js` | Calculator formulas |
+| `refresh.js`, `refresh.css` | Shared simplified controls, clear Amazon links and responsive styles |
+| `builder.js` | Ice, chiller and specialist freezer conversion parts planner |
 | `products.js` | Product data and outbound links |
 | `assets/` | Artwork, photos, and brand icons |
 | `analytics-config.js` | Analytics configuration |

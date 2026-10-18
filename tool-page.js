@@ -171,6 +171,12 @@
       if (kind === 'cost') showCost(result);
       else if (kind === 'power') showPower(result);
       else showIce(result);
+      const isChiller = kind === 'power' || (kind === 'cost' && result.difference > 0);
+      const query = kind === 'ice' ? 'large reusable ice bath molds' : 'cold plunge water chiller';
+      const url = kind === 'cost' && !isChiller ? 'https://www.amazon.com/dp/B0F8W817GD?tag=plungepicks-20' : 'https://www.amazon.com/s?k=' + encodeURIComponent(query) + '&tag=plungepicks-20';
+      const label = kind === 'ice' ? 'Browse ice molds on Amazon' : isChiller ? 'Browse chillers on Amazon' : 'See Cold Pod on Amazon';
+      const shop = `<div class="quick-shop"><a class="amazon-button" href="${url.replaceAll('&','&amp;')}" target="_blank" rel="sponsored noopener">${label} ↗</a><p>Paid link. As an Amazon Associate I earn from qualifying purchases.</p><a href="/#build-your-plunge">Build a parts list &amp; budget →</a></div>`;
+      output.querySelector('.result-lead, .result-title').insertAdjacentHTML('afterend', shop);
       const grid = output.querySelector('.result-grid');
       (grid || output).insertAdjacentHTML(grid ? 'afterend' : 'beforeend', shareBar());
       if (touched && location.hash !== stateHash()) history.replaceState(null, '', stateHash());
