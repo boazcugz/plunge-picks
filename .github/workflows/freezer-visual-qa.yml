@@ -1,0 +1,102 @@
+name: Freezer page visual checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'freezer-plunge.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: freezer-visual-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  responsive-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser in temporary workspace
+        run: |
+          mkdir -p /tmp/freezer-qa
+          cd /tmp/freezer-qa
+          npm init -y
+          npm install --save-exact playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Render and check desktop and mobile
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/freezer-http.log 2>&1 &
+          mkdir -p qa-output
+          cat > /tmp/freezer-qa/check.cjs <<'NODE'
+          const { chromium } = require('playwright');
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const path = require('node:path');
+          (async () => {
+            const out = path.join(process.env.GITHUB_WORKSPACE, 'qa-output');
+            const browser = await chromium.launch();
+            const results = [];
+            for (const width of [1440, 1024, 768, 390, 320]) {
+              const page = await browser.newPage({ viewport: { width, height: 1000 }, deviceScaleFactor: 1 });
+              const errors = [];
+              page.on('pageerror', e => errors.push(e.message));
+              await page.goto('http://127.0.0.1:4173/freezer-plunge.html', { waitUntil: 'networkidle' });
+              await page.evaluate(() => document.fonts.ready);
+              const geometry = await page.evaluate(() => {
+                const text = document.querySelector('.hero-copy').getBoundingClientRect();
+                const art = document.querySelector('.hero-art').getBoundingClientRect();
+                const intersection = Math.max(0, Math.min(text.right, art.right) - Math.max(text.left, art.left)) * Math.max(0, Math.min(text.bottom, art.bottom) - Math.max(text.top, art.top));
+                const ids = [...document.querySelectorAll('[id]')].map(e => e.id);
+                return { overflow: document.documentElement.scrollWidth > innerWidth + 1, intersection, uniqueIds: ids.length === new Set(ids).size, anchorsOk: [...document.querySelectorAll('a[href^="#"]')].every(a => document.getElementById(a.hash.slice(1))) };
+              });
+              assert.equal(geometry.overflow, false, `Horizontal overflow at ${width}`);
+              assert.equal(geometry.intersection, 0, `Text overlaps artwork at ${width}`);
+              assert(geometry.uniqueIds && geometry.anchorsOk);
+              assert.equal(await page.locator('.parts-card').count(), 3);
+              const shops = await page.locator('.parts-card a[target="_blank"]').evaluateAll(as => as.map(a => ({href:a.href, rel:a.rel})));
+              assert.equal(shops.length, 4);
+              assert(shops.every(a => a.rel.includes('sponsored') && a.rel.includes('noopener')));
+              for (const asin of ['B0D425ML6G', 'B01HXM5UAC', 'B0002APXK0']) assert(shops.some(a => a.href.includes(asin) && a.href.includes('tag=plungepicks-20')));
+              assert(shops.some(a => a.href.includes('awinmid=109226') && a.href.includes('awinaffid=3134027')));
+              assert.equal(await page.locator('.gallery-slide').count(), 6);
+              await page.getByRole('button', { name: 'Next project photo', exact: true }).click();
+              assert.equal(await page.locator('#gallery-count').innerText(), '2 of 6');
+              await page.getByRole('button', { name: 'Show temperature probe', exact: true }).click();
+              assert.equal(await page.locator('#gallery-count').innerText(), '4 of 6');
+              await page.getByRole('button', { name: 'Show freezer photo', exact: true }).click();
+              for (const image of await page.locator('img').all()) {
+                await image.scrollIntoViewIfNeeded().catch(() => {});
+              }
+              const broken = await page.locator('img').evaluateAll(imgs => imgs.filter(i => i.complete && !i.naturalWidth).map(i => i.src));
+              assert.equal(broken.length, 0, JSON.stringify(broken));
+              assert.equal(errors.length, 0, JSON.stringify(errors));
+              if (width === 1440 || width === 390) {
+                const label = width === 1440 ? 'desktop' : 'mobile';
+                await page.evaluate(() => scrollTo(0, 0));
+                await page.screenshot({ path: path.join(out, `freezer-${label}.png`), fullPage: true });
+                await page.locator('.hero-band').screenshot({ path: path.join(out, `freezer-${label}-hero.png`) });
+                await page.locator('#parts').screenshot({ path: path.join(out, `freezer-${label}-products.png`) });
+              }
+              results.push({ width, ...geometry, productCards: 3, purchaseLinks: shops.length, galleryViews: 6, brokenImages: broken.length, javascriptErrors: errors.length });
+              await page.close();
+            }
+            await browser.close();
+            fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify({commit: process.env.GITHUB_SHA, results}, null, 2));
+            console.log(JSON.stringify(results, null, 2));
+          })().catch(e => { console.error(e); process.exit(1); });
+          NODE
+          node /tmp/freezer-qa/check.cjs
+      - name: Save visual results and exact page assets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: freezer-visual-review
+          path: |
+            qa-output/
+            freezer-plunge.html
+            assets/home/chill-world-20261001.webp
+            assets/diy/freezer-plunge-*.jpg
+          retention-days: 7
