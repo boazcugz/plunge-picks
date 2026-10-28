@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#c8edff">
   <title>My $300 Freezer Cold Plunge | PlungeWise</title>
-  <meta name="description" content="Six months of daily cold plunges in a second-hand chest freezer. See the real photos, the Inkbird controller, and the parts I actually use.">
+  <meta name="description" content="Tired of buying ice for every plunge? See Boaz's real $300 chest-freezer experiment, six original setup photos, the Inkbird controller, and honest safety trade-offs.">
   <link rel="canonical" href="https://plungewise.com/freezer-plunge">
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" sizes="any">
@@ -32,12 +32,16 @@
     "description": "Six months of daily use in a second-hand chest freezer, with real photos and a list of parts.",
     "image": [
       "https://plungewise.com/assets/diy/freezer-plunge-open.jpg",
-      "https://plungewise.com/assets/diy/freezer-plunge-inkbird.jpg"
+      "https://plungewise.com/assets/diy/freezer-plunge-inkbird.jpg",
+      "https://plungewise.com/assets/diy/freezer-plunge-power-setup.jpg",
+      "https://plungewise.com/assets/diy/freezer-plunge-probe.jpg",
+      "https://plungewise.com/assets/diy/freezer-plunge-net.jpg",
+      "https://plungewise.com/assets/diy/freezer-plunge-lock.jpg"
     ],
     "author": {"@type": "Person", "name": "Boaz"},
     "publisher": {"@type": "Organization", "name": "PlungeWise", "url": "https://plungewise.com/"},
     "mainEntityOfPage": "https://plungewise.com/freezer-plunge",
-    "dateModified": "2026-10-25"
+    "dateModified": "2026-10-28"
   }
   </script>
   <style>
@@ -78,9 +82,33 @@
     .thread-proof a{font-weight:750;text-underline-offset:3px}
     .thread-proof .short-link{margin-left:12px}
     .photo-frame{position:relative;padding:13px;background:#fff;border:1px solid #b8dbe6;border-radius:28px;transform:rotate(1.5deg);box-shadow:0 16px 32px #1355741a}
-    .photo-frame img{display:block;width:100%;height:500px;object-fit:cover;border-radius:18px}
-    .photo-note{position:absolute;right:-14px;bottom:-15px;padding:10px 16px;background:#fff9cf;border:1px solid #f5eaa4;border-radius:9px;box-shadow:0 4px 0 #e7db974a;font-family:'Comic Sans MS',cursive;font-size:24px;font-weight:700;transform:rotate(-6deg)}
+    .gallery-slide{margin:0}
+    .gallery-slide[hidden]{display:none}
+    .gallery-slide img{display:block;width:100%;height:410px;object-fit:contain;background:#eaf5f8;border-radius:18px}
+    .gallery-slide figcaption{min-height:56px;padding:12px 5px 5px;color:#31576b;font-size:13px;line-height:1.45}
+    .gallery-stage{position:relative}
+    .gallery-arrow{position:absolute;top:calc(50% - 40px);z-index:2;display:grid;place-items:center;width:42px;height:42px;border:1px solid #bedce6;border-radius:50%;background:#fffffff0;color:#0b405c;font-size:27px;line-height:1;cursor:pointer;box-shadow:0 4px 12px #0d46632b}
+    .gallery-arrow:hover{background:#e8f8ff}.gallery-arrow.prev{left:10px}.gallery-arrow.next{right:10px}
+    .gallery-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:2px 4px 9px;color:#466a7b;font-size:12px;font-weight:700}
+    .gallery-thumbs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+    .gallery-thumbs button{padding:3px;border:2px solid transparent;border-radius:9px;background:transparent;cursor:pointer}
+    .gallery-thumbs button[aria-pressed="true"]{border-color:var(--blue);background:#e6f5ff}
+    .gallery-thumbs img{width:100%;height:53px;display:block;object-fit:cover;border-radius:5px}
+    .gallery-thumbs button:focus-visible,.gallery-arrow:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+    .photo-note{position:absolute;right:-14px;top:-18px;padding:10px 16px;background:#fff9cf;border:1px solid #f5eaa4;border-radius:9px;box-shadow:0 4px 0 #e7db974a;font-family:'Comic Sans MS',cursive;font-size:19px;font-weight:700;transform:rotate(-6deg)}
     main{padding-top:28px}
+    .jump-links{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 2px}
+    .jump-links a{font-size:13px;font-weight:800;text-underline-offset:4px;color:#184f6e}
+    .problem-zone{max-width:950px;margin:0 auto 26px;padding:29px 32px;background:#102f43;color:#fff;border-radius:22px;box-shadow:0 12px 24px #113b4a14}
+    .problem-zone .kicker,.parts-zone .kicker,.decision-zone .kicker{font-size:11px;letter-spacing:1.3px;font-weight:850;color:#7bdce9;text-transform:uppercase}
+    .problem-zone h2{font-size:clamp(26px,3.3vw,37px);margin:8px 0 12px;max-width:750px}
+    .problem-zone>p{font-size:15px;max-width:730px;color:#d1eaf2;margin:0 0 20px}
+    .problem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:19px}
+    .problem-grid div{background:#ffffff12;border:1px solid #ffffff2e;border-radius:13px;padding:14px}
+    .problem-grid strong{display:block;font-size:14px;margin-bottom:5px}
+    .problem-grid span{font-size:12px;color:#c9e2e8;line-height:1.5}
+    .problem-answer{padding:15px 18px;border-radius:13px;background:#dbf9fb;color:#153f51;font-size:14px;line-height:1.6}
+    .problem-answer a{font-weight:850;text-underline-offset:3px}
     .smallprint{max-width:950px;margin:0 auto 36px;padding:17px 20px;border:1px solid #cfe5e8;border-radius:16px;background:#fff;font-size:12px;line-height:1.6;color:#526e7b}
     .smallprint p{margin:0}
     .smallprint p+p{margin-top:8px}
@@ -92,6 +120,19 @@
     .learn-body{display:grid;grid-template-columns:220px 1fr;gap:26px;align-items:start;margin-top:18px}
     .learn-body img{width:100%;height:auto;border-radius:12px}
     .learn-body p{margin:0;color:#365a6c;font-size:14px;line-height:1.7}
+    .parts-zone{max-width:950px;margin:0 auto 36px;padding:25px;background:#fff;border:1px solid #cfe5e8;border-radius:20px}
+    .parts-zone .kicker,.decision-zone .kicker{color:#087b8a}
+    .parts-zone h2,.decision-zone h2{font-size:28px;margin:7px 0 10px}
+    .parts-zone>p,.decision-zone>p{margin:0 0 16px;color:#4c6978;font-size:14px}
+    .parts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .parts-card{padding:20px;border-radius:16px;border:1px solid #d2e5ed;background:#f6fbfd}
+    .parts-card h3{font-size:21px;margin:0 0 8px}.parts-card p{font-size:13px;color:#436376;margin:0 0 16px}
+    .parts-card .shop-link{font-size:14px;min-height:51px;margin-bottom:12px}
+    .parts-card .vendor-alternate{margin:0}
+    .parts-caveat{font-size:12px!important;margin:16px 0 0!important}
+    .decision-zone{max-width:950px;margin:0 auto 36px;padding:26px;background:#d9f5fa;border:1px solid #b8e5ec;border-radius:20px}
+    .decision-actions{display:flex;flex-wrap:wrap;gap:12px}.decision-actions a{display:inline-flex;align-items:center;padding:12px 16px;border-radius:11px;background:#103b53;color:white;text-decoration:none;font-size:14px;font-weight:800}
+    .decision-actions a.secondary{background:#fff;color:#174e68;border:1px solid #a5d5e2}
     .faq-zone{max-width:950px;margin:0 auto 36px}
     .faq-zone h2,.used-zone h2{font-size:26px;margin:0 0 12px}
     .faq-zone>p,.used-zone>p{font-size:14px;color:#506b7c;margin:0 0 17px}
@@ -111,9 +152,9 @@
     @media(max-width:780px){
       .wrap{width:calc(100% - 32px)}.header{min-height:69px}.wordmark{font-size:24px}.header nav{gap:13px}.header nav a{font-size:12px}
       .hero-band{padding-bottom:35px}.lead{grid-template-columns:1fr;gap:25px;padding-top:17px}.lead-copy{text-align:left}.eyebrow{font-size:9px}
-      h1{font-size:clamp(42px,11vw,60px);margin-bottom:13px}.lead-copy>p{font-size:16px}.photo-frame{grid-row:1;transform:none;padding:9px;border-radius:22px}.photo-frame img{height:270px;border-radius:15px}
-      .photo-note{font-size:18px;right:6px;bottom:-11px}.shop-link{min-height:54px}.learn-body{grid-template-columns:1fr}.learn-body img{max-width:290px}
-      .faq-grid{grid-template-columns:1fr}.used-zone ul{grid-template-columns:1fr}.used-zone{padding:20px}
+      h1{font-size:clamp(42px,11vw,60px);margin-bottom:13px}.lead-copy>p{font-size:16px}.photo-frame{grid-row:1;transform:none;padding:9px;border-radius:22px}.gallery-slide img{height:255px;border-radius:15px}.gallery-slide figcaption{min-height:68px;font-size:12px}.gallery-arrow{top:100px;width:36px;height:36px;font-size:23px}.gallery-thumbs img{height:45px}
+      .photo-note{font-size:15px;right:6px;top:-12px}.shop-link{min-height:54px}.learn-body{grid-template-columns:1fr}.learn-body img{max-width:290px}
+      .problem-zone{padding:24px 20px}.problem-grid,.parts-grid{grid-template-columns:1fr}.parts-zone,.decision-zone{padding:20px}.faq-grid{grid-template-columns:1fr}.used-zone ul{grid-template-columns:1fr}.used-zone{padding:20px}
       footer .footer-main{display:block}footer .footer-main span{display:block;margin-bottom:10px}
     }
     @media(max-width:390px){.header nav{gap:8px}.header nav a{font-size:11px}.wordmark{font-size:22px}}
@@ -127,37 +168,104 @@
     </header>
     <section class="lead wrap" aria-labelledby="page-title">
       <div class="lead-copy">
-        <div class="eyebrow">✦ REAL DIY PROJECT. REAL PHOTOS.</div>
-        <h1 id="page-title">My $300<br><span>freezer plunge.</span></h1>
-        <p>Six months of daily plunges. A second-hand Fujicom freezer, an Inkbird controller, and not much else. Here are the parts I actually use.</p>
-        <p class="hero-safety"><strong>How I use it safely:</strong> The Inkbird controls the freezer around the clock, but I disconnect power whenever anyone gets in. Our home has an RCD at the electrical panel. The keyed lid is locked when nobody is around to keep the kids out, and it stays open during use. <a href="/diy-ice-bath-ideas#freezer-conversion">Full safety notes →</a></p>
+        <div class="eyebrow">✦ 6 MONTHS IN · MY REAL PROJECT</div>
+        <h1 id="page-title">Tired of buying ice?<br><span>Here's my $300 experiment.</span></h1>
+        <p>Getting cold once is easy. Keeping up the routine is harder when every session means more bags of ice. I tried a second-hand Fujicom freezer and an Inkbird controller instead. These are my real photos, costs and trade-offs after six months.</p>
+        <p class="hero-safety"><strong>My precautions, not a safety certification:</strong> I disconnect power before anyone enters; the house has a panel RCD, and the lid is locked against child access when not in use. None of that makes a converted freezer approved or inherently safe for immersion. <a href="#safety-notes">Read the electrical warning ↓</a></p>
         <div class="metrics"><span>~$300 all-in</span><span>3°C / 37°F target</span><span>6 months daily</span><span>Unplugged every plunge</span></div>
-        <a class="shop-link" href="https://www.amazon.com/dp/B01HXM5UAC/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">Shop Inkbird ITC-308 on Amazon <span aria-hidden="true">↗</span></a>
+        <a class="shop-link" href="https://www.amazon.com/dp/B01HXM5UAC/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">See the Inkbird controller I use on Amazon <span aria-hidden="true">↗</span></a>
         <a class="vendor-alternate" href="https://www.awin1.com/cread.php?awinmid=109226&amp;awinaffid=3134027&amp;clickref=freezer-page&amp;ued=https%3A%2F%2Fwww.inkbird.com%2Fproducts%2Ftemperature-controller-itc-308" rel="sponsored nofollow noopener" target="_blank">or direct from Inkbird</a>
         <a class="shop-link alt" href="https://www.amazon.com/dp/B0002APXK0/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">Shop a similar skimming net <span aria-hidden="true">↗</span></a>
         <div class="affiliate-near">Affiliate links. I earn a small commission if you buy, at no extra cost to you.</div>
-        <a class="used-link" href="#used-freezer">Buying a used chest freezer? Start here →</a>
+        <div class="jump-links"><a href="#real-photos">Explore all 6 photo views ↓</a><a href="#used-freezer">Used-freezer checklist ↓</a></div>
         <div class="thread-proof">This build hit #1 on r/coldplunge (about 34,000 views in its first 10 hours, per 25 October insights). <a href="https://www.reddit.com/r/coldplunge/comments/1xehx4i/6_months_of_daily_plunges_in_a_300_used_chest/" target="_blank" rel="noopener">Read the questions and full discussion ↗</a><a class="short-link" href="https://youtube.com/shorts/T_CHwiQG7Y0" target="_blank" rel="noopener">Watch the Short ↗</a></div>
       </div>
-      <div class="photo-frame">
-        <img src="/assets/diy/freezer-plunge-open.jpg" alt="My white chest freezer filled with water, open lid and temperature probe" width="1000" height="667" fetchpriority="high">
+      <div class="photo-frame gallery" id="real-photos" aria-label="Six photographic views from Boaz's freezer plunge project">
+        <div class="gallery-stage">
+          <figure class="gallery-slide" data-slide="0">
+            <img src="/assets/diy/freezer-plunge-open.jpg" alt="White Fujicom chest freezer open and filled with water, with a probe cable visible at the right corner" width="1000" height="667" fetchpriority="high">
+            <figcaption><strong>01 · The actual freezer.</strong> Second-hand Fujicom, filled with water in my backyard.</figcaption>
+          </figure>
+          <figure class="gallery-slide" data-slide="1" hidden>
+            <img src="/assets/diy/freezer-plunge-inkbird.jpg" alt="Close-up of the Inkbird display showing a water reading of 6.1 degrees Celsius and target of 3.0" width="1000" height="667" loading="lazy">
+            <figcaption><strong>02 · A real temperature reading.</strong> 6.1°C after use, with a 3.0°C setpoint — a snapshot, not an independent performance test.</figcaption>
+          </figure>
+          <figure class="gallery-slide" data-slide="2" hidden>
+            <img src="/assets/diy/freezer-plunge-power-setup.jpg" alt="Wide photograph of the Inkbird controller next to plugs and a power strip mounted on a wall" width="1536" height="710" loading="lazy">
+            <figcaption><strong>03 · Controller and power connection.</strong> This is my real setup, <em>not</em> safe wiring guidance; have any installation evaluated by an electrician.</figcaption>
+          </figure>
+          <figure class="gallery-slide" data-slide="3" hidden>
+            <img src="/assets/diy/freezer-plunge-probe.jpg" alt="Black temperature probe cable hanging over the chest freezer rim and down into the water" width="710" height="1536" loading="lazy">
+            <figcaption><strong>04 · Where the probe sits.</strong> The sensor hangs in the water by the corner; this photo does not establish electrical safety.</figcaption>
+          </figure>
+          <figure class="gallery-slide" data-slide="4" hidden>
+            <img src="/assets/diy/freezer-plunge-net.jpg" alt="A hand holding a small green aquarium net over the water-filled chest freezer" width="1536" height="710" loading="lazy">
+            <figcaption><strong>05 · The simple cleaning net.</strong> It removes visible debris, but does not filter or sanitise the water.</figcaption>
+          </figure>
+          <figure class="gallery-slide" data-slide="5" hidden>
+            <img src="/assets/diy/freezer-plunge-lock.jpg" alt="Close-up of the freezer lid's handle, key and lock" width="1536" height="710" loading="lazy">
+            <figcaption><strong>06 · The keyed lid.</strong> Child access and the risk of entrapment need serious attention.</figcaption>
+          </figure>
+          <button class="gallery-arrow prev" type="button" aria-label="Previous project photo">‹</button>
+          <button class="gallery-arrow next" type="button" aria-label="Next project photo">›</button>
+        </div>
+        <div class="gallery-meta"><span>Real photos, not product renders</span><span id="gallery-count" aria-live="polite">1 of 6</span></div>
+        <div class="gallery-thumbs" role="group" aria-label="Choose a project photo">
+          <button type="button" aria-label="Show freezer photo" aria-pressed="true"><img src="/assets/diy/freezer-plunge-open.jpg" alt="" width="100" height="66"></button>
+          <button type="button" aria-label="Show controller display" aria-pressed="false"><img src="/assets/diy/freezer-plunge-inkbird.jpg" alt="" width="100" height="66"></button>
+          <button type="button" aria-label="Show controller and plugs" aria-pressed="false"><img src="/assets/diy/freezer-plunge-power-setup.jpg" alt="" width="100" height="66"></button>
+          <button type="button" aria-label="Show temperature probe" aria-pressed="false"><img src="/assets/diy/freezer-plunge-probe.jpg" alt="" width="100" height="66"></button>
+          <button type="button" aria-label="Show cleaning net" aria-pressed="false"><img src="/assets/diy/freezer-plunge-net.jpg" alt="" width="100" height="66"></button>
+          <button type="button" aria-label="Show lid lock" aria-pressed="false"><img src="/assets/diy/freezer-plunge-lock.jpg" alt="" width="100" height="66"></button>
+        </div>
         <span class="photo-note">Yep, this is mine!</span>
       </div>
     </section>
   </div>
   <main class="wrap">
-    <div class="smallprint">
+    <section class="problem-zone" aria-labelledby="problem-title">
+      <span class="kicker">The problem → My experiment</span>
+      <h2 id="problem-title">The hardest part wasn't the cold. It was making it a habit.</h2>
+      <p>Cold plunging with ice can work. But a daily routine can become a cycle of buying, freezing, carrying and replacing ice. I wanted water that would be ready without starting that process again every afternoon.</p>
+      <div class="problem-grid">
+        <div><strong>Ice is temporary</strong><span>Every session needs another cooling plan, especially in warm weather.</span></div>
+        <div><strong>Preparation adds friction</strong><span>When setup becomes a chore, it's easier to skip a day.</span></div>
+        <div><strong>Chillers are another investment</strong><span>Purpose-built systems are worth comparing, but they weren't my low-budget experiment.</span></div>
+      </div>
+      <div class="problem-answer"><strong>My answer:</strong> a used freezer with an Inkbird temperature controller. I spent about $300 and have used it daily for six months. <strong>The trade-off is significant electrical and water-safety risk</strong>, so consider this an owner report — not a recommendation to copy the conversion. <a href="#parts">See the actual parts and limitations ↓</a></div>
+    </section>
+    <div class="smallprint" id="safety-notes">
       <p><strong>Important:</strong> Chest freezers are not designed as plunge tubs. Water and mains power are a serious hazard. A panel RCD helps reduce electric-shock risk but doesn't make immersion in an appliance safe. Disconnect all power before entry and have a qualified electrician assess your installation. This isn't a wiring or conversion tutorial.</p>
-      <p><strong>Parts:</strong> My $300 was a past build cost, not a shopping quote. The Amazon Inkbird listing is a US 110V model; verify the electrical ratings for your country. The linked net is a similar product, not the verified exact model I own.</p>
+      <p><strong>Parts:</strong> My $300 was a past build cost, not a shopping quote. The Amazon Inkbird listing is a US 110V model; verify the electrical ratings for your country. The linked net is a similar product, not the verified exact model I own. A debris net is not a sanitisation system.</p>
     </div>
     <section class="learn" aria-label="My six month report">
       <details>
-        <summary>Curious how it actually runs?</summary>
+        <summary>Curious how it actually runs? My six-month report</summary>
         <div class="learn-body">
           <img src="/assets/diy/freezer-plunge-inkbird.jpg" alt="Inkbird ITC-308 showing 6.1°C and the 3.0°C temperature set point" width="1000" height="667" loading="lazy">
           <p>The second-hand Fujicom is somewhere around 300–400 litres (I never checked the label). I keep the Inkbird ITC-308 set to 3°C with the probe in the water. In the photo it reads 6.1°C after someone got out, then cools back down. I rinse first, skim the surface with an aquarium net and replace the water about every two weeks. No filter, no added sealing, and no visible rust or faults after six months. The original drain plug held without leaks on mine. Electricity use has not been measured yet. Photos: 23 October 2026.</p>
         </div>
       </details>
+    </section>
+    <section class="parts-zone" id="parts" aria-labelledby="parts-title">
+      <span class="kicker">Seen the photos? Here are the parts.</span>
+      <h2 id="parts-title">What I actually use — and why</h2>
+      <p>These aren't random product picks. The controller appears in my original photos; the net link is to a comparable product. Check suitability and safety before buying anything for your own setup.</p>
+      <div class="parts-grid">
+        <article class="parts-card">
+          <h3>Inkbird ITC-308</h3>
+          <p>My plug-in temperature controller. In the photo, the display shows a 3°C setpoint and a momentary 6.1°C water reading. A controller regulates cooling; it does <strong>not</strong> isolate power or make a converted freezer safe to enter.</p>
+          <a class="shop-link" href="https://www.amazon.com/dp/B01HXM5UAC/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">Check Inkbird ITC-308 on Amazon <span aria-hidden="true">↗</span></a>
+          <a class="vendor-alternate" href="https://www.awin1.com/cread.php?awinmid=109226&amp;awinaffid=3134027&amp;clickref=freezer-page-parts&amp;ued=https%3A%2F%2Fwww.inkbird.com%2Fproducts%2Ftemperature-controller-itc-308" rel="sponsored nofollow noopener" target="_blank">Or compare at the Inkbird store</a>
+        </article>
+        <article class="parts-card">
+          <h3>A simple skimming net</h3>
+          <p>I skim leaves and visible debris between water changes. The product linked here is similar to mine, not the exact model. A hand net is <strong>not</strong> filtration or water disinfection.</p>
+          <a class="shop-link alt" href="https://www.amazon.com/dp/B0002APXK0/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">See a similar net on Amazon <span aria-hidden="true">↗</span></a>
+          <a class="vendor-alternate" href="#real-photos">See the net in my photo ↑</a>
+        </article>
+      </div>
+      <p class="parts-caveat"><strong>Transparency:</strong> These are affiliate links; a qualifying purchase may earn me a commission without raising your price. The Inkbird listing shown is for US 110V; check your local voltage and rated equipment. No part on this page makes chest-freezer immersion certified safe.</p>
     </section>
     <section class="faq-zone" aria-labelledby="faq-title">
       <h2 id="faq-title">Questions from the Reddit thread</h2>
@@ -170,6 +278,15 @@
         <details><summary>How do you clean the water?</summary><p>No filtration. I rinse before getting in, skim debris using an aquarium net and change the water every two weeks.</p></details>
         <details><summary>How much electricity does it use?</summary><p><strong>Not measured yet.</strong> My rough calculation is around $5–8 per month, but that is an estimate, not a real usage reading. Actual costs depend on weather, insulation and electricity rates.</p></details>
         <details><summary>Can this go in a basement?</summary><p>General planning advice, not something I've tested myself: think about splashing, drainage and water damage. A cooler room may reduce compressor runtime. Check ventilation, floor drainage and the electrical setup with a qualified professional.</p></details>
+      </div>
+    </section>
+    <section class="decision-zone" aria-labelledby="decision-title">
+      <span class="kicker">What should you do next?</span>
+      <h2 id="decision-title">Love the idea of less ice? Compare the trade-offs first.</h2>
+      <p>My $300 setup is one personal example, not a cost or safety guarantee. If you're considering regular cold plunges, compare the ongoing ice budget with purpose-built, professionally installed options before deciding.</p>
+      <div class="decision-actions">
+        <a href="/cost-calculator">Compare your cold-plunge costs →</a>
+        <a class="secondary" href="/diy-cold-plunge">Explore DIY &amp; safer alternatives →</a>
       </div>
     </section>
     <section class="used-zone" id="used-freezer" aria-labelledby="used-title">
@@ -194,6 +311,31 @@
       <a href="/medical-disclaimer">Medical disclaimer</a>
     </nav>
   </footer>
+  <script>
+    (() => {
+      const gallery = document.querySelector('.gallery');
+      if (!gallery) return;
+      const slides = [...gallery.querySelectorAll('.gallery-slide')];
+      const thumbs = [...gallery.querySelectorAll('.gallery-thumbs button')];
+      const count = gallery.querySelector('#gallery-count');
+      let active = 0;
+      function showSlide(index) {
+        active = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => { slide.hidden = i !== active; });
+        thumbs.forEach((button, i) => { button.setAttribute('aria-pressed', String(i === active)); });
+        count.textContent = `${active + 1} of ${slides.length}`;
+      }
+      gallery.querySelector('.gallery-arrow.prev').addEventListener('click', () => showSlide(active - 1));
+      gallery.querySelector('.gallery-arrow.next').addEventListener('click', () => showSlide(active + 1));
+      thumbs.forEach((button, i) => button.addEventListener('click', () => showSlide(i)));
+      gallery.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          showSlide(active + (event.key === 'ArrowRight' ? 1 : -1));
+        }
+      });
+    })();
+  </script>
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50aaed9aeda0474b85d8f35bcd553e1a"}'></script>
 </body>
 </html>

@@ -16,6 +16,10 @@ http://plungewise.com/*              https://plungewise.com/:splat    301!
 
 # Clean URLs: every page.html permanently redirects to /page so Google
 # keeps one address per page (GSC showed .html and clean duplicates).
+/diy-chest-freezer-cold-plunge/    /freezer-plunge    301!
+/diy-chest-freezer-cold-plunge     /freezer-plunge    301!
+/diy-chest-freezer-cold-plunge.html    /freezer-plunge    301!
+/freezer-plunge.html    /freezer-plunge    301!
 /index.html    /    301!
 /about.html    /about    301!
 /affiliate-disclosure.html    /affiliate-disclosure    301!
