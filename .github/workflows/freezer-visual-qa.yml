@@ -2,8 +2,7 @@ name: Freezer page visual checks
 on:
   push:
     branches: [main]
-    paths:
-      - 'freezer-plunge.html'
+    paths: ['freezer-plunge.html']
   workflow_dispatch:
 permissions:
   contents: read
@@ -41,6 +40,7 @@ jobs:
             const results = [];
             for (const width of [1440, 1024, 768, 390, 320]) {
               const page = await browser.newPage({ viewport: { width, height: 1000 }, deviceScaleFactor: 1 });
+              page.setDefaultTimeout(5000);
               const errors = [];
               page.on('pageerror', e => errors.push(e.message));
               await page.goto('http://127.0.0.1:4173/freezer-plunge.html', { waitUntil: 'networkidle' });
@@ -66,10 +66,15 @@ jobs:
               assert.equal(await page.locator('#gallery-count').innerText(), '2 of 6');
               await page.getByRole('button', { name: 'Show temperature probe', exact: true }).click();
               assert.equal(await page.locator('#gallery-count').innerText(), '4 of 6');
-              await page.getByRole('button', { name: 'Show freezer photo', exact: true }).click();
-              for (const image of await page.locator('img').all()) {
-                await image.scrollIntoViewIfNeeded().catch(() => {});
+              for (let i=0; i<6; i++) {
+                await page.locator('.gallery-thumbs button').nth(i).click();
+                await page.waitForFunction(() => {
+                  const im=document.querySelector('.gallery-slide:not([hidden]) img');
+                  return im && im.complete && im.naturalWidth>0;
+                });
               }
+              await page.getByRole('button', { name: 'Show freezer photo', exact: true }).click();
+              for (const image of await page.locator('img:visible').all()) await image.scrollIntoViewIfNeeded();
               const broken = await page.locator('img').evaluateAll(imgs => imgs.filter(i => i.complete && !i.naturalWidth).map(i => i.src));
               assert.equal(broken.length, 0, JSON.stringify(broken));
               assert.equal(errors.length, 0, JSON.stringify(errors));
