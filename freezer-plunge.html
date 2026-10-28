@@ -161,27 +161,176 @@
     }
     @media(max-width:390px){.header nav{gap:8px}.header nav a{font-size:11px}.wordmark{font-size:22px}}
   </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <style id="flagship-design">
+    /* Same illustrated PlungeWise world and design language as the calculator home page. */
+    :root{font-family:'DM Sans',system-ui,Arial,sans-serif}
+    body{font-family:'DM Sans',system-ui,Arial,sans-serif;background:#f5faf9}
+    h1,h2,h3,.wordmark{font-family:Manrope,system-ui,sans-serif;letter-spacing:-.052em}
+    .flagship-hero{isolation:isolate;background:#c9edfc;overflow:hidden;padding-bottom:0}
+    .flagship-hero:before{content:none}
+    .flagship-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(231,249,255,.97) 0%,rgba(231,249,255,.93) 30%,rgba(231,249,255,.68) 47%,rgba(231,249,255,.08) 73%,transparent)}
+    .flagship-world-art{position:absolute;z-index:-2;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+    .flagship-hero .header{position:relative;z-index:3}
+    .flagship-hero .header nav a{min-height:44px;display:inline-flex;align-items:center}
+    .flagship-hero .lead{display:flex;align-items:center;min-height:540px;padding-top:48px;padding-bottom:90px;position:relative}
+    .flagship-hero .lead-copy{width:min(560px,59%);position:relative;z-index:2}
+    .flagship-hero .eyebrow{font-size:11px;padding:10px 14px;background:#fff7c2;letter-spacing:.08em}
+    .flagship-hero h1{font-size:clamp(53px,6.6vw,90px);line-height:1.02;margin:0 0 20px;letter-spacing:-.072em}
+    .flagship-hero h1 span{color:#075ac4}
+    .flagship-hero .hero-subline{font-size:clamp(16px,1.65vw,20px);line-height:1.48;max-width:515px;color:#28536a;margin:0 0 21px}
+    .flagship-hero .metrics{margin-bottom:22px;gap:8px}
+    .flagship-hero .metrics span{font-size:12px;background:#ffffffed;border:1px solid #fff;padding:7px 12px;box-shadow:0 3px 12px #14638314}
+    .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+    .flagship-hero .hero-shop{display:inline-flex;width:auto;max-width:100%;align-items:center;min-height:58px;padding:15px 18px;margin:0;background:#ffdf69;color:#193747;box-shadow:0 5px 0 #ad85293c;border:2px solid #ecc452;font-weight:800;font-size:14px}
+    .flagship-hero .hero-shop:hover{background:#ffe994;transform:translateY(-2px)}
+    .flagship-hero .hero-shop span{font-size:23px}
+    .hero-explore{display:inline-flex;align-items:center;gap:13px;min-height:50px;padding:10px 12px;font-size:13px;font-weight:800;color:#164f74;text-decoration:none}
+    .hero-explore:hover{text-decoration:underline}
+    .flagship-hero .hero-safety{margin:20px 0 7px;font-size:11px;max-width:535px;line-height:1.55;background:#ffffffde;padding:12px 14px;border-radius:12px;border:1px solid #dae8ed;border-left:4px solid #2282c4;color:#416273}
+    .flagship-hero .hero-safety a{font-weight:800;text-underline-offset:3px}
+    .flagship-hero .hero-trust{font-size:11px;color:#30566c;max-width:500px;margin:9px 0 0}
+    .hero-cube-note{position:absolute;z-index:2;right:1%;top:15%;width:230px;display:flex;flex-direction:column;align-items:flex-start;gap:15px;pointer-events:none}
+    .cube-quote{font-size:15px;line-height:1.35;padding:18px 20px;background:#fffffff0;border:1px solid #fff;border-radius:19px 19px 4px 19px;box-shadow:0 6px 0 #acdbea85;transform:rotate(5deg);margin:0}
+    .cube-wave{pointer-events:auto;border:1px solid #b1d4df;border-radius:999px;background:#eaf9fff2;min-height:45px;padding:10px 18px;font-family:inherit;font-weight:800;font-size:12px;box-shadow:0 3px 0 #114a5a1c;cursor:pointer;transform:rotate(-4deg)}
+    .cube-wave:hover{background:#fff7c2}
+    .cube-wave:focus-visible{outline:3px solid #1459e8;outline-offset:4px}
+    .gallery-zone{position:relative;z-index:4;max-width:1000px;margin:-35px auto 43px;padding:29px 34px 26px;border:1px solid #c5e3ed;border-radius:28px;background:#ffffff;box-shadow:0 17px 38px #154e6115}
+    .gallery-zone-head{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-bottom:21px}
+    .gallery-zone-head .kicker{font-size:11px;letter-spacing:1.4px;color:#06789b;font-weight:850}
+    .gallery-zone-head h2{font-size:clamp(29px,4.1vw,45px);line-height:1.06;margin:7px 0 8px}
+    .gallery-zone-head p{font-size:14px;color:#547180;margin:0}
+    .gallery-stamp{flex:none;width:94px;height:94px;display:grid;place-items:center;text-align:center;background:#fff1ae;border:2px dashed #e0b44f;border-radius:50%;font-size:14px;font-weight:900;line-height:1.13;transform:rotate(9deg);box-shadow:0 5px 0 #d7bb7440}
+    .gallery-zone .photo-frame{width:min(100%,720px);margin:0 auto;transform:rotate(-1deg);border-radius:23px;box-shadow:0 10px 30px #173f5611}
+    .gallery-zone .gallery-slide img{height:390px;object-fit:contain;background:#eef9fb}
+    .gallery-zone .gallery-slide figcaption{min-height:48px}
+    .gallery-zone .photo-note{font-family:Caveat,'Comic Sans MS',cursive;right:-25px;top:10px;font-size:23px}
+    .gallery-bottom{margin-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:#5a7280}
+    .gallery-bottom a{color:#165a86;font-weight:800}
+    .problem-zone{max-width:1000px;padding:35px 38px;border-radius:26px;box-shadow:0 12px 0 #133e5012;margin-bottom:34px}
+    .problem-zone h2{font-size:clamp(32px,4.2vw,48px);line-height:1.12;max-width:800px}
+    .problem-zone .kicker{color:#8fe8f0}
+    .problem-grid{gap:13px}
+    .problem-grid div{background:#ffffff15;border:1px solid #ffffff26;border-radius:17px;padding:19px}
+    .problem-grid div:before{content:"❄";display:block;font-size:25px;margin-bottom:8px;color:#9decff}
+    .problem-grid div:nth-child(2):before{content:"⌛"}
+    .problem-grid div:nth-child(3):before{content:"✦"}
+    .problem-grid strong{font-size:15px}
+    .problem-answer{background:#f3fbc5;border:1px solid #e1f0ac;color:#214554;border-radius:15px}
+    .smallprint{max-width:1000px;border-radius:18px}
+    .learn{max-width:1000px}
+    .learn details{background:#fffdf2;border:1px solid #f0e2b8;box-shadow:0 5px 0 #decda42b}
+    .parts-zone{max-width:1000px;padding:35px;border-radius:28px;border:2px solid #bcdfe8;box-shadow:0 8px 0 #d7edf366;background:#f7fcff}
+    .parts-zone .kicker{font-size:11px;letter-spacing:1.5px;font-weight:850;color:#007a9f}
+    .parts-zone h2{font-size:clamp(32px,4.1vw,47px);line-height:1.12}
+    .parts-zone>p{max-width:730px;font-size:14px}
+    .parts-grid{gap:15px}
+    .parts-card{position:relative;padding:24px;border-radius:21px;border:1px solid #cfdfeb;background:#fff;box-shadow:0 5px 0 #d2e5e82c}
+    .parts-card.freezer-choice{grid-column:1/-1;background:linear-gradient(105deg,#e6f8ff,#fff7c9);border-color:#add9e5}
+    .parts-card:before{content:"🧊";display:grid;place-items:center;width:64px;height:64px;margin:0 0 14px;border-radius:18px;background:#d8f1fc;font-size:35px;transform:rotate(-6deg)}
+    .parts-card:nth-child(2):before{content:"🌡";background:#fff0be;transform:rotate(5deg)}
+    .parts-card:nth-child(3):before{content:"🫧";background:#e1f7e9}
+    .parts-card h3{font-size:clamp(21px,2.8vw,27px);margin-bottom:9px}
+    .part-micro{display:inline-block;vertical-align:middle;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:.09em;color:#477282;background:#e6f5fa;border-radius:999px;padding:6px 9px;margin-left:6px}
+    .parts-card p{font-size:13px;line-height:1.65;max-width:740px}
+    .parts-card .shop-link{display:flex;max-width:100%;justify-content:space-between;width:max-content;min-height:52px;font-size:13px;padding:12px 15px;background:#ffdf69;color:#173a47;border:2px solid #e8bf53;box-shadow:0 4px 0 #be9e4136;border-radius:13px}
+    .parts-card .shop-link:hover{background:#fff0aa}
+    .parts-card .shop-link.alt{background:#ffdf69;color:#173a47;border:2px solid #e8bf53}
+    .parts-card .vendor-alternate{font-size:12px;line-height:1.5;margin-top:5px}
+    .faq-zone,.used-zone,.decision-zone{max-width:1000px}
+    .faq-zone h2,.used-zone h2,.decision-zone h2{font-size:clamp(27px,3.3vw,38px)}
+    .faq-grid details{border-radius:16px;background:#fff;box-shadow:0 3px 0 #cde0e538}
+    .faq-grid summary{min-height:43px;display:flex;align-items:center}
+    .decision-zone{border-radius:25px;background:#d9f4fa}
+    .decision-actions a{border-radius:14px}
+    .used-zone{border-radius:23px;background:#fff8db;border-color:#f0e4bc}
+    @media(max-width:920px){.hero-cube-note{right:0;top:14%;width:180px}.cube-quote{font-size:12px;padding:12px}.flagship-hero .lead-copy{width:62%}}
+    @media(max-width:780px){
+      .flagship-hero .header nav{gap:13px}
+      .flagship-hero .header nav a{font-size:11px}
+      .flagship-hero .lead{display:flex;min-height:440px;padding:26px 0 75px}
+      .flagship-world-art{object-position:65% center}
+      .flagship-hero:after{background:linear-gradient(90deg,#e6f7ffeF 0%,#e6f7ffeb 32%,#e6f7ff88 62%,transparent 89%)}
+      .flagship-hero .lead-copy{width:72%;max-width:480px}
+      .flagship-hero h1{font-size:clamp(44px,9vw,70px)}
+      .flagship-hero .hero-subline{font-size:15px}
+      .flagship-hero .metrics span{font-size:10px}
+      .hero-cube-note{display:none}
+      .gallery-zone{margin:-28px auto 36px;padding:20px 18px;border-radius:22px}
+      .gallery-zone-head h2{font-size:32px}
+      .gallery-stamp{width:70px;height:70px;font-size:11px}
+      .gallery-zone .photo-frame{transform:none;padding:10px}
+      .gallery-zone .gallery-slide img{height:260px}
+      .gallery-zone .photo-note{right:4px;top:-14px;font-size:17px}
+      .problem-zone{padding:26px 22px}
+      .parts-zone{padding:22px}
+    }
+    @media(max-width:520px){
+      .flagship-hero .lead{min-height:430px;padding-top:15px;padding-bottom:58px}
+      .flagship-world-art{object-position:69% 50%}
+      .flagship-hero:after{background:linear-gradient(90deg,#e6f7fff5 0%,#e6f7fff0 43%,#e6f7ff98 75%,#e6f7ff15 100%)}
+      .flagship-hero .lead-copy{width:82%}
+      .flagship-hero h1{font-size:clamp(41px,10vw,52px);margin-bottom:14px}
+      .flagship-hero .eyebrow{font-size:8px;padding:8px 10px;margin-bottom:14px}
+      .flagship-hero .hero-subline{font-size:14px;line-height:1.42;margin-bottom:12px}
+      .flagship-hero .metrics{gap:5px;margin-bottom:13px}
+      .flagship-hero .metrics span{font-size:9px;padding:5px 8px}
+      .hero-actions{gap:5px}
+      .flagship-hero .hero-shop{min-height:49px;font-size:12px;line-height:1.35;padding:9px 10px}
+      .flagship-hero .hero-shop span{font-size:19px}
+      .hero-explore{font-size:11px;padding:7px 4px;min-height:36px}
+      .flagship-hero .hero-safety{font-size:10px;margin-top:9px;padding:8px}
+      .flagship-hero .hero-trust{display:none}
+      .flagship-hero .header nav a:nth-child(1){display:none}
+      .gallery-zone-head{align-items:flex-start;gap:9px}
+      .gallery-zone-head h2{font-size:28px}
+      .gallery-zone-head p{font-size:12px}
+      .gallery-stamp{width:61px;height:61px;font-size:9px}
+      .gallery-zone .gallery-slide img{height:220px}
+      .gallery-zone .gallery-thumbs img{height:37px}
+      .parts-card{padding:18px}
+      .parts-card .shop-link{width:100%;font-size:12px}
+      .parts-card.freezer-choice .shop-link{max-width:none}
+      .part-micro{font-size:8px}
+    }
+    @media(prefers-reduced-motion:reduce){.flagship-hero *, .gallery-zone *{animation:none!important;transition:none!important}}
+  </style>
 </head>
 <body>
-  <div class="hero-band">
+  <div class="hero-band flagship-hero">
+    <img class="flagship-world-art" src="/assets/home/chill-world-20261001.webp" alt="" width="1536" height="1024" fetchpriority="high">
     <header class="header wrap">
       <a class="wordmark" href="/" aria-label="PlungeWise home">PlungeWise<span>.</span></a>
-      <nav aria-label="Main navigation"><a href="/#calculators">Calculators</a><a href="/#build-your-plunge">Build your own</a></nav>
+      <nav aria-label="Main navigation"><a href="#real-photos">Real photos</a><a href="#parts">Shop my setup</a><a href="/#calculators">Calculators</a></nav>
     </header>
     <section class="lead wrap" aria-labelledby="page-title">
       <div class="lead-copy">
-        <div class="eyebrow">✦ 6 MONTHS IN · MY REAL PROJECT</div>
-        <h1 id="page-title">Tired of buying ice?<br><span>Here's my $300 experiment.</span></h1>
-        <p>Getting cold once is easy. Keeping up the routine is harder when every session means more bags of ice. I tried a second-hand Fujicom freezer and an Inkbird controller instead. These are my real photos, costs and trade-offs after six months.</p>
-        <p class="hero-safety"><strong>My precautions, not a safety certification:</strong> I disconnect power before anyone enters; the house has a panel RCD, and the lid is locked against child access when not in use. None of that makes a converted freezer approved or inherently safe for immersion. <a href="#safety-notes">Read the electrical warning ↓</a></p>
-        <div class="metrics"><span>~$300 all-in</span><span>3°C / 37°F target</span><span>6 months daily</span><span>Unplugged every plunge</span></div>
-        <a class="shop-link" href="https://www.amazon.com/dp/B0D425ML6G/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">See a BLACK+DECKER 10 cu. ft. freezer on Amazon <span aria-hidden="true">↗</span></a>
-        <a class="shop-link alt" href="https://www.amazon.com/dp/B01HXM5UAC/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">See the Inkbird controller I use on Amazon <span aria-hidden="true">↗</span></a>
-        <a class="vendor-alternate" href="https://www.awin1.com/cread.php?awinmid=109226&amp;awinaffid=3134027&amp;clickref=freezer-page&amp;ued=https%3A%2F%2Fwww.inkbird.com%2Fproducts%2Ftemperature-controller-itc-308" rel="sponsored nofollow noopener" target="_blank">or direct from Inkbird</a>
-        <div class="affiliate-near">Affiliate links. I earn a small commission if you buy, at no extra cost to you.</div>
-        <div class="jump-links"><a href="#real-photos">Explore all 6 photo views ↓</a><a href="#parts">See the parts I use ↓</a></div>
-        <div class="thread-proof">This build hit #1 on r/coldplunge (about 34,000 views in its first 10 hours, per 25 October insights). I answer the questions from that discussion below.</div>
+        <div class="eyebrow">✦ THE REAL $300 FREEZER EXPERIMENT</div>
+        <h1 id="page-title">Big chill.<br><span>Small budget.</span></h1>
+        <p class="hero-subline">Six months ago I swapped bags of ice for a second-hand chest freezer. Here's my real setup, real photos and the parts I used.</p>
+        <div class="metrics"><span>🧊 6 months daily</span><span>💸 ~$300 spent</span><span>❄ 3°C / 37°F target</span></div>
+        <div class="hero-actions">
+          <a class="shop-link hero-shop" href="https://www.amazon.com/dp/B0D425ML6G/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">See a chest freezer on Amazon <span aria-hidden="true">↗</span></a>
+          <a class="hero-explore" href="#parts">See the 3-part setup <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="hero-safety"><strong>Real story, not a build recommendation.</strong> A chest freezer isn't designed or certified for immersion. I disconnect its power before anyone enters. <a href="#safety-notes">Read safety details ↓</a></p>
+        <p class="hero-trust">✳ No stock photos. No secret $300 product bundle. Just my backyard experiment.</p>
       </div>
+      <div class="hero-cube-note" aria-label="A playful note from the PlungeWise ice cube">
+        <p class="cube-quote" id="freezer-quote" aria-live="polite">Wait... you stopped buying ice?<br><strong>I'm listening. 👀</strong></p>
+        <button class="cube-wave" id="freezer-cube-btn" type="button" aria-label="Hear another joke from the ice cube">Say brrr ✧</button>
+      </div>
+    </section>
+  </div>
+  <main class="wrap">
+  <section class="gallery-zone" aria-labelledby="gallery-title">
+    <div class="gallery-zone-head">
+      <div><span class="kicker">THE RECEIPTS, NOT RENDERS</span><h2 id="gallery-title">Yep. That's my actual freezer.</h2><p>Six unfiltered views of the experiment, from the water to the temperature probe. Tap any photo.</p></div>
+      <div class="gallery-stamp" aria-hidden="true">100%<br>REAL<br>PHOTOS ✦</div>
+    </div>
       <div class="photo-frame gallery" id="real-photos" aria-label="Six photographic views from Boaz's freezer plunge project">
         <div class="gallery-stage">
           <figure class="gallery-slide" data-slide="0">
@@ -222,12 +371,11 @@
         </div>
         <span class="photo-note">Yep, this is mine!</span>
       </div>
-    </section>
-  </div>
-  <main class="wrap">
+    <div class="gallery-bottom"><span>📷 Original photos · 23 October 2026</span><a href="#parts">Curious about the parts? ↓</a></div>
+  </section>
     <section class="problem-zone" aria-labelledby="problem-title">
-      <span class="kicker">The problem → My experiment</span>
-      <h2 id="problem-title">The hardest part wasn't the cold. It was making it a habit.</h2>
+      <span class="kicker">THE NOT-SO-FUN PART OF ICE BATHS</span>
+      <h2 id="problem-title">The cold was easy.<br>The ice runs? Not so much.</h2>
       <p>Cold plunging with ice can work. But a daily routine can become a cycle of buying, freezing, carrying and replacing ice. I wanted water that would be ready without starting that process again every afternoon.</p>
       <div class="problem-grid">
         <div><strong>Ice is temporary</strong><span>Every session needs another cooling plan, especially in warm weather.</span></div>
@@ -250,23 +398,23 @@
       </details>
     </section>
     <section class="parts-zone" id="parts" aria-labelledby="parts-title">
-      <span class="kicker">Seen the photos? Here are the parts.</span>
-      <h2 id="parts-title">What I actually use — and why</h2>
+      <span class="kicker">THE LITTLE SHOP OF B R R R</span>
+      <h2 id="parts-title">Meet my tiny cold-plunge toolkit.</h2>
       <p>The freezer and controller appear in my original photos; the net link is to a comparable product. Check suitability and safety before buying anything for your own setup.</p>
       <div class="parts-grid">
         <article class="parts-card freezer-choice">
-          <h3>1. The chest freezer itself</h3>
+          <h3>The freezer <span class="part-micro">THE BIG ONE</span></h3>
           <p>Mine is a second-hand Fujicom, around 300–400 L, bought locally. The Amazon link below opens the <strong>BLACK+DECKER BCF1000E 10 cu. ft. chest freezer</strong> product page, not my exact Fujicom model. Compare dimensions and intended use before buying. Ordinary chest freezers are <strong>not designed or certified for human immersion</strong>.</p>
           <a class="shop-link" href="https://www.amazon.com/dp/B0D425ML6G/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">See a BLACK+DECKER 10 cu. ft. freezer on Amazon <span aria-hidden="true">↗</span></a>
         </article>
         <article class="parts-card">
-          <h3>Inkbird ITC-308</h3>
+          <h3>Inkbird ITC-308 <span class="part-micro">THE BRAIN</span></h3>
           <p>My plug-in temperature controller. In the photo, the display shows a 3°C setpoint and a momentary 6.1°C water reading. A controller regulates cooling; it does <strong>not</strong> isolate power or make a converted freezer safe to enter.</p>
           <a class="shop-link" href="https://www.amazon.com/dp/B01HXM5UAC/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">Check Inkbird ITC-308 on Amazon <span aria-hidden="true">↗</span></a>
           <a class="vendor-alternate" href="https://www.awin1.com/cread.php?awinmid=109226&amp;awinaffid=3134027&amp;clickref=freezer-page-parts&amp;ued=https%3A%2F%2Fwww.inkbird.com%2Fproducts%2Ftemperature-controller-itc-308" rel="sponsored nofollow noopener" target="_blank">Or compare at the Inkbird store</a>
         </article>
         <article class="parts-card">
-          <h3>A simple skimming net</h3>
+          <h3>Skimming net <span class="part-micro">THE CLEANUP CREW</span></h3>
           <p>I skim leaves and visible debris between water changes. The product linked here is similar to mine, not the exact model. A hand net is <strong>not</strong> filtration or water disinfection.</p>
           <a class="shop-link alt" href="https://www.amazon.com/dp/B0002APXK0/ref=nosim?tag=plungepicks-20" target="_blank" rel="sponsored nofollow noopener">See a similar net on Amazon <span aria-hidden="true">↗</span></a>
           <a class="vendor-alternate" href="#real-photos">See the net in my photo ↑</a>
@@ -344,5 +492,23 @@
     })();
   </script>
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50aaed9aeda0474b85d8f35bcd553e1a"}'></script>
+  <script>
+    (() => {
+      const button = document.getElementById('freezer-cube-btn');
+      const quote = document.getElementById('freezer-quote');
+      if (!button || !quote) return;
+      const lines = [
+        'Wait... you stopped buying ice?<strong> I’m listening. 👀</strong>',
+        'Six months of cold water?<strong> Now that’s commitment! ❄</strong>',
+        'The freezer is real.<strong> The ice jokes are free. 🧊</strong>',
+        'Cold idea, warm welcome.<strong> Brrrrilliant! ✦</strong>'
+      ];
+      let index = 0;
+      button.addEventListener('click', () => {
+        index = (index + 1) % lines.length;
+        quote.innerHTML = lines[index];
+      });
+    })();
+  </script>
 </body>
 </html>
