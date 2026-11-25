@@ -45,15 +45,19 @@
   .flagship-feature-copy h2{font-family:Manrope,system-ui,sans-serif;font-size:clamp(24px,3.6vw,36px);line-height:1.1;letter-spacing:-.055em;margin:8px 0 9px}
   .flagship-feature-copy h2 em{font-style:normal;color:#0d64b7}
   .flagship-feature-copy p{font-size:14px;color:#48687c;margin:0 0 17px;max-width:560px}
-  .flagship-feature-copy a{display:inline-flex;align-items:center;gap:20px;min-height:46px;padding:11px 17px;background:#ffdf69;border:2px solid #e5ba4e;border-radius:13px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 4px 0 #b88f3939}
-  .flagship-feature-copy a:hover{background:#fff0ab}
+  .flagship-story-link{display:inline-flex;align-items:center;gap:20px;min-height:46px;padding:11px 17px;background:#ffdf69;border:2px solid #e5ba4e;border-radius:13px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 4px 0 #b88f3939}
+  .flagship-story-link:hover{background:#fff0ab}
   .flagship-feature-copy a:focus-visible{outline:3px solid #1459e8;outline-offset:4px}
   .flagship-feature-copy small{display:block;font-size:10px;color:#657c83;margin-top:11px}
   .flagship-feature-image{margin:0;position:relative;transform:rotate(2deg);background:white;border:8px solid white;border-radius:18px;box-shadow:0 6px 20px #154c601c}
   .flagship-feature-image img{display:block;width:100%;height:175px;object-fit:cover;border-radius:10px}
   .flagship-feature-image figcaption{position:absolute;bottom:-11px;right:-11px;background:#fff2aa;border-radius:9px;padding:6px 12px;transform:rotate(-6deg);font-family:Caveat,'Comic Sans MS',cursive;font-size:19px}
-  @media(max-width:700px){.flagship-home-feature{grid-template-columns:1fr 125px;gap:13px;padding:17px;margin-top:15px}.flagship-feature-image img{height:125px}.flagship-feature-image{border-width:4px}.flagship-feature-copy h2{font-size:24px}.flagship-feature-copy p{font-size:12px;margin-bottom:10px}.flagship-feature-copy a{font-size:11px;padding:9px 11px}.flagship-feature-image figcaption{font-size:11px;bottom:-8px;right:-8px;padding:5px}}
-  @media(max-width:420px){.flagship-home-feature{grid-template-columns:minmax(0,1fr) 90px;gap:9px}.flagship-feature-image img{height:103px}.flagship-feature-copy h2{font-size:21px}.flagship-feature-kicker{font-size:8px}.flagship-feature-copy p{font-size:11px}.flagship-feature-copy a{min-height:42px;font-size:10px;gap:7px}}
+  @media(max-width:700px){.flagship-home-feature{grid-template-columns:1fr 125px;gap:13px;padding:17px;margin-top:15px}.flagship-feature-image img{height:125px}.flagship-feature-image{border-width:4px}.flagship-feature-copy h2{font-size:24px}.flagship-feature-copy p{font-size:12px;margin-bottom:10px}.flagship-story-link{font-size:11px;padding:9px 11px}.flagship-feature-image figcaption{font-size:11px;bottom:-8px;right:-8px;padding:5px}}
+  @media(max-width:420px){.flagship-home-feature{grid-template-columns:minmax(0,1fr) 90px;gap:9px}.flagship-feature-image img{height:103px}.flagship-feature-copy h2{font-size:21px}.flagship-feature-kicker{font-size:8px}.flagship-feature-copy p{font-size:11px}.flagship-story-link{min-height:42px;font-size:10px;gap:7px}}
+  .home-mission{margin-top:clamp(16px,2vw,26px);padding-bottom:14px;border-bottom:1px solid #b6dce8}
+  .home-mission h2{margin:0 0 4px;font-size:11px;line-height:1.4}
+  .home-mission p{max-width:105ch;margin:0;font-size:14px;line-height:1.55;color:#48687c;text-wrap:balance}
+  .flagship-ready-link{display:block;width:fit-content;margin-top:10px;padding-block:3px;font-size:13px;line-height:1.45;color:#0c6c8b;text-decoration:underline;text-underline-offset:3px}
   @media(prefers-reduced-motion:reduce){.flagship-feature-image{transform:none}}
 </style>
 </head>
@@ -79,12 +83,17 @@
     </section>
   </div>
   <main>
+    <section class="home-mission wrap" aria-labelledby="home-mission-title">
+      <h2 class="flagship-feature-kicker" id="home-mission-title">WHY PLUNGEWISE</h2>
+      <p>Cold plunging shouldn't depend on your budget. I share my own build, real readings and free calculators to raise awareness and make cold plunging accessible to everyone, not just those who can spend thousands.</p>
+    </section>
     <section class="flagship-home-feature wrap" aria-labelledby="freezer-feature-title">
       <div class="flagship-feature-copy">
         <span class="flagship-feature-kicker">✦ FEATURED · A REAL BACKYARD EXPERIMENT</span>
         <h2 id="freezer-feature-title">Wait, a <em>$300 freezer</em> plunge?</h2>
         <p>Six months of daily cold plunges. Six real photos. The actual parts, surprises and safety trade-offs.</p>
-        <a href="/freezer-plunge">See the real freezer story <span aria-hidden="true">↗</span></a>
+        <a class="flagship-story-link" href="/freezer-plunge">See the real freezer story <span aria-hidden="true">↗</span></a>
+        <a class="flagship-ready-link" href="/freezer-plunge#box-route-title">Prefer a finished product? See the ready-made option <span aria-hidden="true">→</span></a>
         <small>Personal experiment — not a certified cold-plunge system.</small>
       </div>
       <figure class="flagship-feature-image">
